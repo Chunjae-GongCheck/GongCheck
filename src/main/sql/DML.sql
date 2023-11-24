@@ -1,4 +1,6 @@
 -- DML
+use gongcheck;
+
 -- members
 select * from members;
 insert into members(member_id, member_nickname, member_email, member_zonecode, member_address, member_address_detailed)
