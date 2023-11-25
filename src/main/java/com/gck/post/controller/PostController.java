@@ -1,7 +1,7 @@
 package com.gck.post.controller;
 
 import com.gck.board.model.BoardVO;
-import com.gck.board.service.BoardServiceSample;
+import com.gck.board.service.BoardService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,14 +12,14 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "MainView", value = "/gck/MainView.do")
-public class ListControllerSample extends HttpServlet {
+public class PostController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     // 서비스 생성 후 getter 만들어서 싱글톤 유지하면 편할 것 같습니다.
 
     private static class BoardServiceHelper {
-        private static final BoardServiceSample boardService = new BoardServiceSample();
+        private static final BoardService boardService = new BoardService();
     }
-    public static BoardServiceSample getBoardService(){
+    public static BoardService getBoardService(){
         return BoardServiceHelper.boardService;
     }
 

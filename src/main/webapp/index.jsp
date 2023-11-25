@@ -8,6 +8,6 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="gck/listsample.do">List Sample</a>
+<a href="gck/MainView.do">List Sample</a>
 </body>
 </html>

@@ -7,15 +7,14 @@ import org.apache.ibatis.session.SqlSession;
 import com.gck.factory.MyBatisFactory;
 
 import java.util.List;
-import java.util.Map;
 
-public class BoardServiceSample {
+public class BoardService {
     // DAO
     SqlSession sqlSession;
     PostDAO mapper;
 
     // 생성자
-    public BoardServiceSample(){}
+    public BoardService(){}
 
     //
     // 서비스 메서드 시작, 종료할 때 반드시 넣어 주세요!
