@@ -2,10 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
-    <style>a{text-decoration:none;}</style>
+    <title>GongCheck</title>
+    <style>
+      a{
+      text-decoration:none;
+    }
+    </style>
 </head>
 <body>
+
+
 <h2>파일 첨부형 게시판 - 목록 보기(List)</h2>
 
 <!-- 검색 폼 -->
