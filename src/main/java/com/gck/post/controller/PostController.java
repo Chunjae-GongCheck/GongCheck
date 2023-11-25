@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "listsample", value = "/gck/listsample.do")
+@WebServlet(name = "MainView", value = "/gck/MainView.do")
 public class ListControllerSample extends HttpServlet {
     private static final long serialVersionUID = 1L;
     // 서비스 생성 후 getter 만들어서 싱글톤 유지하면 편할 것 같습니다.
@@ -32,6 +32,6 @@ public class ListControllerSample extends HttpServlet {
 
         // 전달할 데이터를 request 영역에 저장 후 list.jsp로 포워드
         req.setAttribute("boardLists", boardLists);
-        req.getRequestDispatcher("/board/listSample.jsp").forward(req, resp);
+        req.getRequestDispatcher("/board/MainView.jsp").forward(req, resp);
     }
 }
