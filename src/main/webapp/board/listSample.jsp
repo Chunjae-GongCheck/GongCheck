@@ -8,6 +8,11 @@
   <title>Bootstrap demo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <style>
+<%-- 네비게이션 바 --%>
+*{
+  margin: 0;
+  padding: 0;
+}
   #logo{
   width: 3rem;
   }
@@ -17,6 +22,23 @@
 .btn_ {
   border: 0px;
 }
+#writebtn{
+  float: right;
+  margin: 1rem;
+}
+
+/* 게시물*/
+/*.row {*/
+
+/*  margin: 2rem;*/
+/*  padding: 2rem;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  }*/
+/*.photo {*/
+/*  max-width: 1280px;*/
+/*  max-height: 1280px;*/
+/*}*/
 </style>
 </head>
 
@@ -62,9 +84,52 @@
     </div>
   </div>
 </nav>
+<table class="table_">
+  <tr>
+    <th width="25%">번호</th>
+    <th width="25%">제목</th>
+    <th width="25%">작성자</th>
+    <th width="25%">조회수</th>
 
-<!-- 목록 테이블 -->
-<%--<table border="1" width="90%">--%>
+  </tr>
+  <c:choose>
+    <c:when test="${ empty boardLists }">  <!-- 게시물이 없을 때 -->
+      <tr>
+        <td colspan="6" align="center">
+          등록된 게시물이 없습니다.
+        </td>
+      </tr>
+    </c:when>
+    <c:otherwise>  <!-- 게시물이 있을 때 -->
+      <c:forEach items="${ boardLists }" var="row" varStatus="loop">
+        <c:set var="i" value="${i+1}" />  <!-- 샘플용 번호 -->
+        <tr align="center">
+          <!-- 번호 -->
+          <td>
+<%--            postdate 기준으로 차례대로 나오기--%>
+              ${ i }
+          </td>
+          <!-- 제목(링크) -->
+          <td>
+            <a href="#">${ row.postTitle }</a>
+          </td>
+          <!-- 작성자 -->
+          <td>${ row.memberIdx }</td>
+          <!-- 조회수 -->
+          <td>${ row.postVisitcount }</td>
+          <!-- 작성일 -->
+          <td>${ row.postWriteDate }</td>
+
+
+        </tr>
+      </c:forEach>
+    </c:otherwise>
+  </c:choose>
+</table>
+
+  <button type="button" class="btn" id="writebtn" onclick="location.href='#';">글쓰기</button>
+  <!-- 목록 테이블 -->
+  <%--<table border="1" width="90%">--%>
 <%--  <tr>--%>
 <%--    <th width="10%">번호</th>--%>
 <%--    <th width="*">제목</th>--%>
