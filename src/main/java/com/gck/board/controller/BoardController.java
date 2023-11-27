@@ -1,40 +1,91 @@
 package com.gck.board.controller;
 
-import com.gck.board.model.BoardDAO;
-import com.gck.board.service.BoardService;
-import com.gck.post.model.PostVO;
 
-import javax.servlet.RequestDispatcher;
+import com.gck.board.model.BoardDAO;
+import com.gck.board.model.BoardVO;
+import com.gck.board.service.BoardService;
+import com.gck.paging.BoardPage;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/gck/board/MainView.do")
-public class BoardController extends HttpServlet {
 
+@WebServlet(name = "MainView", value = "/gck/MainView.do")
+public class BoardController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    // 서비스 생성 후 getter 만들어서 싱글톤 유지하면 편할 것 같습니다.
+
+    private static class BoardServiceHelper {
+        private static final BoardService boardService = new BoardService();
+    }
+    public static BoardService getBoardService(){
+        return BoardController.BoardServiceHelper.boardService;
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        BoardService brdService = new BoardService();
+        Map<String, Object> map = new HashMap<>();
 
-        System.out.println("testBoard");
-        String url = "/board/MainView.jsp";
+        String searchField = req.getParameter("searchField");
+        String searchWord = req.getParameter("searchWord");
+        System.out.println("test");
 
 
+        // 게시물 목록 받기
+        List<BoardVO> boardLists = brdService.selectListPage(map);
 
-        // pageNum = req.getAttribute("boardPageNum");
-        // 매퍼로 쿼리문 호출해서 실행.
-        //
 
-//        ArrayList<PostVO> boardList = BoardService.
-        RequestDispatcher dispatcher = req.getRequestDispatcher(url);
-        dispatcher.forward(req, resp);
+        // 검색어가 존재하는 경우, Map에 추가
+        if (searchWord != null && !searchWord.trim().equals("")) {
+            map.put("searchField", searchField);
+            map.put("searchWord", searchWord);
+        }
+        // DAO를 통해 전체 게시물 수 조회
+        int totalCount = brdService.selectCount(map);
+
+        // 페이징 처리
+        // ServletContext 객체를 통해 웹 애플리케이션의 초기 파라미터 값 가져오기
+        ServletContext application = getServletContext();
+        int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+        int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+
+        // 현재 페이지 확인
+        int pageNum = 1; // 기본값
+        String pageTemp = req.getParameter("pageNum");
+        if (pageTemp != null && !pageTemp.equals(""))
+            pageNum = Integer.parseInt(pageTemp); // 요청받은 페이지로 수정
+
+        // 목록에 출력할 게시물 범위 계산
+        int start = (pageNum - 1) * pageSize + 1;  // 첫 게시물 번호
+        int end = pageNum * pageSize; // 마지막 게시물 번호
+        // map 에 키와 값 추가
+        map.put("start", start);
+        map.put("end", end);
+        /* 페이지 처리 end */
+
+        // 뷰에 전달할 매개변수 추가
+        String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
+                blockPage, pageNum,"/gck/board/MainView.do" ,searchField, searchWord );  // 바로가기 영역 HTML 문자열
+        // map 에 키와 값 추가
+        map.put("pagingImg", pagingImg);
+        map.put("totalCount", totalCount);
+        map.put("pageSize", pageSize);
+        map.put("pageNum", pageNum);
+
+
+        // 전달할 데이터를 request 영역에 저장 후 list.jsp로 포워드
+        req.setAttribute("map",map);
+        req.setAttribute("boardLists", boardLists);
+        req.getRequestDispatcher("/board/MainView.jsp").forward(req, resp);
 
     }
 }

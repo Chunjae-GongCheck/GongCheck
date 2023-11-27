@@ -4,14 +4,42 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 인터페이스 연결 -->
 <!-- mapper namespace = "package명.인터페이스명" -->
-<mapper namespace="com.gck.post.model.PostDAO">
+<mapper namespace="com.gck.board.model.BoardDAO">
     <!-- 해당 sql을 인터페이스에 선언된 메서드와 연결해서 처리. -->
     <!-- id="메서드명" parameterType "매개변수 타입" resultType 리턴 타입(풀 패키지명) -->
-    <select id="selectListPage" parameterType="int" resultType="com.gck.post.model.PostVO">
-        SELECT * FROM (
-        SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, p.*
+    <select id="selectListPage" parameterType="map" resultType="com.gck.board.model.BoardVO">
+        SELECT * FROM
+        ( SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, p.*
         FROM  posts p,(SELECT @ROWNUM := 0 ) TMP
-        ORDER BY post_idx DESC ) SUB
-        limit 8 offset pageNum - 1;
+
+        <if test="searchWord != null and !searchWord.equals('')">
+            <choose>
+                <when test="searchField == 'title'">
+                    WHERE post_title LIKE CONCAT('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    WHERE post_content LIKE CONCAT('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
+
+        ORDER BY post_idx DESC ) T
+        WHERE ROWNUM BETWEEN #{ start } AND #{ end }
     </select>
+<select id="selectCount" parameterType="map" resultType="int">
+    select count(*)
+    from posts
+    <if test="searchWord != null and !searchWord.equals('')">
+        where
+        <choose>
+            <when test="searchField == 'title'">
+                post_title like concat('%', #{searchWord}, '%')
+            </when>
+            <otherwise>
+                post_content like concat('%', #{searchWord}, '%')
+            </otherwise>
+        </choose>
+    </if>
+--     order by idx desc
+</select>
 </mapper>
