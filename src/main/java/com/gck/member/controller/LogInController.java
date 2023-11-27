@@ -1,8 +1,6 @@
 package com.gck.member.controller;
 
-import com.gck.board.service.BoardServiceSample;
 import com.gck.member.service.MemberService;
-import com.gck.post.controller.ListControllerSample;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -71,6 +69,10 @@ public class LogInController extends HttpServlet {
         if(memberIdx == -1){
             req.setAttribute("message", "회원 정보가 존재하지 않습니다.");
             url = "/member/login.do";   // 다시 로그인 화면으로 이동한다.
+
+            System.out.println("url: " + url);
+            RequestDispatcher dispatcher = req.getRequestDispatcher(url);
+            dispatcher.forward(req, resp);
         }else {  // 로그인 성공
             HttpSession session = req.getSession();  //세션 객체 생성
             session.setAttribute("memberIdx", memberIdx);
@@ -87,9 +89,5 @@ public class LogInController extends HttpServlet {
                 url = requestURI;
             }
         }
-
-        System.out.println("url: " + url);
-        RequestDispatcher dispatcher = req.getRequestDispatcher(url);
-        dispatcher.forward(req, resp);
     }
 }

@@ -9,5 +9,7 @@
 </h1>
 <br/>
 <a href="gck/listsample.do">List Sample</a>
+<a href="member/login.do">Login view로 이동</a>
+
 </body>
 </html>
