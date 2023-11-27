@@ -1,15 +1,18 @@
 -- DML
 use gongcheck;
 
+
 -- members
 select * from members;
 insert into members(member_id, member_nickname, member_email, member_zonecode, member_address, member_address_detailed)
     VALUE('test', 'testNick', 'test@test.com', '08513', '서울 금천구 가산로9길 54', '1층');
 
+
 -- password_members
 select * from password_members;
 insert into password_members(member_idx, password_member)
     VALUE(1, 'test');
+
 
 -- admins
 select * from admins;
@@ -20,6 +23,7 @@ insert into admins(admin_id) VALUE ('admin');
 select * from password_admins;
 insert into password_admins(admin_idx, password_admin)
     VALUE (1, 'admin');
+
 
 -- boards
 select * from boards;
@@ -35,6 +39,7 @@ insert into posts(board_idx, post_title, post_content, member_idx)
     VALUE (1, '공부 인증 게시물 1 제목', '공부 인증 게시물 1 내용', 1);
 insert into posts(board_idx, post_title, post_content, member_idx)
     VALUE (1, '공부 인증 게시물 2 제목', '공부 인증 게시물 2 내용', 1);
+
 
 -- notices
 select * from notices;
