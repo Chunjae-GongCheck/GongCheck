@@ -8,6 +8,7 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
+<a href="gck/MainView.do">MainView로 이동</a>
 <a href="gck/listsample.do">List Sample</a>
 <a href="member/login.do">Login view로 이동</a>
 
