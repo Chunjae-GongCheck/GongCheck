@@ -36,7 +36,7 @@ public class BoardController extends HttpServlet {
             // pageNum 은 pageTemp가 숫자로 변한 값(Int)이 된다.
             pageNum = Integer.parseInt(pageTemp); // 요청받은 페이지로 수정
 
-        // 아 이런거 post로 가야되나...
+
 
     }
 }
