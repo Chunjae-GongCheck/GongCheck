@@ -1,5 +1,6 @@
 package com.gck.member.service;
 
+import com.gck.encryption.Sha256;
 import com.gck.factory.MyBatisFactory;
 import com.gck.member.model.MemberDAO;
 import org.apache.ibatis.session.SqlSession;
@@ -19,9 +20,12 @@ public class MemberService {
         this.sqlSession = MyBatisFactory.getSqlSession();
         mapper = this.sqlSession.getMapper(MemberDAO.class);
 
+        // 비밀번호 암호화
+        String encryptedPasswordMember = Sha256.getHash(passwordMember);
+        System.out.println("getMemberIdx : "+encryptedPasswordMember);
         HashMap<String, String> map = new HashMap<>();
         map.put("memberId", memberId);
-        map.put("passwordMember", passwordMember);
+        map.put("passwordMember", encryptedPasswordMember);
 
         // memberId, passwordMember에 맞는 회원이 없으면 null을 리턴받는다.
         Integer memberIdx = mapper.getMemberIdx(map);
