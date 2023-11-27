@@ -12,6 +12,8 @@ insert into members(member_id, member_nickname, member_email, member_zonecode, m
 select * from password_members;
 insert into password_members(member_idx, password_member)
     VALUE(1, 'test');
+update password_members set password_member = '2131c65705b65668c2fcfc356276d230d8deda4a6590c72c62d58ac4eb05cdfe'
+where member_idx = 1;
 
 
 -- admins
