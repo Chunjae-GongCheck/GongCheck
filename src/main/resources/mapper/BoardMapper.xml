@@ -10,20 +10,21 @@
     <select id="selectListPage" parameterType="map" resultType="com.gck.board.model.BoardVO">
         SELECT * FROM
         ( SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, p.*
-        FROM  posts p,(SELECT @ROWNUM := 0 ) TMP
+        FROM posts p, (SELECT @ROWNUM := 0 ) TMP
 
-        <if test="searchWord != null and !searchWord.equals('')">
-            <choose>
-                <when test="searchField == 'title'">
-                    WHERE post_title LIKE CONCAT('%', #{searchWord}, '%')
-                </when>
-                <otherwise>
-                    WHERE post_content LIKE CONCAT('%', #{searchWord}, '%')
-                </otherwise>
-            </choose>
-        </if>
+<!--        <if test="searchWord != null and !searchWord.equals('')">-->
+<!--            <choose>-->
+<!--                <when test="searchField == 'post_title'">-->
+<!--                    WHERE post_title LIKE CONCAT('%', #{searchWord}, '%')-->
+<!--                </when>-->
+<!--                <otherwise>-->
+<!--                    WHERE post_content LIKE CONCAT('%', #{searchWord}, '%')-->
+<!--                </otherwise>-->
+<!--            </choose>-->
+<!--        </if>-->
 
         ORDER BY post_idx DESC ) T
+--         limit 8 offset #{pageNum} - 1
         WHERE ROWNUM BETWEEN #{ start } AND #{ end }
     </select>
 <select id="selectCount" parameterType="map" resultType="int">

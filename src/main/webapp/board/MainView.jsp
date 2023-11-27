@@ -128,14 +128,14 @@
               ${no}
           </td>
           <td align="left">  <!-- 제목(링크) -->
-            <a href="../board/view.do?idx=${ row.idx }">${ row.title }</a>
+            <a href="../board/view.do?idx=${ row.postIdx }">${ row.postTitle }</a>
           </td>
-          <td>${ row.name }</td>  <!-- 작성자 -->
-          <td>${ row.visitcount }</td>  <!-- 조회수 -->
-          <td>${ row.postdate }</td>  <!-- 작성일 -->
+          <td>${ row.memberIdx }</td>  <!-- 작성자 -->
+          <td>${ row.postVisitcount }</td>  <!-- 조회수 -->
+          <td>${ row.postWriteDate }</td>  <!-- 작성일 -->
           <td>  <!-- 첨부 파일 -->
             <c:if test="${ not empty row.ofile }">
-              <a href="../board/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.idx }">[Down]</a>
+              <a href="../board/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.postIdx }">[Down]</a>
             </c:if>
           </td>
         </tr>

@@ -70,6 +70,7 @@ public class BoardController extends HttpServlet {
         // map 에 키와 값 추가
         map.put("start", start);
         map.put("end", end);
+
         /* 페이지 처리 end */
 
         // 뷰에 전달할 매개변수 추가
