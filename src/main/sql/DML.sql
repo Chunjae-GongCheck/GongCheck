@@ -38,9 +38,9 @@ insert into posts(board_idx, post_title, post_content, member_idx)
 
 -- notices
 select * from notices;
-insert into notices(board_idx, notice_name, notice_content, admin_idx)
+insert into notices(board_idx, notice_title, notice_content, admin_idx)
     VALUE (2, '공지 게시물 1 제목', '공지 게시물 1 내용', 1);
-insert into notices(board_idx, notice_name, notice_content, admin_idx)
+insert into notices(board_idx, notice_title, notice_content, admin_idx)
     VALUE (2, '공지 게시물 2 제목', '공지 게시물 2 내용', 1);
 
 -- post_images
@@ -50,11 +50,10 @@ select * from post_images;
 
 -- replies
 select * from replies;
-insert into replies(post_idx, reply_content, member_idx, orderid)
+insert into replies(post_idx, reply_content, member_idx, reply_orderid)
     value(1, '댓글 1 내용', 1, 0);
 
 
 -- likes
 select * from likes;
 insert into likes(post_idx, member_idx) value (1, 1);
-
