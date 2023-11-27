@@ -27,6 +27,7 @@
   margin: 1rem;
 }
 
+
 /* 게시물*/
 /*.row {*/
 
@@ -43,7 +44,6 @@
 </head>
 
 <body>
-
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -65,8 +65,8 @@
             Rank
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">주간 조회수 Top 10</a></li>
+            <li><a class="dropdown-item" href="#">주간 좋아요 Top 10</a></li>
 <%--            <li><hr class="dropdown-divider"></li>--%>
 <%--            <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
           </ul>
@@ -185,6 +185,7 @@
 <%--    </td>--%>
 <%--  </tr>--%>
 <%--</table>--%>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
