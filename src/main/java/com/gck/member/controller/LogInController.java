@@ -1,8 +1,8 @@
 package com.gck.member.controller;
 
-import com.gck.board.service.BoardServiceSample;
+import com.gck.board.service.BoardService;
 import com.gck.member.service.MemberService;
-import com.gck.post.controller.ListControllerSample;
+import com.gck.post.controller.PostController;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
