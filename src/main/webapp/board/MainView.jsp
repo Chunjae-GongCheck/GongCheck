@@ -20,6 +20,10 @@
   width: 3rem;
   border-radius: 100%;
   }
+#img_ {
+  width: 3rem;
+  border-radius: 100%;
+}
 .btn_ {
   border: 0px;
 }
@@ -27,14 +31,64 @@
   float: right;
   margin: 1rem;
 }
-</style>
-  <script>
+/*팝업 디자인*/
+/*.wrap{padding:10px;}
 
-  </script>
+.btn_open{
+  font-weight:bold;
+  margin:5px;
+  padding:4px 6px;
+  background:#000; color:#fff;
+}
+.pop_wrap{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(0,0,0,.5);
+  font-size:0;
+  text-align:center;
+}
+.pop_wrap:after{
+  display:inline-block;
+  height:100%;
+  vertical-align:middle;
+  content:'';
+}
+.pop_wrap .pop_inner{
+  display:inline-block;
+  padding:20px 30px;
+  background:#fff; width:200px;
+  vertical-align:middle;
+  font-size:15px;
+}*/
+</style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+<%--  <script type="text/javascript">
+    $(document).click(function() {
+        $.ajax({
+          type:"get",
+          url:"../gck/PostView.jsp?postIdx=1",
+          data:"html",
+          error: function (){
+            alert('통신실패!!!');
+          },
+          success:function(result){//result (변수명은 어떤것이든 상관없음)
+            //success function 매개변수로 서버가 응답한 데이터가 전달
+            alert('통신 데이터 값 :' +result);
+            $("wrap").html(result);
+          }
+        });//ajax
+      });//click
+
+  </script>--%>
 </head>
 
 <body>
 
+<h1>GongCheck</h1>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -83,7 +137,7 @@
           </tr>
         </table>
         <button class="btn_" type="submit" >
-          <img src="../img/프로필1.png" id="img" />
+          <img src="../img/프로필1.png" id="img_" />
         </button>
       </form>
     </div>
@@ -121,11 +175,13 @@
 <%--              ${no}--%>
           </td>
           <td align="left">  <!-- 제목(링크) -->
-            <a href="../post/PostView.jsp?idx=${ row.postIdx }" >${ row.postTitle }</a>
+            <a href="../post/PostView.jsp?postIdx=${ row.postIdx }" id="ajaxBtn">${ row.postTitle }</a>
           </td>
           <td>${ row.memberIdx }</td>  <!-- 작성자 -->
           <td>${ row.postVisitcount }</td>  <!-- 조회수 -->
           <td>${ row.postWriteDate }</td>  <!-- 작성일 -->
+          <td>
+          </td>
 <%--          <td>  <!-- 첨부 파일 -->--%>
 <%--            <c:if test="${ not empty row.ofile }">--%>
 <%--              <a href="../board/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.postIdx }">[Down]</a>--%>
@@ -148,8 +204,40 @@
                             onclick="location.href='../post/PostWrite.jsp';">글쓰기</button></td>
   </tr>
 </table>
+<div class="wrap">
+<%--  <a href="#pop_info_1" class="btn_open">팝업 열기1</a>--%>
+  <a href="#"><img src="../img/logo.jpg" alt="post" id="img"></a>
+  <div id="pop_info_1" class="pop_wrap" style="display:none;">
+    <div class="pop_inner">
+      <p class="dsc">팝업 안내문구 입니다.</p>
+      <button type="button" class="btn_close">닫기</button>
+    </div>
+  </div>
 
+</div>
+<script>
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<%--<script>--%>
+<%--  var target = document.querySelectorAll('.btn_open');--%>
+<%--  var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');--%>
+<%--  var targetID;--%>
 
+<%--  // 팝업 열기--%>
+<%--  for(var i = 0; i < target.length; i++){--%>
+<%--    target[i].addEventListener('click', function(){--%>
+<%--      targetID = this.getAttribute('href');--%>
+<%--      document.querySelector(targetID).style.display = 'block';--%>
+<%--    });--%>
+<%--  }--%>
+
+<%--  // 팝업 닫기--%>
+<%--  for(var j = 0; j < target.length; j++){--%>
+<%--    btnPopClose[j].addEventListener('click', function(){--%>
+<%--      this.parentNode.parentNode.style.display = 'none';--%>
+<%--    });--%>
+<%--  }--%>
+<%--</script>--%>
 </body>
 </html>
