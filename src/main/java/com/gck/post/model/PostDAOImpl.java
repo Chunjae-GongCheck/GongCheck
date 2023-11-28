@@ -8,22 +8,23 @@ import java.util.Map;
 
 public class PostDAOImpl implements PostDAO {
 
-    public List<PostVO> selectListPage(Map<String, Object> map) {
-        SqlSession sqlSession = MyBatisFactory.getSqlSession();
-        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
-        List<PostVO> result = mapper.selectListPage(map);
-        sqlSession.close();
-        return result;
-    }
 
-    public int selectCount(Map<String, Object> map) {
-        SqlSession sqlSession = MyBatisFactory.getSqlSession();
-        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
-        int result = mapper.selectCount(map);
-        System.out.println("selectCount - 행 개수 = " + result);
-        sqlSession.close();
-        return result;
-    }
+//    public List<PostVO> selectListPage(Map<String, Object> map) {
+//        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+//        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+//        List<PostVO> result = mapper.selectListPage(map);
+//        sqlSession.close();
+//        return result;
+//    }
+
+//    public int selectCount(Map<String, Object> map) {
+//        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+//        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+//        int result = mapper.selectCount(map);
+//        System.out.println("selectCount - 행 개수 = " + result);
+//        sqlSession.close();
+//        return result;
+//    }
 
     public int insertPost(PostVO vo) {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
@@ -39,11 +40,17 @@ public class PostDAOImpl implements PostDAO {
         return result;
     }
 
-    public PostVO selectView(String noticeIdx) {
+    public PostVO selectView(String postIdx) {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
         PostDAO mapper = sqlSession.getMapper(PostDAO.class);
-        PostVO vo = mapper.selectView(noticeIdx);
-
+        PostVO vo = mapper.selectView(postIdx);
+        if (vo != null && vo.getBoardIdx() == 1) {
+            // 처리 로직
+            sqlSession.commit();
+            System.out.println("팝업 실행");
+        } else {
+            System.out.println("팝업 실패");
+        }
         sqlSession.close();
         return vo;
     }
@@ -87,4 +94,8 @@ public class PostDAOImpl implements PostDAO {
         sqlSession.commit();
         return result;
     }
+
+//    public List<PostVO> selectListMyPage(Map<String, Object> map){
+//
+//    }
 }
