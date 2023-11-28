@@ -2,7 +2,6 @@ package com.gck.post.controller;
 
 import com.gck.post.model.PostDAOImpl;
 import com.gck.post.model.PostVO;
-import com.gck.post.service.PopupViewService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,9 +20,9 @@ public class PostController extends HttpServlet {
 
     PostDAOImpl postDaoImpl = new PostDAOImpl();
     Map<String, Object> map = new HashMap<>();
-
-    System.out.println("popup & map 초기 값 넘어오는가????????" + postDaoImpl + map);
-    req.setAttribute();
+//
+//    System.out.println("popup & map 초기 값 넘어오는가????????" + postDaoImpl + map);
+//    String postIdx = req.setAttribute("postIdx"+ postDaoImpl);
 //    String currentView = req.getParameter()
   }
 }
