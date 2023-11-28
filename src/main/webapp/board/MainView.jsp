@@ -111,11 +111,13 @@
     </c:when>
 
     <c:otherwise>  <!-- 게시물이 있을 때 -->
-      <c:set var="no" value="${ map.totalCount - ((map.pageNum - 1) * 10)}" />
+<%--      <c:set var="no" value="${ map.totalCount - ((map.pageNum - 1) * 10)}" />--%>
+
       <c:forEach items="${ boardLists }" var="row" varStatus="loop">
         <tr align="center">
           <td>  <!-- 번호 -->
-              ${no}
+              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
+<%--              ${no}--%>
           </td>
           <td align="left">  <!-- 제목(링크) -->
             <a href="../board/post.do?idx=${ row.postIdx }" >${ row.postTitle }</a>
@@ -129,7 +131,7 @@
 <%--            </c:if>--%>
 <%--          </td>--%>
         </tr>
-        <c:set var="no" value="${no - 1}" />
+<%--        <c:set var="no" value="${no - 1}" />--%>
       </c:forEach>
     </c:otherwise>
   </c:choose>
