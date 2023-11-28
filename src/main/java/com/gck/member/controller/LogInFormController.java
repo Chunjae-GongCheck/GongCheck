@@ -34,7 +34,7 @@ public class LogInFormController extends HttpServlet {
             return;
         }
 
-        url = "/member/login.jsp";
+        url = "/member/login_bootstrap.jsp";
 
         RequestDispatcher dispatcher = req.getRequestDispatcher(url);
         dispatcher.forward(req, resp);

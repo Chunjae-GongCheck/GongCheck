@@ -13,6 +13,7 @@
 
 <a href="gck/listsample.do">List Sample</a>
 <a href="member/loginform.do">로그인 하러가기</a>
+<a href="member/login_bootstrap.jsp">로그인 하러가기(부트스트랩 사용)</a>
 <a href="member/signupform.do">회원가입 하러가기</a>
 
 </body>
