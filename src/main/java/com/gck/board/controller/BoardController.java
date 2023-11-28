@@ -77,7 +77,7 @@ public class BoardController extends HttpServlet {
 
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
-                blockPage, pageNum,"/gck/board/MainView.do" ,searchField, searchWord );  // 바로가기 영역 HTML 문자열
+                blockPage, pageNum,"../gck/MainView.do" ,searchField, searchWord );  // 바로가기 영역 HTML 문자열
         // map 에 키와 값 추가
         map.put("pagingImg", pagingImg);
         map.put("totalCount", totalCount);
@@ -86,6 +86,7 @@ public class BoardController extends HttpServlet {
 
 
         // 전달할 데이터를 request 영역에 저장 후 list.jsp로 포워드
+
         req.setAttribute("map",map);
         req.setAttribute("boardLists", boardLists);
         req.getRequestDispatcher("/board/MainView.jsp").forward(req, resp);

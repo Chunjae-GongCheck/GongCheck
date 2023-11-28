@@ -11,6 +11,7 @@ public class BoardPage {
 
         // 단계 4 : '이전 페이지 블록 바로가기' 출력
         int pageTemp = (((pageNum - 1) / blockPage) * blockPage) + 1;
+        System.out.println("1. pageTemp=========" + pageTemp);
         if (pageTemp != 1) {
             // 첫 페이지로 이동하는 링크 추가
             pagingStr += "<a href='" + reqUrl + "?pageNum=1'>[첫 페이지]</a>";
