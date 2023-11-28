@@ -5,6 +5,99 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border-bottom: 0; /* 테이블 아래 테두리 제거 */
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            border-bottom: 0; /* 각 셀의 아래 테두리 제거 */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: calc(100% - 16px);
+            padding: 10px;
+            margin: 6px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .reset-btn {
+            background-color: #f44336;
+        }
+
+        .reset-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .link-btn {
+            background-color: #2196F3;
+        }
+
+        .link-btn:hover {
+            background-color: #0d47a1;
+        }
+
+    </style>
+
     <script type="text/javascript">
         function validateForm(form) {
             if (form.title.value == "") {
@@ -18,12 +111,17 @@
                 return false;
             }
         }
+
     </script>
 </head>
 <body>
 <h1>파일 업로드</h1>
 <form name="writefrm" method="post" enctype="multipart/form-data"
+<<<<<<< HEAD
       action="../gck/board/MainView.do" onsubmit="return validateForm(this)"> <!--this는 이것을 적절하게 입력했는지 여부를 물어봄 -->
+=======
+      action="../gck/PostWrite.do" onsubmit="return validateForm(this)"> <!--this는 이것을 적절하게 입력했는지 여부를 물어봄 -->
+>>>>>>> e63722789c4b5a28533573222ac70aaf4e50f5a6
 
     <table border = "1" width="700px">
 <%--        <div>--%>
@@ -56,7 +154,6 @@
                 <button type="button" onclick="location.href='../gck/board/MainView.do';">
                     목록 바로가기
                 </button>
-            <br/><br/>
         </div>
     </table>
 </form>
