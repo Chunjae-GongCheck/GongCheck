@@ -27,21 +27,10 @@
   float: right;
   margin: 1rem;
 }
-
-
-/* 게시물*/
-/*.row {*/
-
-/*  margin: 2rem;*/
-/*  padding: 2rem;*/
-/*  width: 100%;*/
-/*  height: 100%;*/
-/*  }*/
-/*.photo {*/
-/*  max-width: 1280px;*/
-/*  max-height: 1280px;*/
-/*}*/
 </style>
+  <script>
+
+  </script>
 </head>
 
 <body>
@@ -129,7 +118,7 @@
               ${no}
           </td>
           <td align="left">  <!-- 제목(링크) -->
-            <a href="../board/post.do?idx=${ row.postIdx }">${ row.postTitle }</a>
+            <a href="../board/post.do?idx=${ row.postIdx }" >${ row.postTitle }</a>
           </td>
           <td>${ row.memberIdx }</td>  <!-- 작성자 -->
           <td>${ row.postVisitcount }</td>  <!-- 조회수 -->

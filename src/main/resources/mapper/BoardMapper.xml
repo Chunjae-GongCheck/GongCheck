@@ -22,7 +22,7 @@
             </choose>
         </if>
         ORDER BY post_idx DESC ) T
-        WHERE ROWNUM BETWEEN #{ start } AND #{ end } ;
+        WHERE ROWNUM BETWEEN #{ start } AND #{ end }
     </select>
 <select id="selectCount" parameterType="map" resultType="int">
     select count(*)
