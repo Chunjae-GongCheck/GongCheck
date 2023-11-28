@@ -12,7 +12,8 @@
 <a href="gck/MainView.do">MainView로 이동</a>
 
 <a href="gck/listsample.do">List Sample</a>
-<a href="member/loginform.do">Login 폼으로 이동</a>
+<a href="member/loginform.do">로그인 하러가기</a>
+<a href="member/signupform.do">회원가입 하러가기</a>
 
 </body>
 </html>

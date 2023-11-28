@@ -24,7 +24,7 @@ public class SignUpFormController extends HttpServlet {
 
         // 세션에 로그인 정보가 있을 경우
         if(req.getSession().getAttribute("memberIdx") != null){
-            url += "/index.jsp";  // [@@@@@@@@@@] 메인 페이지로 수정해야 함. 메인 페이지로 가는 컨트롤러(board/main.do)로 연결해야 한다.
+            url += "/index_jy.jsp";  // [@@@@@@@@@@] 메인 페이지로 수정해야 함. 메인 페이지로 가는 컨트롤러(board/main.do)로 연결해야 한다.
             resp.sendRedirect(url);
             return;
         }
