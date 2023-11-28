@@ -7,13 +7,13 @@
 <mapper namespace="com.gck.post.model.PostDAO">
     <!-- 해당 sql을 인터페이스에 선언된 메서드와 연결해서 처리. -->
     <!-- id="메서드명" parameterType "매개변수 타입" resultType 리턴 타입(풀 패키지명) -->
-    <select id="selectListPage" parameterType="map" resultType="com.gck.post.model.PostVO">
-        select p.post_idx
-        from posts as p
-        join post_image_idx as pi
-        on p.post_idx = pi.post_idx
-        where p.post_idx = #{postIdx}
-    </select>
+<!--    <select id="selectListPage" parameterType="map" resultType="com.gck.post.model.PostVO">-->
+<!--        select p.post_idx-->
+<!--        from posts as p-->
+<!--        join post_image_idx as pi-->
+<!--        on p.post_idx = pi.post_idx-->
+<!--        where p.post_idx = #{postIdx}-->
+<!--    </select>-->
 
     <insert id="insertPost" parameterType="com.gck.post.model.PostVO"
             useGeneratedKeys="true" keyColumn="post_idx" keyProperty="postIdx">
@@ -25,11 +25,11 @@
     <select id="selectView" parameterType="String" resultType="com.gck.post.model.PostVO">
         select *
         from posts
-        where member_idx = #{member_idx}
+        where post_idx = #{postIdx}
     </select>
 
     <update id="updateVisitCount" parameterType="integer">
-        update mvcboard
+        update posts
         set postVisitcount = postVisitcount + 1
         where postIdx = #{postIdx}
     </update>

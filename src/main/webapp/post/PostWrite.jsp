@@ -23,7 +23,7 @@
 <body>
 <h1>파일 업로드</h1>
 <form name="writefrm" method="post" enctype="multipart/form-data"
-      action="../gongcheck/PostWrite.do" onsubmit="return validateForm(this)"> <!--this는 이것을 적절하게 입력했는지 여부를 물어봄 -->
+      action="../gck/board/MainView.do" onsubmit="return validateForm(this)"> <!--this는 이것을 적절하게 입력했는지 여부를 물어봄 -->
 
     <table border = "1" width="700px">
 <%--        <div>--%>
@@ -53,7 +53,7 @@
         <div class="form-group">
                 <button type="submit">작성 완료</button>
                 <button type="reset">RESET</button>
-                <button type="button" onclick="location.href='../mvcboard/list.do';">
+                <button type="button" onclick="location.href='../gck/board/MainView.do';">
                     목록 바로가기
                 </button>
             <br/><br/>

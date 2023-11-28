@@ -144,7 +144,7 @@
       ${ map.pagingImg }
     </td>
     <td width="100"><button type="button"
-                            onclick="location.href='../board/PostWrite.do';">글쓰기</button></td>
+                            onclick="location.href='../gck/post/PostView.jsp';">글쓰기</button></td>
   </tr>
 </table>
 
