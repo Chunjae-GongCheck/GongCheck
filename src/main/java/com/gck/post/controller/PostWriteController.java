@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/gck/PostWrite.do")
+@WebServlet("/post/PostWrite.do")
 
     @MultipartConfig(
             maxFileSize = 1024 * 1024 * 1,

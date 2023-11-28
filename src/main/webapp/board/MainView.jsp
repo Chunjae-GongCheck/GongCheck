@@ -82,7 +82,8 @@
             </td>
           </tr>
         </table>
-        <button class="btn_" type="submit"><img src="../img/프로필1.png" id="img">
+        <button class="btn_" type="submit" >
+          <img src="../img/프로필1.png" id="img" />
         </button>
       </form>
     </div>
@@ -144,7 +145,7 @@
       ${ map.pagingImg }
     </td>
     <td width="100"><button type="button"
-                            onclick="location.href='../gck/post/PostView.jsp';">글쓰기</button></td>
+                            onclick="location.href='../post/PostWrite.jsp';">글쓰기</button></td>
   </tr>
 </table>
 
