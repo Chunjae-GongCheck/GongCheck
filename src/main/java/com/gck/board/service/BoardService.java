@@ -3,6 +3,8 @@ package com.gck.board.service;
 import com.gck.board.model.BoardDAO;
 import com.gck.board.model.BoardVO;
 import com.gck.post.model.PostDAO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.apache.ibatis.session.SqlSession;
 
 import com.gck.factory.MyBatisFactory;
@@ -11,6 +13,8 @@ import com.gck.factory.MyBatisFactory;
 import java.util.List;
 import java.util.Map;
 
+@Data
+@AllArgsConstructor
 
 public class BoardService {
     // DAO
@@ -18,11 +22,9 @@ public class BoardService {
     BoardDAO mapper;
 
     // 생성자
-    public BoardService() {
+    public BoardService(){
 
     }
-
-
 //     서비스 메서드 시작, 종료할 때 반드시 넣어 주세요!
 //     시작 시,
 //     this.sqlSession = MyBatisFactory.getSqlSession(); mapper = this.sqlSession.getMapper(BoardDAO.class);

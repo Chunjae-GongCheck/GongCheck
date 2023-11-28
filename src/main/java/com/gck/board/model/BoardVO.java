@@ -2,12 +2,14 @@ package com.gck.board.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
 // 게시판
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class BoardVO {
     int postIdx;            // 게시물 index
     int boardIdx;           // 게시판 index

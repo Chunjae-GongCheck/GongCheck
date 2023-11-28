@@ -23,15 +23,11 @@ public class BoardController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     // 서비스 생성 후 getter 만들어서 싱글톤 유지하면 편할 것 같습니다.
 
-    private static class BoardServiceHelper {
-        private static final BoardService boardService = new BoardService();
-    }
-    public static BoardService getBoardService(){
-        return BoardController.BoardServiceHelper.boardService;
-    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+
         BoardService brdService = new BoardService();
         Map<String, Object> map = new HashMap<>();
 
@@ -40,8 +36,12 @@ public class BoardController extends HttpServlet {
         System.out.println("test");
 
 
+
+        // DAO를 통해 전체 게시물 수 조회
+        int totalCount = brdService.selectCount(map);
+        System.out.println("totalCount ======" + totalCount);
         // 게시물 목록 받기
-        List<BoardVO> boardLists = brdService.selectListPage(map);
+
 
 
         // 검색어가 존재하는 경우, Map에 추가
@@ -49,8 +49,7 @@ public class BoardController extends HttpServlet {
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
         }
-        // DAO를 통해 전체 게시물 수 조회
-        int totalCount = brdService.selectCount(map);
+
 
         // 페이징 처리
         // ServletContext 객체를 통해 웹 애플리케이션의 초기 파라미터 값 가져오기
@@ -70,6 +69,9 @@ public class BoardController extends HttpServlet {
         // map 에 키와 값 추가
         map.put("start", start);
         map.put("end", end);
+
+        List<BoardVO> boardLists = brdService.selectListPage(map);
+        System.out.println("boardLists ====== " + boardLists); // 콘솔출력용
 
         /* 페이지 처리 end */
 

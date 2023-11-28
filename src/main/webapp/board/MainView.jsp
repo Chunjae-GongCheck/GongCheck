@@ -18,6 +18,7 @@
   }
   #img {
   width: 3rem;
+
   }
 .btn_ {
   border: 0px;
@@ -44,6 +45,8 @@
 </head>
 
 <body>
+
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -90,7 +93,6 @@
             </td>
           </tr>
         </table>
-
         <button class="btn_" type="submit"><img src="../img/프로필1.png" id="img">
         </button>
       </form>
@@ -124,20 +126,19 @@
       <c:forEach items="${ boardLists }" var="row" varStatus="loop">
         <tr align="center">
           <td>  <!-- 번호 -->
-              <%--                ${ map.totalCount - (((map.pageNum-1) - map.pageSize) + loop.index)}--%>
               ${no}
           </td>
           <td align="left">  <!-- 제목(링크) -->
-            <a href="../board/view.do?idx=${ row.postIdx }">${ row.postTitle }</a>
+            <a href="../board/post.do?idx=${ row.postIdx }">${ row.postTitle }</a>
           </td>
           <td>${ row.memberIdx }</td>  <!-- 작성자 -->
           <td>${ row.postVisitcount }</td>  <!-- 조회수 -->
           <td>${ row.postWriteDate }</td>  <!-- 작성일 -->
-          <td>  <!-- 첨부 파일 -->
-            <c:if test="${ not empty row.ofile }">
-              <a href="../board/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.postIdx }">[Down]</a>
-            </c:if>
-          </td>
+<%--          <td>  <!-- 첨부 파일 -->--%>
+<%--            <c:if test="${ not empty row.ofile }">--%>
+<%--              <a href="../board/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.postIdx }">[Down]</a>--%>
+<%--            </c:if>--%>
+<%--          </td>--%>
         </tr>
         <c:set var="no" value="${no - 1}" />
       </c:forEach>
@@ -146,13 +147,13 @@
 </table>
 
 <!-- 하단 메뉴(바로가기, 글쓰기) -->
-<table border="1" width="90%">
+<table border="1" width="100%">
   <tr align="center">
     <td>
       ${ map.pagingImg }
     </td>
     <td width="100"><button type="button"
-                            onclick="location.href='../board/write.do';">글쓰기</button></td>
+                            onclick="location.href='../board/PostWrite.do';">글쓰기</button></td>
   </tr>
 </table>
 
