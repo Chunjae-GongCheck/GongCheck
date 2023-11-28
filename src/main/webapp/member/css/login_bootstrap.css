@@ -55,3 +55,21 @@ body {
     --bs-btn-disabled-bg: #FFB701;
     --bs-btn-disabled-border-color: #FFB701;
 }
+
+/* 회원가입 링크 */
+a:link {
+    color : #FFB701;
+    text-decoration: none;
+}
+a:visited { /* 방문한 적이 있을 때 */
+    color : #FFB701;
+    text-decoration: none;
+}
+a:hover { /* 마우스가 글자 위에 있을 때 */
+    color : #dfa001;
+    text-decoration: none;
+}
+a:active { /* 클릭하고 있을 때 */
+    color : #FFB701;
+    text-decoration: none;
+}
