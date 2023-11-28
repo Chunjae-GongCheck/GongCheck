@@ -18,4 +18,8 @@ public class PostVO {
     Date postWriteDate;     // 작성일시
     Date postUpdateDate;    // 수정일시
     int postVisitcount;     // 조회수
+
+    public PostVO() {
+
+    }
 }
