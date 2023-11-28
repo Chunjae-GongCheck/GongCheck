@@ -9,12 +9,18 @@ div#popup{
     position: absolute;
     top: 100px;
     left: 640px;
-    color: yellow;
-    width: 640px; height: 640px; background-color: gray;
+    color: black;
+    width: 640px;
+    height: 640px;
+    background-color: gray;
 }
 div#popup>div{
-    position: relative; background-color: #FFFFFF; top: 0px;
-    border: 1px solid gray; padding: 10px; color: black;
+    position: relative;
+    background-color: #FFFFFF;
+    /* bottom: 0px;*/
+    border: 1px solid gray;
+    padding: 10px;
+    color: black;
 }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -24,17 +30,28 @@ div#popup>div{
                 $('#popup').hide();
             });
         });
+
     </script>
 </head>
 <body>
-<h2>팝업 메인 페이지</h2>
+<h2>상세보기 팝업 페이지</h2>
 
 <div id = "popup">
     <h2 align="center">상세보기</h2>
     <div align="right">
         <form name="popFrm">
-            <input type="button" value="닫기" id="closeBtn" />
-        </form></div>
+            <button type="button" onclick="location.href='../member/login.do?mode=edit&idx=${ param.memberIdx }';">
+                수정하기
+            </button>
+            <button type="button" onclick="location.href='../board/login.do?mode=delete&idx=${ param.memberIdx }';">
+                삭제하기
+            </button>
+            <button type="button" onclick="location.href='../gck/MainView.do';">
+                목록 바로가기
+            </button>
+            <button type="button" id="closeBtn">닫기</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

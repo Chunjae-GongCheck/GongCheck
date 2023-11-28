@@ -64,7 +64,7 @@ import java.util.ArrayList;
         // 성공 or 실패?
         if (result != 1) {  // 글쓰기 실패
             JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.",
-                    "/gck/PostWrite.do");
+                    "../gck/PostWrite.do");
         }
 
         // 글쓰기 성공. 이제부터 글에 연관(등록)된 여러 개의 파일을 저장하는 작업
