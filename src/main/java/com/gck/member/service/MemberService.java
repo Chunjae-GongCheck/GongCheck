@@ -22,7 +22,7 @@ public class MemberService {
 
         // 비밀번호 암호화
         String encryptedPasswordMember = Sha256.getHash(passwordMember);
-        System.out.println("getMemberIdx : "+encryptedPasswordMember);
+        System.out.println("encryptedPasswordMember : "+encryptedPasswordMember);
         HashMap<String, String> map = new HashMap<>();
         map.put("memberId", memberId);
         map.put("passwordMember", encryptedPasswordMember);
