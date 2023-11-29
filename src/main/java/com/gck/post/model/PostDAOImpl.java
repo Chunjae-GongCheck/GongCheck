@@ -94,7 +94,27 @@ public class PostDAOImpl implements PostDAO {
         return result;
     }
 
-//    public List<PostVO> selectListMyPage(Map<String, Object> map){
-//
-//    }
+    public int insertPostImage(PostVO vo) {
+        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+        int result = mapper.insertPostImage(vo);
+        if (result == 1) {
+            System.out.println("PostImage가 성공적으로 저장되었습니다.");
+            sqlSession.commit();
+        } else {
+            System.out.println("PostImage 저장 실패.");
+        }
+        sqlSession.close();
+        return result;
+    }
+
+    public List<PostVO> selectPostWithImage(Map<String, Object> map){
+
+        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+        List<PostVO> result = mapper.selectPostWithImage(map);
+        sqlSession.commit();
+        sqlSession.close();
+        return result;
+    }
 }

@@ -19,6 +19,10 @@ public class PostVO {
     Date postUpdateDate;    // 수정일시
     int postVisitcount;     // 조회수
 
+// selectPostWithImage 메서드를 위해 추가 필드 선언
+    int postImageIdx;       // 이미지 index
+    String postImagePath;   // 원래 이름
+    String postTImagePath;  // 서버에 저장된 이름
     public PostVO() {
 
     }

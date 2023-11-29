@@ -5,11 +5,11 @@
 <!-- 인터페이스 연결 -->
 <!-- mapper namespace = "package명.인터페이스명" -->
 <mapper namespace="com.gck.post.model.PostImageDAO">
-    <insert id="insertPostImage" parameterType="com.gck.post.model.PostImageVO">
-        INSERT
-        INTO post_images(post_idx, post_image_path, post_t_image_path)
-        VALUES(#{postIdx}, #{postImagePath}, #{postTImagePath})
-    </insert>
+<!--    <insert id="insertPostImage" parameterType="com.gck.post.model.PostImageVO">-->
+<!--        INSERT-->
+<!--        INTO post_images(post_idx, post_image_path, post_t_image_path)-->
+<!--        VALUES(#{postIdx}, #{postImagePath}, #{postTImagePath})-->
+<!--    </insert>-->
 
     <delete id="deletePostImage">
         delete

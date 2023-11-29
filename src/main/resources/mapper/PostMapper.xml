@@ -17,9 +17,14 @@
 
     <insert id="insertPost" parameterType="com.gck.post.model.PostVO"
             useGeneratedKeys="true" keyColumn="post_idx" keyProperty="postIdx">
-        INSERT
-        INTO posts(member_idx, post_title, post_content, board_idx)
-        VALUES(#{memberIdx}, #{postTitle}, #{postContent}, #{boardIdx})
+        INSERT INTO posts (board_idx, post_title, post_content, member_idx)
+        VALUES (#{boardIdx},#{postTitle}, #{postContent},#{memberIdx});
+    </insert>
+
+    <insert id="insertPostImage" parameterType="map">
+-- post_images 테이블에 데이터 추가
+        INSERT INTO post_images (post_idx, post_image_path, post_t_image_path)
+        VALUES (#{postIdx}, #{postImagePath}, #{postTImagePath});
     </insert>
 
     <select id="selectView" parameterType="String" resultType="com.gck.post.model.PostVO">
@@ -28,10 +33,10 @@
         where post_idx = #{postIdx}
     </select>
 
-    <update id="updateVisitCount" parameterType="integer">
+    <update id="updateVisitCount" parameterType="String">
         update posts
-        set postVisitcount = postVisitcount + 1
-        where postIdx = #{postIdx}
+        set post_visitcount = post_visitcount + 1
+        where post_idx = #{postIdx}
     </update>
 
     <delete id="deletePost">
@@ -47,5 +52,11 @@
         where post_idx = #{postIdx}
     </update>
 
+    <select id="selectPostWithImage" resultType="com.gck.post.model.PostVO">
+        SELECT p.post_idx, p.post_title, p.post_content, pi.post_image_path, pi.post_t_image_path
+        FROM posts p
+                 JOIN post_images pi ON p.post_idx = pi.post_idx
+        WHERE p.post_idx = #{postIdx}
+    </select>
 
 </mapper>

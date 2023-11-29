@@ -2,6 +2,7 @@ package com.gck.post.controller;
 
 import com.gck.post.model.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "PostWrite", value = "/gck/PostWrite.do")
 
@@ -23,9 +27,13 @@ import java.util.ArrayList;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
         String memberIdx = req.getParameter("memberIdx");
+
         PostDAO dao = new PostDAOImpl();
+
         PostVO vo = dao.selectView(memberIdx);
+
         req.setAttribute("vo", vo);
         req.getRequestDispatcher("../post/PostWrite.jsp").forward(req, resp);
     }
@@ -37,6 +45,7 @@ import java.util.ArrayList;
         // 업로드 디렉터리의 물리적 경로 확인
 
         String saveDirectory = req.getServletContext().getRealPath("/Uploads");
+        Map<String, Object> map = new HashMap<>();
 
         // 로그인한 사람이 session에다가 memberIdx를 저장해 줘야함.
         // 현재는 테스트 용으로, 일단 session에 memberIdx값을 1로 저장.
@@ -44,18 +53,31 @@ import java.util.ArrayList;
         req.getSession().setAttribute("memberIdx", 1); // 얘!
 
         int memberIdx = (Integer) req.getSession().getAttribute("memberIdx");
-
+        // 해당 변수를 map에 저장
+        map.put("memberIdx",memberIdx);
 
         // 사용자의 입력 값을 얻어옴
         String postTitle = req.getParameter("postTitle");
         String postContent = req.getParameter("postContent");
+        // 입력값 추가로 얻어오기
+        String postImagePath = req.getParameter("postImagePath");
+        String postTImagePath = req.getParameter("postTImagePath");
+        // 해당 변수를 map에 저장
+        map.put("postTitle",postTitle);
+        map.put("postContent",postContent);
+        map.put("postTImagePath",postTImagePath);
+        map.put("postImagePath",postImagePath);
+
+
 
         // VO에 저장
         PostVO postVO = new PostVO();
         postVO.setPostTitle(postTitle);
         postVO.setPostContent(postContent);
-        postVO.setBoardIdx(1); // 현재는 보드 한 개밖에 없으니, 임시로 1번으로 고정시킴.
+//        postVO.setBoardIdx(1); // 현재는 보드 한 개밖에 없으니, 임시로 1번으로 고정시킴.
         postVO.setMemberIdx(memberIdx);
+        postVO.setPostImagePath(postImagePath);
+        postVO.setPostTImagePath(postTImagePath);
 
         // DAO를 통해 DB에 게시 내용 저장
         PostDAO dao = new PostDAOImpl();
@@ -68,18 +90,25 @@ import java.util.ArrayList;
         }
 
         // 글쓰기 성공. 이제부터 글에 연관(등록)된 여러 개의 파일을 저장하는 작업
-        PostImageDAO postImageDAO = new PostImageDAOImpl();
+        PostDAO postDAO = new PostDAOImpl();
+
         ArrayList<String> originalFilenameList = FileUtil.multipleFile(req, saveDirectory);
         for (String originalFilename : originalFilenameList) {
             String savedFilename = FileUtil.renameFile(saveDirectory, originalFilename);
-            PostImageVO postImageVO = new PostImageVO();
-            postImageVO.setPostIdx(postVO.getPostIdx());
-            postImageVO.setPostImageOriginalname(originalFilename);
-            postImageVO.setPostImageSavedname(savedFilename);
+            postVO.setPostIdx(postVO.getPostIdx());
+            postVO.setPostImagePath(originalFilename);
+            postVO.setPostTImagePath(savedFilename);
 
-            // PostImageVO를 DB에 저장.
-            postImageDAO.insertPostImage(postImageVO);
+            // PostVO를 DB에 저장.
+            postDAO.selectPostWithImage(map);
+            postDAO.insertPostImage(postVO);
         }
+        req.setAttribute("map",map);
+        req.setAttribute("originalFilenameList",originalFilenameList);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("../post/PostWrite.jsp");
+        dispatcher.forward(req, resp);
+
         System.out.println("새로운 Post 등록 성공!");
     }
+
 }
