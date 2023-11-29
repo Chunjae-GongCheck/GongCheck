@@ -31,6 +31,12 @@
   float: right;
   margin: 1rem;
 }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /*팝업 디자인*/
 /*.wrap{padding:10px;}
 
@@ -87,9 +93,11 @@
 </head>
 
 <body>
-
+<div class="header">
 <h1>GongCheck</h1>
+  <button class="btn_" type="submit"><a href="${pageContext.request.contextPath}/member/login.do">로그인</a></button>
 
+</div>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -121,6 +129,7 @@
 <%--          <a class="nav-link" href="#">Disabled</a>--%>
 <%--        </li>--%>
       </ul>
+      <div class="search">
       <form class="d-flex" role="search" action="${pageContext.request.contextPath}/gck/MainView.do">
 <%--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--%>
         <table border="1" width="90%">
@@ -136,23 +145,17 @@
             </td>
           </tr>
         </table>
+
         <button class="btn_" type="submit" >
           <img src="../img/프로필1.png" id="img_" />
         </button>
       </form>
+      </div>
     </div>
   </div>
 </nav>
-<table border="1" width="100%">
-  <tr>
-    <th width="10%">번호</th>
-    <th width="*">제목</th>
-    <th width="15%">작성자</th>
-    <th width="10%">조회수</th>
-    <th width="15%">작성일</th>
-    <th width="8%">첨부</th>
-  </tr>
 
+<div class="contentContainer">
   <%--choose when otherwise 는 java로 치면
   if else 문이랑 비슷한 반복문 성질을 가지고 있다.
   MVC2 패턴을 잘 나타내고 분리된 메서드를 이용해 동적으로 처리하기 위함.--%>
@@ -192,7 +195,7 @@
       </c:forEach>
     </c:otherwise>
   </c:choose>
-</table>
+</div>
 
 <!-- 하단 메뉴(바로가기, 글쓰기) -->
 <table border="1" width="100%">
@@ -204,20 +207,8 @@
                             onclick="location.href='../post/PostWrite.jsp';">글쓰기</button></td>
   </tr>
 </table>
-<div class="wrap">
-<%--  <a href="#pop_info_1" class="btn_open">팝업 열기1</a>--%>
-  <a href="#"><img src="../img/logo.jpg" alt="post" id="img"></a>
-  <div id="pop_info_1" class="pop_wrap" style="display:none;">
-    <div class="pop_inner">
-      <p class="dsc">팝업 안내문구 입니다.</p>
-      <button type="button" class="btn_close">닫기</button>
-    </div>
-  </div>
 
-</div>
-<script>
 
-</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <%--<script>--%>
 <%--  var target = document.querySelectorAll('.btn_open');--%>

@@ -15,15 +15,14 @@
             margin: 0 auto;
             width: 640px;
             height: 640px;
-
             border-style: solid;
         }
-        .postimg {
-        margin: 0 auto;
-        }
+
         .mainpost {
+            margin: 0 auto;
 
         }
+
 /*div#popup{*/
 /*    position: absolute;*/
 /*    top: 100px;*/
