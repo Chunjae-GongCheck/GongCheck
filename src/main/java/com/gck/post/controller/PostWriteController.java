@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/post/PostWrite.do")
+@WebServlet(name = "PostWrite", value = "/gck/PostWrite.do")
 
     @MultipartConfig(
             maxFileSize = 1024 * 1024 * 1,
@@ -27,7 +27,7 @@ import java.util.ArrayList;
         PostDAO dao = new PostDAOImpl();
         PostVO vo = dao.selectView(memberIdx);
         req.setAttribute("vo", vo);
-        req.getRequestDispatcher("/post/PostWrite.jsp").forward(req, resp);
+        req.getRequestDispatcher("../post/PostWrite.jsp").forward(req, resp);
     }
 
     @Override
