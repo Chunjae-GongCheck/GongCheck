@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 // 회원가입을 진행하는 컨트롤러
 @WebServlet("/member/signup.do")
@@ -54,21 +55,36 @@ public class SignUpActionController extends HttpServlet {
         String memberAddress = req.getParameter("memberAddress");
         String memberAddressDetailed = req.getParameter("memberAddressDetailed");
 
+        System.out.println(memberId+", "+ passwordMember+", "+  memberNickname+", "+  memberEmail+", "+  memberZonecode+", "+  memberAddress+", "+  memberAddressDetailed);
+
         // 회원가입
         boolean result = getMemberService().signup(memberId, passwordMember, memberNickname, memberEmail, memberZonecode, memberAddress, memberAddressDetailed);
 
         // 회원가입 성공 여부에 따른 페이지 이동
         if(result){ // 회원가입 성공
             // 메인 화면으로 리다이렉트
-            url += "/index_jy.jsp"; // [@@@@@@@@@] 메인 화면 컨트롤러로 수정해야 함
+            url += "/member/signupsuccess.jsp"; // [@@@@@@@@@] 메인 화면 컨트롤러로 수정해야 함
             resp.sendRedirect(url);
             return;
         }else{      // 회원가입 실패
-            // alert 출력
-
             // 다시 회원가입 폼 페이지로 리다이렉트
-            url = "/member/signupform.do";
+            url += "/member/signupform.do";
+            // alert 출력
+            resp.setContentType("text/html;charset=UTF-8");
+            PrintWriter writer = resp.getWriter();
+            String script = "<script>"
+                    + "    alert('" + "회원가입에 실패하였습니다." + "');"
+                    + "    location.href='" + url + "';"
+                    + "</script>";
+            writer.print(script);
+            writer.flush();
+            writer.close();
+
+            /*
+            // 다시 회원가입 폼 페이지로 리다이렉트
+            url += "/member/signupform.do";
             resp.sendRedirect(url);
+            */
         }
     }
 }
