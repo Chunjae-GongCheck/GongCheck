@@ -169,29 +169,17 @@ header {
     </c:when>
 
     <c:otherwise>  <!-- 게시물이 있을 때 -->
-<%--      <c:set var="no" value="${ map.totalCount - ((map.pageNum - 1) * 10)}" />--%>
-
       <c:forEach items="${ boardLists }" var="row" varStatus="loop">
-        <tr align="center">
-          <td>  <!-- 번호 -->
+        <div class="parent_post">
+          <div class="post_count">  <!-- 번호 -->
               ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
 <%--              ${no}--%>
-          </td>
-          <td align="left">  <!-- 제목(링크) -->
+          </div>
+          <div class="post_title">  <!-- 제목(링크) -->
             <a href="../gck/PostView.do?postIdx=${ row.postIdx }" id="ajaxBtn">${ row.postTitle }</a>
-          </td>
-          <td>${ row.memberIdx }</td>  <!-- 작성자 -->
-          <td>${ row.postVisitcount }</td>  <!-- 조회수 -->
-          <td>${ row.postWriteDate }</td>  <!-- 작성일 -->
-          <td>
-          </td>
-<%--          <td>  <!-- 첨부 파일 -->--%>
-<%--            <c:if test="${ not empty row.ofile }">--%>
-<%--              <a href="../board/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.postIdx }">[Down]</a>--%>
-<%--            </c:if>--%>
-<%--          </td>--%>
-        </tr>
-<%--        <c:set var="no" value="${no - 1}" />--%>
+            <img src="../img/프로필1.png" alt="post1">
+          </div>
+        </div>
       </c:forEach>
     </c:otherwise>
   </c:choose>
