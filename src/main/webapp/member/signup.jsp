@@ -15,7 +15,7 @@
 <body>
     <div class="login-page">
         <div class="form">
-            <form class="register-form" action="#">
+            <form class="register-form" name="register-form" action="${pageContext.request.contextPath}/member/signup.do">
                 <table>
                 <tr>
                     <td>아이디</td>

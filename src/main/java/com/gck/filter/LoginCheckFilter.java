@@ -10,8 +10,9 @@ import javax.servlet.http.HttpSession;
 // 글 작성하기, 글 수정하기, 글 삭제하기
 // 댓글 작성하기, 댓글 수정하기, 댓글 삭제하기
 // 전에 필터를 통해 로그인 정보를 확인한다.
-@WebFilter(filterName = "LoginFilter", urlPatterns = {"/member/login.jsp"})
-public class LoginCheckFilter implements Filter {
+//@WebFilter(filterName = "LoginFilter", urlPatterns = {"/membersss/login.jsp"})
+//public class LoginCheckFilter implements Filter {
+    /*
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -44,3 +45,4 @@ public class LoginCheckFilter implements Filter {
         }
     }
 }
+*/
