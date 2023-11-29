@@ -30,7 +30,7 @@
         <!-- board -->
 
         <!-- member -->
-        <mapper resource="mapper/MemberMapper.xml"/>
+<!--        <mapper resource="mapper/MemberMapper.xml"/>-->
 
         <!-- notice -->
 

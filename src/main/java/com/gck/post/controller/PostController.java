@@ -30,6 +30,9 @@ public class PostController extends HttpServlet {
     // 게시물의 줄 바꿈 처리 ( 개행 문자를 <br/>로 변경 )
     vo.setPostContent(vo.getPostContent().replaceAll("\r\n" ,"<br />"));
 
+    // 이미지 경로 받아오기
+
+
     req.setAttribute("vo" , vo);
     req.getRequestDispatcher("/post/PostView.jsp").forward(req, resp);
 
