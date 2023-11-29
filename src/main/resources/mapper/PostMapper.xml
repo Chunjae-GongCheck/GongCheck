@@ -28,24 +28,23 @@
         where post_idx = #{postIdx}
     </select>
 
-    <update id="updateVisitCount" parameterType="String">
+    <update id="updateVisitCount" parameterType="integer">
         update posts
-        set post_visitcount = post_visitcount + 1
-        where post_idx = #{postIdx}
+        set postVisitcount = postVisitcount + 1
+        where postIdx = #{postIdx}
     </update>
 
-<!--    <update id="updatePost" parameterType="model.BoardVO">-->
-<!--        update posts-->
-<!--        set post_title = #{postTitle}, member_id = #{memberId},-->
-<!--            post_content = #{content},-->
-<!--&#45;&#45;             ofile = #{ofile}, sfile = #{sfile}-->
-<!--            where idx = #{idx}-->
-<!--&#45;&#45;         and pass = sha2(#{pass}+#{idx}, 256)-->
-<!--    </update>-->
+    <delete id="deletePost">
+        delete
+        from posts
+        where post_idx = #{postIdx}
+    </delete>
 
-
-
-
-
+    <update id="updatePost" parameterType="com.gck.post.model.PostVO">
+        update posts
+        set post_title = #{postTitle}, name = #{name},
+            post_content = #{postContent}
+        where post_idx = #{postIdx}
+    </update>
 
 </mapper>
