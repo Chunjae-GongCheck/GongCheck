@@ -44,9 +44,7 @@ public class PostDAOImpl implements PostDAO {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
         PostDAO mapper = sqlSession.getMapper(PostDAO.class);
         PostVO vo = mapper.selectView(postIdx);
-        if (vo != null && vo.getBoardIdx() == 1) {
-            // 처리 로직
-            sqlSession.commit();
+        if (vo != null) {
             System.out.println("팝업 실행");
         } else {
             System.out.println("팝업 실패");
@@ -65,6 +63,7 @@ public class PostDAOImpl implements PostDAO {
         } else {
             System.out.println("조회수 증가 중 오류 발생");
         }
+        System.out.println("조회수 : " + result);
         sqlSession.close();
         return result;
     }

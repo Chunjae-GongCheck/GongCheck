@@ -175,7 +175,7 @@
 <%--              ${no}--%>
           </td>
           <td align="left">  <!-- 제목(링크) -->
-            <a href="../post/PostView.jsp?postIdx=${ row.postIdx }" id="ajaxBtn">${ row.postTitle }</a>
+            <a href="../gck/PostView.do?postIdx=${ row.postIdx }" id="ajaxBtn">${ row.postTitle }</a>
           </td>
           <td>${ row.memberIdx }</td>  <!-- 작성자 -->
           <td>${ row.postVisitcount }</td>  <!-- 조회수 -->

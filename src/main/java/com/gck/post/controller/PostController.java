@@ -19,15 +19,19 @@ public class PostController extends HttpServlet {
           throws ServletException, IOException {
 
 
-
+    // 생성자
     PostDAOImpl postDaoImpl = new PostDAOImpl();
+    // 요청 파라미터에서 게시물 인덱스 추출
     String postIdx = req.getParameter("postIdx");
+    // 조회수 증가 메서드 호출
     postDaoImpl.updateVisitCount(postIdx);
+    // 게시물 조회 메서드 호출
     PostVO vo = postDaoImpl.selectView(postIdx);
+    // 게시물의 줄 바꿈 처리 ( 개행 문자를 <br/>로 변경 )
     vo.setPostContent(vo.getPostContent().replaceAll("\r\n" ,"<br />"));
 
     req.setAttribute("vo" , vo);
-    req.getRequestDispatcher("/gck/PostView.do");
+    req.getRequestDispatcher("/post/PostView.jsp").forward(req, resp);
 
   }
 
