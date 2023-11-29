@@ -15,8 +15,14 @@
         where m.member_id = #{memberId} and p.password_member = #{passwordMember}
     </select>
 
+    <select id="getMemberIdxById" parameterType="String" resultType="Integer">
+        select member_idx
+        from members
+        where member_id = #{memberId}
+    </select>
+
     <insert id="insertMember" parameterType="java.util.HashMap">
         insert into members(member_id, member_nickname, member_email, member_zonecode, member_address, member_address_detailed)
-        VALUE(#{memberId}, #{memberNickname}, #{memberEmail}, #{member_zonecode}, #{member_address}, #{member_address_detailed});
+        VALUE(#{memberId}, #{memberNickname}, #{memberEmail}, #{memberZonecode}, #{memberAddress}, #{memberAddressDetailed});
     </insert>
 </mapper>

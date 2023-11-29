@@ -5,6 +5,8 @@ import java.util.HashMap;
 public interface MemberDAO {
     // 로그인 : id, pw에 맞는 idx를 찾는다.
     public Integer getMemberIdx(HashMap<String, String> map);
+    // 회원가입 : id에 맞는 idx를 찾는다.
+    public Integer getMemberIdxById(String memberId);
     // 회원가입
-    public Integer insertMember(String memberId, String memberNickname, String memberEmail, String memberZonecode, String memberAddress, String memberAddressDetailed);
+    public Integer insertMember(HashMap<String, String> map);
 }
