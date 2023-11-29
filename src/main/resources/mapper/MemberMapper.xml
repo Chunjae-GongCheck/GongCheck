@@ -14,4 +14,9 @@
         on m.member_idx = p.member_idx
         where m.member_id = #{memberId} and p.password_member = #{passwordMember}
     </select>
+
+    <insert id="insertMember" parameterType="java.util.HashMap">
+        insert into members(member_id, member_nickname, member_email, member_zonecode, member_address, member_address_detailed)
+        VALUE(#{memberId}, #{memberNickname}, #{memberEmail}, #{member_zonecode}, #{member_address}, #{member_address_detailed});
+    </insert>
 </mapper>
