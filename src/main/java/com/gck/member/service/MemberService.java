@@ -4,6 +4,7 @@ import com.gck.encryption.Sha256;
 import com.gck.factory.MyBatisFactory;
 import com.gck.member.model.MemberDAO;
 import com.gck.member.model.PasswordMemberDAO;
+import com.gck.member.model.PasswordMemberVO;
 import org.apache.ibatis.session.SqlSession;
 import java.util.HashMap;
 
@@ -57,19 +58,48 @@ public class MemberService {
             // 비밀번호 암호화
             String encryptedPasswordMember = Sha256.getHash(passwordMember, memberId);
             System.out.println("encryptedPasswordMember : " + encryptedPasswordMember);
+
             HashMap<String, String> map = new HashMap<>();
             map.put("memberId", memberId);
-            map.put("passwordMember", encryptedPasswordMember);
+            // map.put("passwordMember", encryptedPasswordMember);
             map.put("memberNickname", memberNickname);
             map.put("memberEmail", memberEmail);
             map.put("memberZonecode", memberZonecode);
             map.put("memberAddress", memberAddress);
             map.put("memberAddressDetailed", memberAddressDetailed);
 
-            Integer resultInsertMember = mapperMembers.insertMember(memberId, memberNickname, memberEmail, memberZonecode, memberAddress, memberAddressDetailed);
-            mapperPasswordMembers.insertPassword(memberId, encryptedPasswordMember);
+            // 비밀번호 제외한 회원 정보 insert
+            Integer resultInsertMember = mapperMembers.insertMember(map);
+            // insert 실패
+            if(resultInsertMember == null || resultInsertMember != 1){
+                System.out.println("resultInsertMember");
+                return result;
+            }
+
+            // 회원 idx 조회
+            Integer memberIdx = mapperMembers.getMemberIdxById(memberId);
+            // 조회 실패
+            if(memberIdx == null){
+                System.out.println("memberIdx");
+                return result;
+            }
+
+            // 회원 비밀번호 객체 생성
+            PasswordMemberVO passwordMemberVO = new PasswordMemberVO(memberIdx.intValue(), encryptedPasswordMember);
+
+            // 비밀번호 insert
+            Integer resultInsertPassword = mapperPasswordMembers.insertPassword(passwordMemberVO);
+            // insert 실패
+            if(resultInsertPassword == null || resultInsertPassword != 1){
+                System.out.println("resultInsertPassword");
+                return result;
+            }
 
             sqlSession.close();
+
+            // 회원가입 성공
+            result = true;
+            return result;
         }catch (Exception e){
             System.out.println("MemberService_exception");
         }finally {
