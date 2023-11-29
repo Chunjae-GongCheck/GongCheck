@@ -177,7 +177,7 @@ header {
           </div>
           <div class="post_title">  <!-- 제목(링크) -->
             <a href="../gck/PostView.do?postIdx=${ row.postIdx }" id="ajaxBtn">${ row.postTitle }</a>
-            <img src="../img/프로필1.png" alt="post1">
+            <img src="/Uploads/" alt="post1">
           </div>
         </div>
       </c:forEach>
