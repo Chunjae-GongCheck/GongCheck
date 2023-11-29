@@ -9,8 +9,8 @@ import lombok.Data;
 public class PostImageVO {
     int postImageIdx;       // 이미지 index
     int postIdx;            // 게시글 index
-    String postImageOriginalname;   // 원래 이름
-    String postImageSavedname;  // 서버에 저장된 이름
+    String postImagePath;   // 원래 이름
+    String postTImagePath;  // 서버에 저장된 이름
 
     public PostImageVO() {
 
