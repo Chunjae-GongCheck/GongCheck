@@ -34,12 +34,13 @@
         where post_idx = #{postIdx}
     </update>
 
-<!--    <update id="updatePost" parameterType="model.BoardVO">-->
+
+<!--    <update id="updatePost" parameterType="model.PostVO">-->
 <!--        update posts-->
 <!--        set post_title = #{postTitle}, member_id = #{memberId},-->
-<!--            post_content = #{content},-->
+<!--            post_content = #{PostContent},-->
 <!--&#45;&#45;             ofile = #{ofile}, sfile = #{sfile}-->
-<!--            where idx = #{idx}-->
+<!--            where post_idx = #{postIdx}-->
 <!--&#45;&#45;         and pass = sha2(#{pass}+#{idx}, 256)-->
 <!--    </update>-->
 
