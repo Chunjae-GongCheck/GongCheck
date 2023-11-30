@@ -7,24 +7,19 @@
 <mapper namespace="com.gck.post.model.PostDAO">
     <!-- 해당 sql을 인터페이스에 선언된 메서드와 연결해서 처리. -->
     <!-- id="메서드명" parameterType "매개변수 타입" resultType 리턴 타입(풀 패키지명) -->
-<!--    <select id="selectListPage" parameterType="map" resultType="com.gck.post.model.PostVO">-->
-<!--        select p.post_idx-->
-<!--        from posts as p-->
-<!--        join post_image_idx as pi-->
-<!--        on p.post_idx = pi.post_idx-->
-<!--        where p.post_idx = #{postIdx}-->
-<!--    </select>-->
+    <!--    <select id="selectListPage" parameterType="map" resultType="com.gck.post.model.PostVO">-->
+    <!--        select p.post_idx-->
+    <!--        from posts as p-->
+    <!--        join post_image_idx as pi-->
+    <!--        on p.post_idx = pi.post_idx-->
+    <!--        where p.post_idx = #{postIdx}-->
+    <!--    </select>-->
 
     <insert id="insertPost" parameterType="com.gck.post.model.PostVO"
             useGeneratedKeys="true" keyColumn="post_idx" keyProperty="postIdx">
-        INSERT INTO posts (board_idx, post_title, post_content, member_idx)
-        VALUES (#{boardIdx},#{postTitle}, #{postContent},#{memberIdx});
-    </insert>
-
-    <insert id="insertPostImage" parameterType="map">
--- post_images 테이블에 데이터 추가
-        INSERT INTO post_images (post_idx, post_image_path, post_t_image_path)
-        VALUES (#{postIdx}, #{postImagePath}, #{postTImagePath});
+        INSERT
+        INTO posts(member_idx, post_title, post_content, board_idx)
+        VALUES(#{memberIdx}, #{postTitle}, #{postContent}, #{boardIdx})
     </insert>
 
     <select id="selectView" parameterType="String" resultType="com.gck.post.model.PostVO">
@@ -47,16 +42,16 @@
 
     <update id="updatePost" parameterType="com.gck.post.model.PostVO">
         update posts
-        set post_title = #{postTitle}, name = #{name},
+        set post_title = #{postTitle},
             post_content = #{postContent}
         where post_idx = #{postIdx}
     </update>
 
-    <select id="selectPostWithImage" resultType="com.gck.post.model.PostVO">
-        SELECT p.post_idx, p.post_title, p.post_content, pi.post_image_path, pi.post_t_image_path
-        FROM posts p
-                 JOIN post_images pi ON p.post_idx = pi.post_idx
-        WHERE p.post_idx = #{postIdx}
-    </select>
+<!--    <select id="selectPostWithImage" resultType="com.gck.post.model.PostVO">-->
+<!--        SELECT p.post_idx, p.post_title, p.post_content, pi.post_image_path, pi.post_t_image_path-->
+<!--        FROM posts p-->
+<!--                 JOIN post_images pi ON p.post_idx = pi.post_idx-->
+<!--        WHERE p.post_idx = #{postIdx}-->
+<!--    </select>-->
 
 </mapper>
