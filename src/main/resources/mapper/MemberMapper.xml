@@ -25,4 +25,10 @@
         insert into members(member_id, member_nickname, member_email, member_zonecode, member_address, member_address_detailed)
         VALUE(#{memberId}, #{memberNickname}, #{memberEmail}, #{memberZonecode}, #{memberAddress}, #{memberAddressDetailed});
     </insert>
+
+    <select id="searchId" parameterType="String" resultType="Integer">
+        select count(*)
+        from members
+        where member_id = #{memberId}
+    </select>
 </mapper>

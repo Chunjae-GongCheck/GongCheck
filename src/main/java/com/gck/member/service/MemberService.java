@@ -59,6 +59,7 @@ public class MemberService {
             String encryptedPasswordMember = Sha256.getHash(passwordMember, memberId);
             System.out.println("encryptedPasswordMember : " + encryptedPasswordMember);
 
+            // map에 회원정보 입력
             HashMap<String, String> map = new HashMap<>();
             map.put("memberId", memberId);
             // map.put("passwordMember", encryptedPasswordMember);
@@ -90,20 +91,45 @@ public class MemberService {
             // 비밀번호 insert
             Integer resultInsertPassword = mapperPasswordMembers.insertPassword(passwordMemberVO);
             // insert 실패
-            if(resultInsertPassword == null || resultInsertPassword != 1){
+            if(resultInsertPassword == null || resultInsertPassword != 1) {
                 System.out.println("resultInsertPassword");
                 return result;
             }
 
-            sqlSession.close();
-
             // 회원가입 성공
             result = true;
-            return result;
         }catch (Exception e){
-            System.out.println("MemberService_exception");
+            System.out.println("MemberService_exception_signup");
         }finally {
+            sqlSession.close();
             return result;
         }
     }
+
+    // id 중복 확인
+    public boolean searchId(String memberId){
+        // true 리턴 : 중복 O / false 리턴 : 중복 X
+        // boolean exists = getMemberService().searchId(memberId);
+        boolean result = true;
+
+        try {
+            this.sqlSession = MyBatisFactory.getSqlSession();
+            mapperMembers = this.sqlSession.getMapper(MemberDAO.class);
+
+            // id 개수 조회
+            Integer exists = mapperMembers.searchId(memberId);
+
+            if(exists == null || exists.intValue() != 0){ // 오류 || 중복 O
+                // result = true;
+            }else if(exists.intValue() == 0){ // 중복 X
+                result = false;
+            }
+        }catch (Exception e){
+            System.out.println("MemberService_exception_searchId");
+        }finally {
+            sqlSession.close();
+            return result;
+        }
+    }
+
 }

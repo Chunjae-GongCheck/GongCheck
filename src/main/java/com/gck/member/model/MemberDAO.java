@@ -9,4 +9,6 @@ public interface MemberDAO {
     public Integer getMemberIdxById(String memberId);
     // 회원가입
     public Integer insertMember(HashMap<String, String> map);
+    // 회원가입 : id 중복 확인
+    public Integer searchId(String memberId);
 }

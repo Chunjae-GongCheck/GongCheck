@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 // 로그인을 수행하는 컨트롤러
-    @WebServlet("/member/login.do")
+@WebServlet("/member/login.do")
 public class LoginActionController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
