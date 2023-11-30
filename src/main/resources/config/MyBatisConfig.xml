@@ -37,7 +37,7 @@
         <!-- post -->
 
         <!-- reply -->
-
+        <mapper resource="mapper/ReplyMapper.xml" />
 
     </mappers>
 </configuration>
