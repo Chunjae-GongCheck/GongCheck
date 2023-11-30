@@ -3,6 +3,7 @@ package com.gck.post.controller;
 import com.gck.board.service.BoardService;
 import com.gck.post.model.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet("/gck/PostWrite.do")
 
@@ -62,6 +66,8 @@ public class PostWriteController extends HttpServlet {
         PostDAO dao = new PostDAOImpl();
         int result = dao.insertPost(postVO);
 
+
+
         // 성공 or 실패?
         if (result != 1) {  // 글쓰기 실패
             JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.",
@@ -84,9 +90,15 @@ public class PostWriteController extends HttpServlet {
             // PostImageVO를 DB에 저장.
             postImageDAO.insertPostImage(postImageVO);
         }
+
         System.out.println("새로운 Post 등록 성공! ======"+originalFilenameList);
-        
+
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/board/MainView.jsp");
+        dispatcher.forward(req, resp);
+
     }
+
 
 
 }

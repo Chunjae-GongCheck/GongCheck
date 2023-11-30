@@ -9,6 +9,7 @@ import com.gck.post.controller.PostWriteController;
 import com.gck.post.model.PostImageDAO;
 import com.gck.post.model.PostImageDAOImpl;
 import com.gck.post.model.PostImageVO;
+import com.gck.post.model.PostVO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -33,6 +34,7 @@ public class BoardController extends HttpServlet {
 
 
         BoardService brdService = new BoardService();
+        PostImageDAOImpl piDao = new PostImageDAOImpl();
         Map<String, Object> map = new HashMap<>();
 
         String searchField = req.getParameter("searchField");
@@ -40,29 +42,17 @@ public class BoardController extends HttpServlet {
         System.out.println("test");
 
 
-
-        // DAO를 통해 전체 게시물 수 조회
+        // Service를 통해 전체 게시물 수 조회
         int totalCount = brdService.selectCount(map);
         System.out.println("totalCount ======" + totalCount);
 
-
-        // Image정보도 boardLists 에 추가하기 위해 메서드 작성
-        PostImageVO postImageVO = new PostImageVO();
-        int postImageIdx = postImageVO.getPostImageIdx();
-        String postImagePath = postImageVO.getPostImagePath();
-        String postTImagePath = postImageVO.getPostTImagePath();
-
-
-
-        System.out.println("postImagePath 정보 =========" +postImagePath);
-        System.out.println("postImageIdx 정보 ======== "+postImageIdx);
-        System.out.println("postTImagePath 정보 =======" +postTImagePath);
 
         // 검색어가 존재하는 경우, Map에 추가
         if (searchWord != null && !searchWord.trim().equals("")) {
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
         }
+
 
 
         // 페이징 처리
@@ -90,6 +80,10 @@ public class BoardController extends HttpServlet {
 
         /* 페이지 처리 end */
 
+        List<PostImageVO> postImageVOList = piDao.selectAllPostImageList(map);
+
+        System.out.println("postImageVOList =======" +postImageVOList);
+
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
                 blockPage, pageNum,"../gck/MainView.do" ,searchField, searchWord );  // 바로가기 영역 HTML 문자열
@@ -103,6 +97,7 @@ public class BoardController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 list.jsp로 포워드
 
         req.setAttribute("map",map);
+        req.setAttribute("postImageVOList",postImageVOList);
         req.setAttribute("boardLists", boardLists);
         req.getRequestDispatcher("/board/MainView.jsp").forward(req, resp);
 

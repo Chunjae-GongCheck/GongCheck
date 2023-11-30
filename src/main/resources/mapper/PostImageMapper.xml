@@ -23,9 +23,9 @@
         where post_image_idx = #{postImageIdx}
     </update>
 
-    <select id="getPostImageIdx" parameterType="map" resultType="com.gck.post.model.PostImageVO">
+    <select id="selectAllPostImageList" parameterType="map" resultType="com.gck.post.model.PostImageVO">
         select *
         from post_images
-        where post_image_idx = #{postImageIdx}
+        where post_idx > 0;
     </select>
 </mapper>

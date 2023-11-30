@@ -139,7 +139,8 @@ text-align: center;
 <%--              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
             <!-- 제목(링크) -->
             <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
-              <c:forEach items="${ postImageVO }" var="posts" varStatus="loop">
+<%--              이미지 정보는 불러왔는데 난리부르스임--%>
+              <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
 
               <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="posts${loop.index}" class="rounded float-start" id="post_img"/>
                 </c:forEach>

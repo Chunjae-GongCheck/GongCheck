@@ -2,10 +2,11 @@ package com.gck.post.model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface PostImageDAO {
 
-    List<PostImageVO> getPostImageIdx(HashMap<String, Object> map);
+    List<PostImageVO> selectAllPostImageList(Map<String,Object> map);
 
     int insertPostImage(PostImageVO vo);
 

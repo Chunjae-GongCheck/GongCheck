@@ -5,13 +5,14 @@ import org.apache.ibatis.session.SqlSession;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PostImageDAOImpl implements PostImageDAO {
     @Override
-    public List<PostImageVO> getPostImageIdx(HashMap<String, Object> map) {
+    public List<PostImageVO> selectAllPostImageList(Map<String,Object> map) {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
         PostImageDAO mapper = sqlSession.getMapper(PostImageDAO.class);
-        List<PostImageVO> piVO = mapper.getPostImageIdx(map);
+        List<PostImageVO> piVO = mapper.selectAllPostImageList(map);
         sqlSession.close();
         return piVO;
     }
