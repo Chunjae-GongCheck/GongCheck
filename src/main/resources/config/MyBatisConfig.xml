@@ -20,8 +20,8 @@
     </environments>
 
     <mappers>
-        <!--        <mapper resource="mapper/PostMapperSample.xml"/>-->
-        <mapper resource="mapper/MemberMapper.xml"/>
+<!--        <mapper resource="mapper/PostMapperSample.xml"/>-->
+<!--        <mapper resource="mapper/MemberMapper.xml"/>-->
         <mapper resource="mapper/BoardMapper.xml"/>
         <mapper resource="mapper/PostMapper.xml"/>
         <mapper resource="mapper/PostImageMapper.xml"/>
@@ -30,14 +30,14 @@
         <!-- board -->
 
         <!-- member -->
-        <!--        <mapper resource="mapper/MemberMapper.xml"/>-->
+        <mapper resource="mapper/MemberMapper.xml"/>
 
         <!-- notice -->
 
         <!-- post -->
 
         <!-- reply -->
-
+        <mapper resource="mapper/ReplyMapper.xml" />
 
     </mappers>
 </configuration>
