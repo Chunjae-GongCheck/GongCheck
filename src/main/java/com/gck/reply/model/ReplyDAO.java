@@ -5,6 +5,6 @@ import java.util.Map;
 
 
 public interface ReplyDAO {
-    List<ReplyVO> getReplies(Map<String, Object> map);
-
+    List<ReplyVO> getRepliesByPost(int postIdx);
+    // 삽입, 업데이트, 삭제 추가 예정
 }
