@@ -43,15 +43,18 @@ public class PostDAOImpl implements PostDAO {
     public PostVO selectView(String postIdx) {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
         PostDAO mapper = sqlSession.getMapper(PostDAO.class);
-        PostVO vo = mapper.selectView(postIdx);
-        if (vo != null) {
-            System.out.println("팝업 실행");
+        PostVO result = mapper.selectView(postIdx);
+
+        if (result != null) {
+            System.out.println("조회된 게시물 내용: " + result);
         } else {
-            System.out.println("팝업 실패");
+            System.out.println("게시물이 조회되지 않았습니다. postIdx: " + postIdx);
         }
+
         sqlSession.close();
-        return vo;
+        return result;
     }
+
 
     public int updateVisitCount(String postIdx) {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
@@ -81,6 +84,19 @@ public class PostDAOImpl implements PostDAO {
         return result;
     }
 
+//    public int deletePost(int postIdx) {
+//        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+//        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+//        int result = mapper.deletePost(postIdx);
+//        if (result == 1) {
+//            sqlSession.commit();
+//        } else {
+//            System.out.println("게시판 글 삭제 중 오류 발생...");
+//        }
+//
+//        return result;
+//    }
+
     public int updatePost(PostVO vo) {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
         PostDAO mapper = sqlSession.getMapper(PostDAO.class);
@@ -94,27 +110,27 @@ public class PostDAOImpl implements PostDAO {
         return result;
     }
 
-    public int insertPostImage(PostVO vo) {
-        SqlSession sqlSession = MyBatisFactory.getSqlSession();
-        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
-        int result = mapper.insertPostImage(vo);
-        if (result == 1) {
-            System.out.println("PostImage가 성공적으로 저장되었습니다.");
-            sqlSession.commit();
-        } else {
-            System.out.println("PostImage 저장 실패.");
-        }
-        sqlSession.close();
-        return result;
-    }
+//    public int insertPostImage(PostVO vo) {
+//        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+//        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+//        int result = mapper.insertPostImage(vo);
+//        if (result == 1) {
+//            System.out.println("PostImage가 성공적으로 저장되었습니다.");
+//            sqlSession.commit();
+//        } else {
+//            System.out.println("PostImage 저장 실패.");
+//        }
+//        sqlSession.close();
+//        return result;
+//    }
 
-    public List<PostVO> selectPostWithImage(Map<String, Object> map){
-
-        SqlSession sqlSession = MyBatisFactory.getSqlSession();
-        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
-        List<PostVO> result = mapper.selectPostWithImage(map);
-        sqlSession.commit();
-        sqlSession.close();
-        return result;
-    }
+//    public List<PostVO> selectPostWithImage(Map<String, Object> map){
+//
+//        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+//        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+//        List<PostVO> result = mapper.selectPostWithImage(map);
+//        sqlSession.commit();
+//        sqlSession.close();
+//        return result;
+//    }
 }
