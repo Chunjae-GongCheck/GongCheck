@@ -21,4 +21,6 @@ public class BoardVO {
     Date postUpdateDate;    // 수정일시
     int postVisitcount;     // 조회수
     String boardDescription;    // 게시판 설명
+    // postImage의 정보도 필요해서 추가
+
 }

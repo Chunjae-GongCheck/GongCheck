@@ -59,7 +59,7 @@ text-align: center;
 <body>
 <div class="header">
 <h1>GongCheck</h1>
-  <button class="btn_" type="submit"><a href="${pageContext.request.contextPath}/member/login.do">로그인</a></button>
+  <button class="btn_" type="submit"><a href="${pageContext.request.contextPath}/member/loginform.do">로그인</a></button>
 
 </div>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -138,7 +138,12 @@ text-align: center;
         <div class="thumb_post_img" id="thumb_post_img"> <!-- 번호 -->
 <%--              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
             <!-- 제목(링크) -->
-            <a href="../gck/PostView.do?postIdx=${ row.postIdx }"><img src="${pageContext.request.contextPath}/Uploads/${item.postTImagePath}" alt="post1" class="rounded float-start" id="post_img"></a>
+            <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
+              <c:forEach items="${ postImageVO }" var="posts" varStatus="loop">
+
+              <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="posts${loop.index}" class="rounded float-start" id="post_img"/>
+                </c:forEach>
+            </a>
         </div>
       </c:forEach>
       </div>

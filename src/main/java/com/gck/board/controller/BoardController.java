@@ -5,6 +5,10 @@ import com.gck.board.model.BoardDAO;
 import com.gck.board.model.BoardVO;
 import com.gck.board.service.BoardService;
 import com.gck.paging.BoardPage;
+import com.gck.post.controller.PostWriteController;
+import com.gck.post.model.PostImageDAO;
+import com.gck.post.model.PostImageDAOImpl;
+import com.gck.post.model.PostImageVO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -40,9 +44,19 @@ public class BoardController extends HttpServlet {
         // DAO를 통해 전체 게시물 수 조회
         int totalCount = brdService.selectCount(map);
         System.out.println("totalCount ======" + totalCount);
-        // 게시물 목록 받기
 
 
+        // Image정보도 boardLists 에 추가하기 위해 메서드 작성
+        PostImageVO postImageVO = new PostImageVO();
+        int postImageIdx = postImageVO.getPostImageIdx();
+        String postImagePath = postImageVO.getPostImagePath();
+        String postTImagePath = postImageVO.getPostTImagePath();
+
+
+
+        System.out.println("postImagePath 정보 =========" +postImagePath);
+        System.out.println("postImageIdx 정보 ======== "+postImageIdx);
+        System.out.println("postTImagePath 정보 =======" +postTImagePath);
 
         // 검색어가 존재하는 경우, Map에 추가
         if (searchWord != null && !searchWord.trim().equals("")) {
@@ -71,6 +85,7 @@ public class BoardController extends HttpServlet {
         map.put("end", end);
 
         List<BoardVO> boardLists = brdService.selectListPage(map);
+
         System.out.println("boardLists ====== " + boardLists); // 콘솔출력용
 
         /* 페이지 처리 end */

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/gck/PostWrite.do")
 
@@ -20,13 +21,6 @@ import java.util.ArrayList;
 )
 public class PostWriteController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    private static class BoardServiceHelper {
-        private static final BoardService boardService = new BoardService();
-    }
-    public static BoardService getBoardService(){
-        return BoardServiceHelper.boardService;
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -54,12 +48,15 @@ public class PostWriteController extends HttpServlet {
         String postTitle = req.getParameter("postTitle");
         String postContent = req.getParameter("postContent");
 
+
         // VO에 저장
         PostVO postVO = new PostVO();
         postVO.setPostTitle(postTitle);
         postVO.setPostContent(postContent);
         postVO.setBoardIdx(1); // 현재는 보드 한 개밖에 없으니, 임시로 1번으로 고정시킴.
         postVO.setMemberIdx(memberIdx);
+
+
 
         // DAO를 통해 DB에 게시 내용 저장
         PostDAO dao = new PostDAOImpl();
@@ -76,7 +73,10 @@ public class PostWriteController extends HttpServlet {
         ArrayList<String> originalFilenameList = FileUtil.multipleFile(req, saveDirectory);
         for (String originalFilename : originalFilenameList) {
             String savedFilename = FileUtil.renameFile(saveDirectory, originalFilename);
+
             PostImageVO postImageVO = new PostImageVO();
+
+            postImageVO.setPostImageIdx(postImageVO.getPostImageIdx());
             postImageVO.setPostIdx(postVO.getPostIdx());
             postImageVO.setPostImagePath(originalFilename);
             postImageVO.setPostTImagePath(savedFilename);
@@ -84,6 +84,9 @@ public class PostWriteController extends HttpServlet {
             // PostImageVO를 DB에 저장.
             postImageDAO.insertPostImage(postImageVO);
         }
-        System.out.println("새로운 Post 등록 성공!");
+        System.out.println("새로운 Post 등록 성공! ======"+originalFilenameList);
+        
     }
+
+
 }
