@@ -1,21 +1,25 @@
 package com.gck.reply.controller;
 
-import com.gck.config.MyBatisConfig;
-import com.gck.reply.model.ReplyVO;
-import com.gck.reply.model.ReplyDAO;
-import org.apache.ibatis.session.SqlSession;
+import com.gck.reply.service.ReplyService;
 
-import java.util.List;
-import java.util.Map;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 
-public class ReplyController {
-    public List<ReplyVO> getReplies(Map<String, Object> map) {
+@WebServlet("/replies")
+public class ReplyController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
-        SqlSession sqlSession = (SqlSession) MyBatisConfig.getSqlSessionFactory();
-        ReplyDAO replyDAO = sqlSession.getMapper(ReplyDAO.class);
-
-        List<ReplyVO> result = replyDAO.getReplies(map);
-        sqlSession.close();
-        return result;
+    private static class ReplyServiceHelper{
+        private static final ReplyService ReplyService = new ReplyService();
     }
+
+    public static ReplyService getRepliesByPost(){
+        return ReplyServiceHelper.ReplyService;
+    }
+    //   @GetMapping("/replies/list/{postIdx}")
+    //  public String getRepliesByPost(@PathVariable("postIdx") int postIdx, Model model) {
+    //      List<ReplyVO> replies = replyService.getRepliesByPost(postIdx);
+    //     model.addAttribute("replies", replies);
+    //     return "Reply";
+    //  }
 }
