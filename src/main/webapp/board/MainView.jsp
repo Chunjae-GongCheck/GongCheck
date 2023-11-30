@@ -27,69 +27,33 @@
 .btn_ {
   border: 0px;
 }
-#writebtn{
-  float: right;
-  margin: 1rem;
+#post_img{
+  width: 320px;
+  height: 320px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  object-fit:fill;
 }
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+#gridsys {
+gap: 5px;
+  justify-content: space-between;
+}
 
-/*팝업 디자인*/
-/*.wrap{padding:10px;}
+.tb_bottom {
+  border: 1px black;
+  align-items: center;
+text-align: center;
+}
 
-.btn_open{
-  font-weight:bold;
-  margin:5px;
-  padding:4px 6px;
-  background:#000; color:#fff;
-}
-.pop_wrap{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background:rgba(0,0,0,.5);
-  font-size:0;
-  text-align:center;
-}
-.pop_wrap:after{
-  display:inline-block;
-  height:100%;
-  vertical-align:middle;
-  content:'';
-}
-.pop_wrap .pop_inner{
-  display:inline-block;
-  padding:20px 30px;
-  background:#fff; width:200px;
-  vertical-align:middle;
-  font-size:15px;
-}*/
 </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<%--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>--%>
 
-<%--  <script type="text/javascript">
-    $(document).click(function() {
-        $.ajax({
-          type:"get",
-          url:"../gck/PostView.jsp?postIdx=1",
-          data:"html",
-          error: function (){
-            alert('통신실패!!!');
-          },
-          success:function(result){//result (변수명은 어떤것이든 상관없음)
-            //success function 매개변수로 서버가 응답한 데이터가 전달
-            alert('통신 데이터 값 :' +result);
-            $("wrap").html(result);
-          }
-        });//ajax
-      });//click
-
-  </script>--%>
 </head>
 
 <body>
@@ -155,38 +119,35 @@ header {
   </div>
 </nav>
 
-<div class="contentContainer">
+<div class="container">
   <%--choose when otherwise 는 java로 치면
   if else 문이랑 비슷한 반복문 성질을 가지고 있다.
   MVC2 패턴을 잘 나타내고 분리된 메서드를 이용해 동적으로 처리하기 위함.--%>
   <c:choose>
     <c:when test="${ empty boardLists }">  <!-- 게시물이 없을 때 -->
-      <tr>
-        <td colspan="6" align="center">
+      <div>
+        <div align="center">
           등록된 게시물이 없습니다^^*
-        </td>
-      </tr>
+        </div>
+      </div>
     </c:when>
-
+<%--d-flex align-content-end flex-wrap  style="max-width: 70%;"--%>
     <c:otherwise>  <!-- 게시물이 있을 때 -->
+      <div class="d-flex align-content-end flex-wrap" id="gridsys" >
       <c:forEach items="${ boardLists }" var="row" varStatus="loop">
-        <div class="parent_post">
-          <div class="post_count">  <!-- 번호 -->
-              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
-<%--              ${no}--%>
-          </div>
-          <div class="post_title">  <!-- 제목(링크) -->
-            <a href="../gck/PostView.do?postIdx=${ row.postIdx }" id="ajaxBtn">${ row.postTitle }</a>
-            <img src="/Uploads/" alt="post1">
-          </div>
+        <div class="thumb_post_img" id="thumb_post_img"> <!-- 번호 -->
+<%--              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
+            <!-- 제목(링크) -->
+            <a href="../gck/PostView.do?postIdx=${ row.postIdx }"><img src="${pageContext.request.contextPath}/Uploads/${item.postTImagePath}" alt="post1" class="rounded float-start" id="post_img"></a>
         </div>
       </c:forEach>
+      </div>
     </c:otherwise>
   </c:choose>
 </div>
 
 <!-- 하단 메뉴(바로가기, 글쓰기) -->
-<table border="1" width="100%">
+<div style="position: fixed;">
   <tr align="center">
     <td>
       ${ map.pagingImg }
@@ -194,7 +155,7 @@ header {
     <td width="100"><button type="button"
                             onclick="location.href='../post/PostWrite.jsp';">글쓰기</button></td>
   </tr>
-</table>
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
