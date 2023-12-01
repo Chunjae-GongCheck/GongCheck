@@ -18,4 +18,8 @@ public class ReplyVO {
     int replyParentNo;      // 부모글
     int replyDepthNo;       // 계층
     int replyOrderid;       // 같은 그룹 정렬
+
+    public ReplyVO() {
+
+    }
 }

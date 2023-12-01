@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name="ReplyView", value="/gck/PostViews.do")
+@WebServlet(name="ReplyView", value="/reply/ReplyViews.do")
 public class ReplyController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -25,10 +25,11 @@ public class ReplyController extends HttpServlet {
         private static final ReplyService ReplyService = new ReplyService();
     }
 
-    public static ReplyService getRepliesByPost(){
-        return ReplyServiceHelper.ReplyService;
-    }
+//    public static ReplyService getRepliesByPost(){
+//        return ReplyServiceHelper.ReplyService;
+//    }
 
+    // 댓글 [목록] 불러오기
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("ReplyController_test");
@@ -36,7 +37,6 @@ public class ReplyController extends HttpServlet {
         System.out.println(req.getParameter("postIdx"));
         List<ReplyVO> list = replyService.getRepliesByPost(Integer.parseInt(req.getParameter("postIdx")));
         //System.out.println((Integer) req.getAttribute("postIdx"));
-
         //테스트용
         for(ReplyVO replyVO: list){
             System.out.println(replyVO.getReplyContent());
@@ -46,5 +46,6 @@ public class ReplyController extends HttpServlet {
         req.setAttribute("list",list);
         req.getRequestDispatcher("../reply/Reply.jsp").forward(req,resp);
     }
+
 
 }
