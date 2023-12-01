@@ -47,6 +47,9 @@
         where post_idx = #{postIdx}
     </update>
 
+    <select id="getPostByIdx" resultType="com.gck.post.model.PostVO">
+        SELECT * FROM posts WHERE postIdx = #{postIdx}
+    </select>
 <!--    <select id="selectPostWithImage" resultType="com.gck.post.model.PostVO">-->
 <!--        SELECT p.post_idx, p.post_title, p.post_content, pi.post_image_path, pi.post_t_image_path-->
 <!--        FROM posts p-->

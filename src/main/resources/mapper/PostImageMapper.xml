@@ -28,4 +28,8 @@
         from post_images
         where post_idx > 0;
     </select>
+
+    <select id="getPostImagesByPostIdx" resultType="com.gck.post.model.PostImageVO">
+        SELECT * FROM post_images WHERE postIdx = #{postIdx}
+    </select>
 </mapper>
