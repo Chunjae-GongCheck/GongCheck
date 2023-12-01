@@ -1,5 +1,6 @@
 package com.gck.post.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ public interface PostImageDAO {
 
     int deletePostImage(PostImageVO vo);
 
+    ArrayList<PostImageVO> getPostImagesByPostIdx(int postIdx);
 
 }
 
