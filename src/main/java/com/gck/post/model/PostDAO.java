@@ -26,4 +26,7 @@ public interface PostDAO {
     public int updatePost(PostVO vo);
 
     public int deletePost(int postIdx);
+
+    public PostVO getPostByIdx(int postIdx);
+
 }
