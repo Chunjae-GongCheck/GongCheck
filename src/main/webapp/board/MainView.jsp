@@ -24,33 +24,38 @@
   width: 3rem;
   border-radius: 100%;
 }
-.btn_ {
-  border: 0px;
+#writebtn {
+    margin-top: 10px;
+
+
+}
+
+/*header {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*}*/
+
+
+
+.d-flex {
+    margin: 0 auto;
+    /*max-width: 100%;*/
+    position: relative;
+    /*width: 100%;*/
+    /*gap: 0px;*/
+    /*justify-content: space-around;*/
 }
 #post_img{
-  width: 300px;
-  height: 300px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  object-fit:fill;
-}
+    margin-top: 2vh;
+    margin-bottom: 10px;
+    /*padding: 10px;*/
+    width: 20rem;
+    height: 20rem;
+    object-fit: fill;
+    /*max-width: 100%;*/
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
-#gridsys {
-
-  justify-content: space-between;
-}
-
-.tb_bottom {
-  border: 1px black;
-  align-items: center;
-  text-align: center;
-}
-
 </style>
 <%--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>--%>
 
@@ -58,8 +63,8 @@ header {
 
 <body>
 <div class="header">
-<h1>GongCheck</h1>
-  <button class="btn_" type="submit"><a href="${pageContext.request.contextPath}/member/loginform.do">로그인</a></button>
+
+
 
 </div>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -93,27 +98,23 @@ header {
 <%--          <a class="nav-link" href="#">Disabled</a>--%>
 <%--        </li>--%>
       </ul>
-      <div class="search">
-      <form class="d-flex" role="search" action="${pageContext.request.contextPath}/gck/MainView.do">
-<%--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--%>
-        <table border="1" width="90%">
-          <tr>
-            <td align="center">
-              <select name="searchField">
+      <div  id="navright">
+      <div class="d-flex justify-content-end" role="search" action="${pageContext.request.contextPath}/gck/MainView.do" id="navright_">
+              <select class="form-select-sm" name="searchField">
                 <option value="post_title">제목</option>
                 <option value="post_content">내용</option>
               </select>
 
               <input type="text" name="searchWord" value="${param.searchWord}"/>
-              <input type="submit" value="검색하기"/>
-            </td>
-          </tr>
-        </table>
+              <input type="submit" value="검색하기" class="btn btn-outline-dark" style="margin-right: 50px"/>
 
-        <button class="btn_" type="submit" >
-          <img src="../img/프로필1.png" id="img_" />
-        </button>
-      </form>
+            <a class="btn btn-outline-danger"
+               href="${pageContext.request.contextPath}/member/loginform.do"
+               role="button"
+               style="--bs-btn-padding-y: 0.5rem; --bs-btn-padding-x: 0rem; --bs-btn-font-size: 1rem; float: right;"
+            >로그인</a>
+<%--          <img src="../img/프로필1.png" id="img_" />--%>
+      </div>
       </div>
     </div>
   </div>
@@ -135,19 +136,24 @@ header {
     <c:otherwise>  <!-- 게시물이 있을 때 -->
       <div class="d-flex align-content-between flex-wrap" id="gridsys" >
       <c:forEach items="${ boardLists }" var="row" varStatus="loop">
-        <div class="thumb_post_img" id="thumb_post_img"> <!-- 번호 -->
-              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
+        <div class="thumb_post_img" id="thumb_post_img" > <!-- 번호 -->
+<%--              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
             <!-- 제목(링크) -->
+
             <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
               <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
+
               <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
                 <%-- if문이 없었다면 다중 for 문에 의해 postIdx 마다 모든 게시물이 출력될 것임--%>
                 <c:if test="${row.postIdx == posts.postIdx}" var="result">
 <%-- 절대경로+ 서버에 저장된 이미지 불러오기 / loop를 계속 수행하는 동안 부모 foreach 문과 나의 Idx 가 일치하는지 확인하고 맞으면 출력 아니면 점프 --%>
-                  <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="posts${loop.index}" class="rounded float-start" id="post_img"/>
+
+                  <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="posts${loop.index}" class="shadow p-3 mb-5 bg-body-tertiary rounded" id="post_img"/>
+
                 </c:if>
               </c:forEach>
             </a>
+
         </div>
       </c:forEach>
       </div>
@@ -156,37 +162,16 @@ header {
 </div>
 
 <!-- 하단 메뉴(바로가기, 글쓰기) -->
-<div style="position: fixed;">
-  <tr align="center">
-    <td>
+
+<div class="pagination justify-content-center">
       ${ map.pagingImg }
-    </td>
-    <td width="100"><button type="button"
-                            onclick="location.href='../post/PostWrite.jsp';">글쓰기</button></td>
-  </tr>
 </div>
-
-
+<div class="d-grid gap-2 d-md-flex justify-content-lg-center" id="writebtn">
+<button type="button" class="btn btn-outline-danger" onclick="location.href='../post/PostWrite.jsp';">글쓰기</button>
+</div>
+<%--PostView 모달--%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<%--<script>--%>
-<%--  var target = document.querySelectorAll('.btn_open');--%>
-<%--  var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');--%>
-<%--  var targetID;--%>
 
-<%--  // 팝업 열기--%>
-<%--  for(var i = 0; i < target.length; i++){--%>
-<%--    target[i].addEventListener('click', function(){--%>
-<%--      targetID = this.getAttribute('href');--%>
-<%--      document.querySelector(targetID).style.display = 'block';--%>
-<%--    });--%>
-<%--  }--%>
 
-<%--  // 팝업 닫기--%>
-<%--  for(var j = 0; j < target.length; j++){--%>
-<%--    btnPopClose[j].addEventListener('click', function(){--%>
-<%--      this.parentNode.parentNode.style.display = 'none';--%>
-<%--    });--%>
-<%--  }--%>
-<%--</script>--%>
 </body>
 </html>
