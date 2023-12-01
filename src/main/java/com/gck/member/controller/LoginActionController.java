@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 // 로그인을 수행하는 컨트롤러
-    @WebServlet("/member/login.do")
+@WebServlet("/member/login.do")
 public class LoginActionController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -49,8 +49,10 @@ public class LoginActionController extends HttpServlet {
         String memberId = req.getParameter("memberId");
         String passwordMember = req.getParameter("passwordMember");
 
-        // id, pw에 맞는 memberidx를 받아온다.
+        // id, pw에 맞는 memberIdx를 받아온다.
         int memberIdx = getMemberService().getMemberIdx(memberId, passwordMember);
+        // memberIdx에 맞는 닉네임을 받아온다.
+        String memberNickname = getMemberService().getNickname(memberIdx);
 
         // 로그인 시도
         if(memberIdx == -1){    // 로그인 실패
@@ -58,8 +60,9 @@ public class LoginActionController extends HttpServlet {
             url = "/member/loginform.do";   // 다시 로그인 화면으로 이동한다.
         }else {  // 로그인 성공
             // session = req.getSession();  //세션 객체 생성
-            session.setAttribute("memberIdx", memberIdx);
-            session.setMaxInactiveInterval(10*60);   // 10*60초 동안 세션 유지, 10분 설정
+            session.setAttribute("memberIdx", memberIdx);   // session에 memberIdx 저장
+            session.setAttribute("memberNickname", memberNickname);   // session에 memberNickname 저장
+            session.setMaxInactiveInterval(60*60);   // 60*60초 동안 세션 유지, 60분 설정
 
             // [@@@@@@@@@] 메인 화면으로 이동하는 컨트롤러로 바꿔야 한다.
             url += "/index.jsp";

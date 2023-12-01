@@ -1,3 +1,4 @@
+/*
 window.addEventListener('load', () => {
     const forms = document.getElementsByClassName('validation-form');
 
@@ -27,3 +28,5 @@ function check(re, input, message){
     input.value = "";
     input.focus();
 }
+
+ */
