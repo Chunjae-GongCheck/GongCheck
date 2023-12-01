@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +33,7 @@ public class BoardController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-
+        HttpSession session = req.getSession();
         BoardService brdService = new BoardService();
         PostImageDAOImpl piDao = new PostImageDAOImpl();
         Map<String, Object> map = new HashMap<>();
@@ -94,6 +95,14 @@ public class BoardController extends HttpServlet {
         map.put("pageNum", pageNum);
 
 
+        session.setAttribute("map", map);
+        session.setAttribute("postImageVOList",postImageVOList);
+        session.setAttribute("boardLists",boardLists);
+        session.setMaxInactiveInterval(10*60);
+
+        System.out.println("세션 map =====>"+map);
+        System.out.println("세션 postImageVOList =====>"+postImageVOList);
+        System.out.println("세션 boardLists =====>"+boardLists);
         // 전달할 데이터를 request 영역에 저장 후 list.jsp로 포워드
 
         req.setAttribute("map",map);

@@ -58,20 +58,23 @@
     <h2 align="center">상세보기</h2>
     <div class="container" id="mainimg">
         <div class="mainpost">
-             <img src="../img/프로필1.png" alt="main1" class="postimg" id="img_"></div>
-        <div class="visitCount" id="postVisitCount" >조회수 : ${vo.postVisitcount}</div>
-        <div class="buttons">
-            <button type="button" onclick="location.href='../member/login.do?mode=edit&idx=${ sessionScope.memberIdx }';">
-                수정하기
-            </button>
-            <button type="button" onclick="location.href='../member/login.do?mode=delete&idx=${ sessionScope.memberIdx }';">
-                삭제하기
-            </button>
-            <button type="button" onclick="location.href='../gck/MainView.do';">
-                목록 바로가기
-            </button>
-            <button type="button" id="closeBtn">닫기</button>
+            <c:forEach items="${ piVO }" var="posts" varStatus="loop">
+                <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="main1" class="postimg" id="img_">
+            </c:forEach>
         </div>
+            <div class="visitCount" id="postVisitCount" >조회수 : ${vo.postVisitcount}</div>
+                <div class="buttons">
+                    <button type="button" onclick="location.href='../member/login.do?mode=edit&idx=${ sessionScope.memberIdx }';">
+                        수정하기
+                    </button>
+                    <button type="button" onclick="location.href='../member/login.do?mode=delete&idx=${ sessionScope.memberIdx }';">
+                        삭제하기
+                    </button>
+                    <button type="button" onclick="location.href='../gck/MainView.do';">
+                        목록 바로가기
+                    </button>
+                    <button type="button" id="closeBtn">닫기</button>
+                </div>
     </div>
 </div>
 </body>
