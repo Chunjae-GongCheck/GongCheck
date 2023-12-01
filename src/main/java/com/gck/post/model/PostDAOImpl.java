@@ -133,4 +133,9 @@ public class PostDAOImpl implements PostDAO {
 //        sqlSession.close();
 //        return result;
 //    }
+
+    @Override
+    public PostVO getPostByIdx(int postIdx) {
+        return null;
+    }
 }
