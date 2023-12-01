@@ -47,35 +47,21 @@ public class PostController extends HttpServlet {
     // 게시물 안에 사진들을 가져옴
     ArrayList<PostImageVO> piVO = postImageDAOImpl.getPostImagesByPostIdx((int)Integer.parseInt(postIdx));
 
-    HashMap<Integer, String> map = new HashMap<>();
-    map.put(1, "/Uploads/");
-    map.put(2, "이미지 경로");
-    map.put(3, "이미지 경로");
-    req.setAttribute("imagesPath", map);
-
-    System.out.println("해쉬맵 이미지 경로 : ====> "+map);
-    System.out.println("piVO =====> " + piVO);
+//    HashMap<Integer, String> map = new HashMap<>();
+//    map.put(1, "/Uploads/");
+//    map.put(2, "이미지 경로");
+//    map.put(3, "이미지 경로");
+//    req.setAttribute("imagesPath", map);
+//
+//    System.out.println("해쉬맵 이미지 경로 : ====> "+map);
+//    System.out.println("piVO =====> " + piVO);
 
 
 
     // 게시물의 줄 바꿈 처리 ( 개행 문자를 <br/>로 변경 )
     vo.setPostContent(vo.getPostContent().replaceAll("\r\n" ,"<br />"));
     String result = null;
-//     이미지 호출 메서드
-//    if (postIdx == postImageIdx){
-//      result = postTImagePath;
-//      System.out.println("해당 게시물이 맞습니다.");
-//    } else {
-//      System.out.println("해당 게시물이 아닙니다.");
-//    }
 
-
-
-//
-//    for (String postImageIdx : sessionPostImageVOList){
-//      String postImageIdx = sessionPostImageVOList.getPostImageIdx();
-//      System.out.println("세션리스트에서 인덱스 추출 ======> " +postImageIdx);
-//    }
 
 
 
