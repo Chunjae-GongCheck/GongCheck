@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class AdminVO {
-    int adminIdx;       // 관리자 index
-    String adminId;     // 관리자 id
+    private int adminIdx;       // 관리자 index
+    private String adminId;     // 관리자 id
 }
