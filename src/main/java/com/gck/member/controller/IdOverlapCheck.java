@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 
 import static java.lang.System.out;
 
@@ -30,10 +31,10 @@ public class IdOverlapCheck extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String memberId = req.getParameter("memberId");
-        System.out.println("IdOverlapCheck" + memberId);
+        System.out.println("IdOverlapCheck : " + memberId);
 
         boolean exists = getMemberService().searchId(memberId);
-
+        System.out.println(exists);
         String result = "";
 
         if(exists){ // id 중복 O

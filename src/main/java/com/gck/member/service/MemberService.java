@@ -101,6 +101,7 @@ public class MemberService {
         }catch (Exception e){
             System.out.println("MemberService_exception_signup");
         }finally {
+            sqlSession.commit();
             sqlSession.close();
             return result;
         }
@@ -132,4 +133,55 @@ public class MemberService {
         }
     }
 
+    // 닉네임 중복 확인
+    public boolean searchNickname(String memberNickname){
+        // true 리턴 : 중복 O / false 리턴 : 중복 X
+        // boolean exists = getMemberService().searchId(memberId);
+        boolean result = true;
+
+        try {
+            this.sqlSession = MyBatisFactory.getSqlSession();
+            mapperMembers = this.sqlSession.getMapper(MemberDAO.class);
+
+            // Nickname 개수 조회
+            Integer exists = mapperMembers.searchNickname(memberNickname);
+
+            if(exists == null || exists.intValue() != 0){ // 오류 || 중복 O
+                // result = true;
+            }else if(exists.intValue() == 0){ // 중복 X
+                result = false;
+            }
+        }catch (Exception e){
+            System.out.println("MemberService_exception_searchNickname");
+        }finally {
+            sqlSession.close();
+            return result;
+        }
+    }
+
+    // 이메일 중복 확인
+    public boolean searchEmail(String memberEmail){
+        // true 리턴 : 중복 O / false 리턴 : 중복 X
+        // boolean exists = getMemberService().searchId(memberId);
+        boolean result = true;
+
+        try {
+            this.sqlSession = MyBatisFactory.getSqlSession();
+            mapperMembers = this.sqlSession.getMapper(MemberDAO.class);
+
+            // memberEmail 개수 조회
+            Integer exists = mapperMembers.searchEmail(memberEmail);
+
+            if(exists == null || exists.intValue() != 0){ // 오류 || 중복 O
+                // result = true;
+            }else if(exists.intValue() == 0){ // 중복 X
+                result = false;
+            }
+        }catch (Exception e){
+            System.out.println("MemberService_exception_memberEmail");
+        }finally {
+            sqlSession.close();
+            return result;
+        }
+    }
 }

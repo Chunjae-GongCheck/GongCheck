@@ -20,11 +20,11 @@
     </environments>
 
     <mappers>
-<!--        <mapper resource="mapper/PostMapperSample.xml"/>-->
+        <!--        <mapper resource="mapper/PostMapperSample.xml"/>-->
 
         <mapper resource="mapper/BoardMapper.xml"/>
-        <mapper resource="mapper/PostMapper.xml" />
-
+        <mapper resource="mapper/PostMapper.xml"/>
+        <mapper resource="mapper/PostImageMapper.xml"/>
         <!-- admin -->
 
         <!-- board -->
@@ -38,7 +38,6 @@
         <!-- post -->
 
         <!-- reply -->
-
 
     </mappers>
 </configuration>

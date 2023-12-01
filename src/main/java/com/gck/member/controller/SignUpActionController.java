@@ -41,7 +41,7 @@ public class SignUpActionController extends HttpServlet {
 
         // 세션에 로그인 정보가 있을 경우 메인 화면인 메인 화면으로 redirect
         if(session.getAttribute("memberIdx") != null){
-            url += "/index_jy.jsp";  // [@@@@@@@@@@] 메인 페이지로 수정해야 함. 메인 페이지로 가는 컨트롤러(board/main.do)로 연결해야 한다.
+            url += "/index.jsp";  // [@@@@@@@@@@] 메인 페이지로 수정해야 함. 메인 페이지로 가는 컨트롤러(board/main.do)로 연결해야 한다.
             resp.sendRedirect(url);
             return;
         }
@@ -54,6 +54,11 @@ public class SignUpActionController extends HttpServlet {
         String memberZonecode = req.getParameter("memberZonecode");
         String memberAddress = req.getParameter("memberAddress");
         String memberAddressDetailed = req.getParameter("memberAddressDetailed");
+
+        // test
+        memberZonecode = "test";
+        memberAddress = "test";
+        memberAddressDetailed = "test";
 
         System.out.println(memberId+", "+ passwordMember+", "+  memberNickname+", "+  memberEmail+", "+  memberZonecode+", "+  memberAddress+", "+  memberAddressDetailed);
 

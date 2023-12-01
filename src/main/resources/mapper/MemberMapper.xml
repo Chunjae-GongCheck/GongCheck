@@ -31,4 +31,22 @@
         from members
         where member_id = #{memberId}
     </select>
+
+    <select id="searchNickname" parameterType="String" resultType="Integer">
+        select count(*)
+        from members
+        where member_nickname = #{memberNickname}
+    </select>
+
+    <select id="searchEmail" parameterType="String" resultType="Integer">
+        select count(*)
+        from members
+        where member_email = #{memberEmail}
+    </select>
+
+    <select id="selectNickname" parameterType="Integer" resultType="String">
+        select member_nickname
+        from members
+        where member_idx = #{memberIdx}
+    </select>
 </mapper>
