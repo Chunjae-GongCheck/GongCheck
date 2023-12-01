@@ -28,10 +28,10 @@
   border: 0px;
 }
 #post_img{
-  width: 320px;
-  height: 320px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 300px;
+  height: 300px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   object-fit:fill;
 }
 
@@ -41,14 +41,14 @@ header {
   align-items: center;
 }
 #gridsys {
-gap: 5px;
+
   justify-content: space-between;
 }
 
 .tb_bottom {
   border: 1px black;
   align-items: center;
-text-align: center;
+  text-align: center;
 }
 
 </style>
@@ -133,17 +133,20 @@ text-align: center;
     </c:when>
 <%--d-flex align-content-end flex-wrap  style="max-width: 70%;"--%>
     <c:otherwise>  <!-- 게시물이 있을 때 -->
-      <div class="d-flex align-content-end flex-wrap" id="gridsys" >
+      <div class="d-flex align-content-between flex-wrap" id="gridsys" >
       <c:forEach items="${ boardLists }" var="row" varStatus="loop">
         <div class="thumb_post_img" id="thumb_post_img"> <!-- 번호 -->
-<%--              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
+              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
             <!-- 제목(링크) -->
             <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
-<%--              이미지 정보는 불러왔는데 난리부르스임--%>
+              <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
               <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
-
-              <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="posts${loop.index}" class="rounded float-start" id="post_img"/>
-                </c:forEach>
+                <%-- if문이 없었다면 다중 for 문에 의해 postIdx 마다 모든 게시물이 출력될 것임--%>
+                <c:if test="${row.postIdx == posts.postIdx}" var="result">
+<%-- 절대경로+ 서버에 저장된 이미지 불러오기 / loop를 계속 수행하는 동안 부모 foreach 문과 나의 Idx 가 일치하는지 확인하고 맞으면 출력 아니면 점프 --%>
+                  <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="posts${loop.index}" class="rounded float-start" id="post_img"/>
+                </c:if>
+              </c:forEach>
             </a>
         </div>
       </c:forEach>
