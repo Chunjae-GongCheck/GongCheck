@@ -94,7 +94,7 @@ public class BoardController extends HttpServlet {
         map.put("pageSize", pageSize);
         map.put("pageNum", pageNum);
 
-
+        // session -> req
         session.setAttribute("map", map);
         session.setAttribute("postImageVOList",postImageVOList);
         session.setAttribute("boardLists",boardLists);
@@ -108,7 +108,15 @@ public class BoardController extends HttpServlet {
         req.setAttribute("map",map);
         req.setAttribute("postImageVOList",postImageVOList);
         req.setAttribute("boardLists", boardLists);
-        req.getRequestDispatcher("/board/MainView.jsp").forward(req, resp);
 
+        // 이동할 주소
+        String url = "";
+        // 로그인 여부 확인
+        if(session.getAttribute("memberIdx") != null){   // 로그인이 되어 있음
+            url = "/board/MainViewAfterLogin.jsp";
+        }else{
+            url = "/board/MainView.jsp";
+        }
+        req.getRequestDispatcher(url).forward(req, resp);
     }
 }
