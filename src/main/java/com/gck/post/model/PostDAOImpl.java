@@ -136,6 +136,17 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public PostVO getPostByIdx(int postIdx) {
-        return null;
+        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+        PostVO result = mapper.getPostByIdx(postIdx); // 적절한 메서드를 호출하도록 수정
+
+        if (result != null) {
+            System.out.println("조회된 게시물 내용: " + result);
+        } else {
+            System.out.println("게시물이 조회되지 않았습니다. postIdx: " + postIdx);
+        }
+
+        sqlSession.close();
+        return result;
     }
 }
