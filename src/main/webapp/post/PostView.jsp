@@ -66,10 +66,10 @@
             </div>
 <%--            <div class="btn btn-primary"></div>--%>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-outline-success" type="button" onclick="location.href='../member/login.do?mode=edit&idx=${ sessionScope.memberIdx }';">
+                <button class="btn btn-outline-success" type="button" onclick="location.href='../gck/PostEdit.do?postIdx=${ vo.postIdx }';">
                     수정하기
                 </button>
-                <button class="btn btn-outline-danger" type="button" onclick="location.href='../member/login.do?mode=delete&idx=${ sessionScope.memberIdx }';">
+                <button class="btn btn-outline-danger" type="button" onclick="location.href='../gck/PostDelete.do?postIdx=${ vo.postIdx }';">
                     삭제하기
                 </button>
                 <button class="btn btn-outline-dark" type="button" onclick="location.href='../gck/MainView.do';">
