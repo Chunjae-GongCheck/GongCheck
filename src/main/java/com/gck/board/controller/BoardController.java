@@ -53,7 +53,8 @@ public class BoardController extends HttpServlet {
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
         }
-
+        System.out.println("searchWord =========> "+searchWord);
+        System.out.println("searchField =========> "+searchField);
 
 
         // 페이징 처리
@@ -105,9 +106,7 @@ public class BoardController extends HttpServlet {
         System.out.println("세션 boardLists =====>"+boardLists);
         // 전달할 데이터를 request 영역에 저장 후 list.jsp로 포워드
 
-        req.setAttribute("map",map);
-        req.setAttribute("postImageVOList",postImageVOList);
-        req.setAttribute("boardLists", boardLists);
+
 
         // 이동할 주소
         String url = "";
@@ -117,6 +116,9 @@ public class BoardController extends HttpServlet {
         }else{
             url = "/board/MainView.jsp";
         }
+        req.setAttribute("map",map);
+        req.setAttribute("postImageVOList",postImageVOList);
+        req.setAttribute("boardLists", boardLists);
         req.getRequestDispatcher(url).forward(req, resp);
     }
 }

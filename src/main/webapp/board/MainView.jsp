@@ -30,9 +30,8 @@
     height: 20rem;
     object-fit: fill;
 }
-#search_button{
-    color: lightgrey;
-}
+
+
 </style>
     <script>
         const myModal = document.getElementById('myModal')
@@ -41,6 +40,9 @@
         myModal.addEventListener('shown.bs.modal', () => {
             myInput.focus()
         })
+
+
+
     </script>
 </head>
 
@@ -93,12 +95,10 @@
         </div>
     </nav>
 
-<%--검색 모달 창--%>
-
 <!-- Modal -->
-
+<%--검색 모달 창--%>
 <div class="modal fade" id="exampleModal" tabindex="2" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">검색어를 입력하세요</h1>
@@ -107,19 +107,16 @@
             <div class="modal-body">
                 <div class="container-fluid">
 <%--                    드롭다운 입력 칸--%>
-                    <div class="input-group mb-3">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">제목</a></li>
-                            <li><a class="dropdown-item" href="#">내용</a></li>
-                        </ul>
-                        <input type="text"
-                               class="form-control"
-                               name="searchWord"
-                               value="${param.searchWord}"
-                               aria-label="검색어를 입력하세요"/>
+                    <div class="input-group mb-lg-0">
+                        <select class="form-select"
+                                name="searchCategory"
+                                style="margin: 0">
+                            <option value="title">제목</option>
+                            <option value="content">내용</option>
+                        </select>
+                        <input type="text" class="form-control" name="searchWord" value="${param.searchWord}" aria-label="검색어를 입력하세요"/>
                     </div>
-<%--                검색버튼 모달 이동--%>
+<%--                    드롭다운 end--%>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -134,6 +131,7 @@
         </div>
     </div>
 </div>
+<%--검색 모달 end--%>
 
 <%--메인 게시판--%>
 
@@ -153,23 +151,29 @@
     <c:otherwise>  <!-- 게시물이 있을 때 -->
       <div class="d-flex align-content-between flex-wrap" id="gridsys" >
       <c:forEach items="${ boardLists }" var="row" varStatus="loop">
-        <div class="thumb_post_img" id="thumb_post_img" > <!-- 번호 -->
+        <div class="thumb_post_img" id="thumb_post_img" >
+            <!-- 게시물 번호 -->
 <%--              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
-            <!-- 제목(링크) -->
+
+
+            <!-- 해당 게시물 링크 -->
 
             <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
-              <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
 
+              <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
               <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
+
                 <%-- if문이 없었다면 다중 for 문에 의해 postIdx 마다 모든 게시물이 출력될 것임--%>
                 <c:if test="${row.postIdx == posts.postIdx}" var="result">
+
 <%-- 절대경로+ 서버에 저장된 이미지 불러오기 / loop를 계속 수행하는 동안 부모 foreach 문과 나의 Idx 가 일치하는지 확인하고 맞으면 출력 아니면 점프 --%>
 
-                  <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="posts${loop.index}" class="shadow p-3 mb-5 bg-body-tertiary rounded" id="post_img"/>
+                        <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="posts${loop.index}" class="shadow p-3 mb-5 bg-body-tertiary rounded" id="post_img"/>
+
 
                 </c:if>
               </c:forEach>
-            </a>
+<%--            </a>--%>
 
         </div>
       </c:forEach>
@@ -178,11 +182,18 @@
   </c:choose>
 </div>
 
-<!-- 하단 메뉴(바로가기, 글쓰기) -->
+<%-- 하단 메뉴(바로가기)--%>
 
-<div class="pagination justify-content-center">
-      ${ map.pagingImg }
-</div>
+    <div class="pagination justify-content-center" >
+        <div class="d-flex">
+          ${ map.pagingImg }
+        </div>
+
+    </div>
+
+
+
+<%--글쓰기 버튼--%>
 <div class="d-grid gap-2 d-md-flex justify-content-lg-center" id="writebtn">
 <button type="button" class="btn btn-outline-danger" onclick="location.href='../post/PostWrite.jsp';">글쓰기</button>
 </div>
@@ -190,6 +201,9 @@
 <jsp:include page="../footer_jy.jsp" flush="false"/>
 
 <%-- 검색 버튼 모달 창 스크립트 --%>
+<script>
+
+</script>
 
 
 </body>
