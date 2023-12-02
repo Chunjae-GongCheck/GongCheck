@@ -3,12 +3,19 @@ package com.gck.post.model;
 import com.gck.factory.MyBatisFactory;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PostImageDAOImpl implements PostImageDAO {
     @Override
-    public int getPostImageIdx(HashMap<String, Object> map) {
-        return 0;
+    public List<PostImageVO> selectAllPostImageList(Map<String,Object> map) {
+        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+        PostImageDAO mapper = sqlSession.getMapper(PostImageDAO.class);
+        List<PostImageVO> piVO = mapper.selectAllPostImageList(map);
+        sqlSession.close();
+        return piVO;
     }
 
     @Override
@@ -24,5 +31,46 @@ public class PostImageDAOImpl implements PostImageDAO {
         }
         sqlSession.close();
         return result;
+    }
+
+    @Override
+    public int updatePostImage(PostImageVO vo) {
+        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+        PostImageDAO mapper = sqlSession.getMapper(PostImageDAO.class);
+        int result = mapper.updatePostImage(vo);
+        if (result == 1) {
+            System.out.println("PostImage가 성공적으로 수정되었습니다.");
+            sqlSession.commit();
+        } else {
+            System.out.println("PostImage 수정 실패.");
+        }
+        sqlSession.close();
+        return result;
+    }
+
+    @Override
+    public int deletePostImage(PostImageVO vo) {
+        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+        PostImageDAO mapper = sqlSession.getMapper(PostImageDAO.class);
+        int result = mapper.deletePostImage(vo);
+        if (result == 1) {
+            System.out.println("PostImage가 성공적으로 삭제되었습니다.");
+            sqlSession.commit();
+        } else {
+            System.out.println("PostImage 삭제 실패.");
+        }
+        sqlSession.close();
+        return result;
+    }
+
+    @Override
+    public ArrayList<PostImageVO> getPostImagesByPostIdx(int postIdx) {
+        try (SqlSession sqlSession = MyBatisFactory.getSqlSession()) {
+            List<PostImageVO> result = sqlSession.selectList("com.gck.post.model.PostImageDAO.getPostImagesByPostIdx", postIdx);
+
+            // 명시적으로 ArrayList<PostImageVO>로 변환
+            ArrayList<PostImageVO> postImages = new ArrayList<>(result);
+            return postImages;
+        }
     }
 }

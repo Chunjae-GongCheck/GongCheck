@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class PasswordAdminVO {
-    int passwordAdminIdx;   // 비밀번호 index
-    int adminIdx;           // 관리자 index
-    String passwordAdmin;   // 비밀번호
+    private int passwordAdminIdx;   // 비밀번호 index
+    private int adminIdx;           // 관리자 index
+    private String passwordAdmin;   // 비밀번호
 }

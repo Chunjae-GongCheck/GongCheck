@@ -5,6 +5,11 @@ import com.gck.board.model.BoardDAO;
 import com.gck.board.model.BoardVO;
 import com.gck.board.service.BoardService;
 import com.gck.paging.BoardPage;
+import com.gck.post.controller.PostWriteController;
+import com.gck.post.model.PostImageDAO;
+import com.gck.post.model.PostImageDAOImpl;
+import com.gck.post.model.PostImageVO;
+import com.gck.post.model.PostVO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +33,9 @@ public class BoardController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-
+        HttpSession session = req.getSession();
         BoardService brdService = new BoardService();
+        PostImageDAOImpl piDao = new PostImageDAOImpl();
         Map<String, Object> map = new HashMap<>();
 
         String searchField = req.getParameter("searchField");
@@ -36,12 +43,9 @@ public class BoardController extends HttpServlet {
         System.out.println("test");
 
 
-
-        // DAO를 통해 전체 게시물 수 조회
+        // Service를 통해 전체 게시물 수 조회
         int totalCount = brdService.selectCount(map);
         System.out.println("totalCount ======" + totalCount);
-        // 게시물 목록 받기
-
 
 
         // 검색어가 존재하는 경우, Map에 추가
@@ -49,6 +53,7 @@ public class BoardController extends HttpServlet {
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
         }
+
 
 
         // 페이징 처리
@@ -71,9 +76,14 @@ public class BoardController extends HttpServlet {
         map.put("end", end);
 
         List<BoardVO> boardLists = brdService.selectListPage(map);
+
         System.out.println("boardLists ====== " + boardLists); // 콘솔출력용
 
         /* 페이지 처리 end */
+
+        List<PostImageVO> postImageVOList = piDao.selectAllPostImageList(map);
+
+        System.out.println("postImageVOList =======" +postImageVOList);
 
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
@@ -84,12 +94,29 @@ public class BoardController extends HttpServlet {
         map.put("pageSize", pageSize);
         map.put("pageNum", pageNum);
 
+        // session -> req
+        session.setAttribute("map", map);
+        session.setAttribute("postImageVOList",postImageVOList);
+        session.setAttribute("boardLists",boardLists);
+        session.setMaxInactiveInterval(10*60);
 
+        System.out.println("세션 map =====>"+map);
+        System.out.println("세션 postImageVOList =====>"+postImageVOList);
+        System.out.println("세션 boardLists =====>"+boardLists);
         // 전달할 데이터를 request 영역에 저장 후 list.jsp로 포워드
 
         req.setAttribute("map",map);
+        req.setAttribute("postImageVOList",postImageVOList);
         req.setAttribute("boardLists", boardLists);
-        req.getRequestDispatcher("/board/MainView.jsp").forward(req, resp);
 
+        // 이동할 주소
+        String url = "";
+        // 로그인 여부 확인
+        if(session.getAttribute("memberIdx") != null){   // 로그인이 되어 있음
+            url = "/board/MainViewAfterLogin.jsp";
+        }else{
+            url = "/board/MainView.jsp";
+        }
+        req.getRequestDispatcher(url).forward(req, resp);
     }
 }

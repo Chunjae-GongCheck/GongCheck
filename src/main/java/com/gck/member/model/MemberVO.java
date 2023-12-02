@@ -9,13 +9,13 @@ import java.sql.Date;
 @Data
 @AllArgsConstructor
 public class MemberVO {
-    int memberIdx;                  // 회원 index
-    String memberId;                // 회원 ID
-    String memberNickname;          // 닉네임
-    Date memberRegdate;             // 가입일
-    String memberEmail;             // email
-    String memberImagePath;         // 프로필 사진 저장 경로
-    String memberZonecode;          // 우편번호
-    String memberAddress;           // 도로명 주소
-    String memberAddressDetailed;   // 상세주소
+    private int memberIdx;                  // 회원 index
+    private String memberId;                // 회원 ID
+    private String memberNickname;          // 닉네임
+    private Date memberRegdate;             // 가입일
+    private String memberEmail;             // email
+    private String memberImagePath;         // 프로필 사진 저장 경로
+    private String memberZonecode;          // 우편번호
+    private String memberAddress;           // 도로명 주소
+    private String memberAddressDetailed;   // 상세주소
 }

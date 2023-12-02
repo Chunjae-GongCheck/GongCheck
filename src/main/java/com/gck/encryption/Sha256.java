@@ -4,17 +4,17 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Sha256 {
-    public static String getHash(String input){
+    public static String getHash(String input, String salt){
         String result = "";
         try {
             // SHA256 알고리즘 객체 생성
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
             // salt 지정
-            String salt = "GongCheck" + input;
+            String newSalt = "GongCheck" + salt;
 
             // 비밀번호와 salt 합친 문자열에 SHA 256 적용
-            md.update((input + salt).getBytes());
+            md.update((input + newSalt).getBytes());
             byte[] hash = md.digest();
 
             // byte To String (10진수의 문자열로 변경)

@@ -7,7 +7,29 @@
 <mapper namespace="com.gck.post.model.PostImageDAO">
     <insert id="insertPostImage" parameterType="com.gck.post.model.PostImageVO">
         INSERT
-        INTO post_images(post_idx, post_image_originalname, post_image_savedname)
-        VALUES(#{postIdx}, #{postImageOriginalname}, #{postImageSavedname})
+        INTO post_images(post_idx, post_image_path, post_t_image_path)
+        VALUES(#{postIdx}, #{postImagePath}, #{postTImagePath})
     </insert>
+
+    <delete id="deletePostImage">
+        delete
+        from post_images
+        where post_image_idx = #{postImageIdx}
+    </delete>
+
+    <update id="updatePostImage" parameterType="com.gck.post.model.PostImageVO">
+        update post_images
+        set post_image_path = #{postImagePath}, post_t_image_path = #{postTImagePath}
+        where post_image_idx = #{postImageIdx}
+    </update>
+
+    <select id="selectAllPostImageList" parameterType="map" resultType="com.gck.post.model.PostImageVO">
+        select *
+        from post_images
+        where post_idx > 0;
+    </select>
+
+    <select id="getPostImagesByPostIdx" resultType="com.gck.post.model.PostImageVO">
+        SELECT * FROM post_images WHERE post_idx = #{postIdx}
+    </select>
 </mapper>
