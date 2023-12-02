@@ -41,10 +41,7 @@ public class PostWriteController extends HttpServlet {
         String saveDirectory = req.getServletContext().getRealPath("/Uploads");
 
         // 로그인한 사람이 session에다가 memberIdx를 저장해 줘야함.
-        // 현재는 테스트 용으로, 일단 session에 memberIdx값을 1로 저장.
         // 추후에 로그인 돼서 memberIdx가 sesion에 저장 됐을 경우, 현재 이 라인의 바로 아래 라인을 삭제해 주면 됨
-        req.getSession().setAttribute("memberIdx", 1); // 얘!
-
         int memberIdx = (Integer) req.getSession().getAttribute("memberIdx");
 
 

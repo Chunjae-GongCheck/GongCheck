@@ -19,6 +19,15 @@ public class PostDeleteController extends HttpServlet {
     // saveDirectory를 상수로 정의
     private static final String SAVE_DIRECTORY = "/Uploads";
 
+     @Override
+     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+             throws ServletException, IOException {
+         {
+             req.setAttribute("mode", req.getParameter("mode"));
+             req.getRequestDispatcher("/post/PostDelete.jsp").forward(req, resp);
+         }
+     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {        // 1. 로그인 여부 확인 (세션에 memberIdx가 있는지 확인)
