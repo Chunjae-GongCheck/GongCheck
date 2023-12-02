@@ -20,9 +20,10 @@
     display: flex;
     justify-content: space-between;
     }
-    .card_{
-        margin: 2vh 30rem 0 30rem;
-        padding: 50px;
+    #flex-container{
+        margin: 50px 50px 50px 50px;
+        justify-content: center;
+
     }
         #card_line{
         border-style: none;
@@ -30,7 +31,8 @@
 
         }
 #img_{
-
+    display: flex;
+    flex-basis: auto;
     margin: 0 auto;
     width: 500px;
     height: 500px;
@@ -45,7 +47,7 @@
 
 <%--        카드 형 이미지 --%>
 
-<div class="card_">
+<div class="d-flex align-content-between flex-wrap" id="flex-container">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <div class="card mb-3" id="card_line">
             <h5 class="card-title">아이디 : ${vo.memberIdx}</h5>

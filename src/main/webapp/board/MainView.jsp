@@ -6,119 +6,136 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GongCheck</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link href="/css/navbar_jy.css" rel="stylesheet"/>
+
+    <style>
 <%-- 네비게이션 바 --%>
 *{
   margin: 0;
   padding: 0;
 }
-  #logo{
-  width: 3rem;
-  }
-  #img {
-  width: 3rem;
-  border-radius: 100%;
-  }
-#img_ {
-  width: 3rem;
-  border-radius: 100%;
-}
 #writebtn {
     margin-top: 10px;
-
-
 }
-
-/*header {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*}*/
-
-
-
 .d-flex {
     margin: 0 auto;
-    /*max-width: 100%;*/
     position: relative;
-    /*width: 100%;*/
-    /*gap: 0px;*/
-    /*justify-content: space-around;*/
 }
 #post_img{
     margin-top: 2vh;
     margin-bottom: 10px;
-    /*padding: 10px;*/
     width: 20rem;
     height: 20rem;
     object-fit: fill;
-    /*max-width: 100%;*/
-
+}
+#search_button{
+    color: lightgrey;
 }
 </style>
-<%--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>--%>
+    <script>
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
 
+        myModal.addEventListener('shown.bs.modal', () => {
+            myInput.focus()
+        })
+    </script>
 </head>
 
 <body>
-<div class="header">
+<%--수정된 nav--%>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
+        <div class="container">
+            <!-- 로고 -->
+            <a class="navbar-brand" href="#">GongCheck</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span></button>
 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-</div>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="../img/logo.jpg" id="logo"/>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="main_menu">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Notice</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Rank
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">주간 조회수 Top 10</a></li>
-            <li><a class="dropdown-item" href="#">주간 좋아요 Top 10</a></li>
-<%--            <li><hr class="dropdown-divider"></li>--%>
-<%--            <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
-          </ul>
-        </li>
-<%--        <li class="nav-item">--%>
-<%--          <a class="nav-link" href="#">Disabled</a>--%>
-<%--        </li>--%>
-      </ul>
-      <div  id="navright">
-      <div class="d-flex justify-content-end" role="search" action="${pageContext.request.contextPath}/gck/MainView.do" id="navright_">
-              <select class="form-select-sm" name="searchField">
-                <option value="post_title">제목</option>
-                <option value="post_content">내용</option>
-              </select>
+                <!-- 검색 -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">검색</a>
+                    </li>
+                    <!-- 공지사항 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            공지사항
+                        </a>
+                    </li>
 
-              <input type="text" name="searchWord" value="${param.searchWord}"/>
-              <input type="submit" value="검색하기" class="btn btn-outline-dark" style="margin-right: 50px"/>
+                    <!-- 랭킹 -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            랭킹
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">주간 조회수 Top 10</a></li>
+                            <li><a class="dropdown-item" href="#">주간 좋아요 Top 10</a></li>
+                        </ul>
+                    </li>
 
-            <a class="btn btn-outline-danger"
-               href="${pageContext.request.contextPath}/member/loginform.do"
-               role="button"
-               style="--bs-btn-padding-y: 0.5rem; --bs-btn-padding-x: 0rem; --bs-btn-font-size: 1rem; float: right;"
-            >로그인</a>
-<%--          <img src="../img/프로필1.png" id="img_" />--%>
-      </div>
-      </div>
+                    <!-- 로그인 -->
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="${pageContext.request.contextPath}/member/loginform.do"
+                           role="button"
+                           aria-expanded="false">
+                           로그인
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<%--검색 모달 창--%>
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">검색어를 입력하세요</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+<%--                    드롭다운 입력 칸--%>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">제목</a></li>
+                            <li><a class="dropdown-item" href="#">내용</a></li>
+                        </ul>
+                        <input type="text"
+                               class="form-control"
+                               name="searchWord"
+                               value="${param.searchWord}"
+                               aria-label="검색어를 입력하세요"/>
+                    </div>
+<%--                검색버튼 모달 이동--%>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark">
+                        <a class="link-light"
+                           href="${pageContext.request.contextPath}/gck/MainView.do" style="text-decoration: none">
+                            검색
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</nav>
+</div>
+
+<%--메인 게시판--%>
 
 <div class="container">
   <%--choose when otherwise 는 java로 치면
@@ -169,8 +186,10 @@
 <div class="d-grid gap-2 d-md-flex justify-content-lg-center" id="writebtn">
 <button type="button" class="btn btn-outline-danger" onclick="location.href='../post/PostWrite.jsp';">글쓰기</button>
 </div>
-<%--PostView 모달--%>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<%-- footer --%>
+<jsp:include page="../footer_jy.jsp" flush="false"/>
+
+<%-- 검색 버튼 모달 창 스크립트 --%>
 
 
 </body>
