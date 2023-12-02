@@ -90,12 +90,7 @@ public class PostWriteController extends HttpServlet {
 
         System.out.println("새로운 Post 등록 성공! ======"+originalFilenameList);
 
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/board/MainView.jsp");
-        dispatcher.forward(req, resp);
+        resp.sendRedirect(req.getContextPath()+"/gck/MainView.do");
 
     }
-
-
-
 }
