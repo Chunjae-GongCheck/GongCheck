@@ -55,10 +55,6 @@ public class SignUpActionController extends HttpServlet {
         String memberAddress = req.getParameter("memberAddress");
         String memberAddressDetailed = req.getParameter("memberAddressDetailed");
 
-        // test
-        memberZonecode = "test";
-        memberAddress = "test";
-        memberAddressDetailed = "test";
 
         System.out.println(memberId+", "+ passwordMember+", "+  memberNickname+", "+  memberEmail+", "+  memberZonecode+", "+  memberAddress+", "+  memberAddressDetailed);
 

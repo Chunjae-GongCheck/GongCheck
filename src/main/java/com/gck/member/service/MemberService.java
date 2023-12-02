@@ -55,10 +55,6 @@ public class MemberService {
             mapperMembers = this.sqlSession.getMapper(MemberDAO.class);
             mapperPasswordMembers = this.sqlSession.getMapper(PasswordMemberDAO.class);
 
-            // 비밀번호 암호화
-            String encryptedPasswordMember = Sha256.getHash(passwordMember, memberId);
-            System.out.println("encryptedPasswordMember : " + encryptedPasswordMember);
-
             // map에 회원정보 입력
             HashMap<String, String> map = new HashMap<>();
             map.put("memberId", memberId);
@@ -68,6 +64,12 @@ public class MemberService {
             map.put("memberZonecode", memberZonecode);
             map.put("memberAddress", memberAddress);
             map.put("memberAddressDetailed", memberAddressDetailed);
+
+            // null 확인
+            for(String m : map.values()){
+                if(m == null)   return false; // null 입력 받을 경우, false 리턴
+            }
+            if(passwordMember == null)  return false;
 
             // 비밀번호 제외한 회원 정보 insert
             Integer resultInsertMember = mapperMembers.insertMember(map);
@@ -84,6 +86,10 @@ public class MemberService {
                 System.out.println("memberIdx");
                 return result;
             }
+
+            // 비밀번호 암호화
+            String encryptedPasswordMember = Sha256.getHash(passwordMember, memberId);
+            System.out.println("encryptedPasswordMember : " + encryptedPasswordMember);
 
             // 회원 비밀번호 객체 생성
             PasswordMemberVO passwordMemberVO = new PasswordMemberVO(memberIdx.intValue(), encryptedPasswordMember);

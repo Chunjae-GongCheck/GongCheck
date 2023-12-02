@@ -17,8 +17,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-
+    <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <!-- daum api -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>-->
     <link href="css/signup_bootstrap.css" rel="stylesheet">
     <script>
@@ -193,6 +196,29 @@
             return true;
         }
 
+        // 주소 검색
+        function findAddr(){
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수 (도로명 혹은 지번 주소)
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('memberZonecode').value = data.zonecode;  // 우편번호
+                    document.getElementById("memberAddress").value = addr;            // 도로명 주소 || 지번 주소
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("memberAddressDetailed").focus();
+                }
+            }).open();
+        }
 
     </script>
 </head>
@@ -259,6 +285,7 @@
                     </div>
                 </div>
 
+                <!-- 이메일 -->
                 <div class="row">
                     <div class="col-md-8 mb-3">
                         <label for="memberEmail">이메일</label>
@@ -273,37 +300,38 @@
                         <button id="memberEmailSearch" class="btn btn-primary btn-sm btn-block" type="button" onclick="nickname_overlap_check('2');">중복확인</button>
                     </div>
                 </div>
-                <!--
+
+                <!-- 주소 -->
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="memberZonecode">우편번호</label>
-                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" placeholder="" required>
+                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" placeholder="" required readonly>
                         <div class="invalid-feedback">
-                            우편번호를 검색해 주세요. readonly
+                            우편번호를 검색해 주세요.
                         </div>
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <br/>
-                        <button id="memberZonecodeSearch" class="btn btn-primary btn-sm btn-block">우편번호 검색</button>
+                        <button id="memberZonecodeSearch" class="btn btn-primary btn-sm btn-block" onclick="findAddr()">우편번호 검색</button>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="memberAddress">주소</label>
-                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" placeholder="서울특별시 강남구" required>
+                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" placeholder="서울특별시 강남구" required readonly>
                     <div class="invalid-feedback">
-                        주소를 입력해 주세요. readonly
+                        주소를 입력해 주세요.
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="memberAddressDetailed">상세주소</label>
-                    <input type="text" class="form-control" id="memberAddressDetailed" name="memberAddressDetailed" placeholder="상세주소를 입력해주세요." required>
+                    <input type="text" class="form-control" id="memberAddressDetailed" name="memberAddressDetailed" placeholder="상세주소를 입력해 주세요." required>
                     <div class="invalid-feedback">
                         상세주소를 입력해 주세요.
                     </div>
                 </div>
-                -->
+
                 <!--
                 <div class="row">
                     <div class="col-md-6 mb-3">
