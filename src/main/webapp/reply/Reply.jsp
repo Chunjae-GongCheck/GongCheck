@@ -29,7 +29,7 @@
 <hr/>
     <form method="get">
     <c:choose>
-        <c:when test="${empty list}"> <!--댓글 없을 때-->
+        <c:when test="${empty list}">
     <div class="card text-bg-light mb-3" style="
     max-width: 18rem;">
         <div class="card-header">
@@ -39,7 +39,7 @@
         </div>
     </div>
         </c:when>
-        <!--댓글 존재할 때-->
+
         <c:otherwise>
             <c:forEach var="reply" items="${list}">
     <div class="card text-bg-light mb-3" style="max-width: 18rem;">
