@@ -59,7 +59,7 @@
                 <h3 class="card-title">좋아요 개수 : ${vo.postLikecount}</h3>
                 <h5 class="card-title">조회수 : ${vo.postVisitcount}</h5>
                 </div>
-                <p class="card-text">내용 : ${vo.postTitle}</p>
+                <p class="card-text">제목 : ${vo.postTitle}</p>
                 <p class="card-text">내용 : ${vo.postContent}</p>
 <%--                여기가 댓글 자리일듯?--%>
                 <div class="date">
