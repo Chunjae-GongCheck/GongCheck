@@ -1,6 +1,7 @@
 package com.gck.post.controller;
 
 import com.gck.post.model.*;
+import org.apache.ibatis.jdbc.Null;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -51,12 +52,11 @@ import java.util.ArrayList;
         try {
             originalFilenameList = FileUtil.multipleFile(req, saveDirectory);
         } catch (Exception e) {
+            e.printStackTrace();
             JSFunction.alertBack(resp, "파일 업로드 오류입니다.");
             return;
         }
 
-        // 로그인한 사람이 session에다가 memberIdx를 저장해 줘야함.
-        // 추후에 로그인 돼서 memberIdx가 sesion에 저장 됐을 경우, 현재 이 라인의 바로 아래 라인을 삭제해 주면 됨
         int memberIdx = (Integer) req.getSession().getAttribute("memberIdx");
 
 
@@ -101,33 +101,33 @@ import java.util.ArrayList;
 
         // 파일 업로드를 처리하는 부분
         PostImageDAO postImageDAO = new PostImageDAOImpl();
-        for (String originalFilename : originalFilenameList) {
-            String savedFilename = FileUtil.renameFile(saveDirectory, originalFilename);
 
-            PostImageVO postImageVO = new PostImageVO();
-            postImageVO.setPostIdx(postVO.getPostIdx());
-            postImageVO.setPostImagePath(originalFilename);
-            postImageVO.setPostTImagePath(savedFilename);
+        // 기존 파일 삭제
+        FileUtil.deleteFile(req, "/Uploads", preSavedFile);
 
+        for (int i = 0; i < originalFilenameList.size(); i++) {
+            String originalFilename = originalFilenameList.get(i);
 
+            if (originalFilename != null && !originalFilename.isEmpty()) {
+                String savedFilename = FileUtil.renameFile(saveDirectory, originalFilename);
 
-            if (originalFilename != null && !originalFilename.equals("")) {
-                String savedFileName = FileUtil.renameFile(saveDirectory, originalFilename);
+                PostImageVO postImageVO = new PostImageVO();
+                postImageVO.setPostIdx(postVO.getPostIdx());
+                postImageVO.setPostImagePath(originalFilename);
+                postImageVO.setPostTImagePath(savedFilename);
 
-                postImageVO.setPostImagePath(originalFilename);  // 원래 파일 이름
-                postImageVO.setPostTImagePath(savedFileName);
+                // PostImageVO를 DB에 저장.
+                postImageDAO.updatePostImage(postImageVO);
+            } else {
+                // 이미지가 없는 경우, 기존 이미지 정보를 사용
+                PostImageVO postImageVO = new PostImageVO();
+                postImageVO.setPostIdx(postVO.getPostIdx());
+                postImageVO.setPostImagePath(preOriginalFile);
+                postImageVO.setPostTImagePath(preSavedFile);
 
-                // 기존 파일 삭제
-                FileUtil.deleteFile(req, "/Uploads", preSavedFile);
+                // PostImageVO를 DB에 저장.
+                postImageDAO.updatePostImage(postImageVO);
             }
-        else {
-            // 첨부 파일이 없으면 기존 이름 유지
-            postImageVO.setPostImagePath(preOriginalFile);
-            postImageVO.setPostTImagePath(preSavedFile);
-
-        }
-            // PostImageVO를 DB에 저장.
-            postImageDAO.updatePostImage(postImageVO);
         }
         System.out.println("Post 수정 성공!");
 

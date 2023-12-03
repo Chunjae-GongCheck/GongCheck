@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="../post/PostView.jsp"%>
+<%--<%@ include file="../post/PostView.jsp"%>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,13 +14,24 @@
             margin : 10px;
         }
     </style>
+    <script type="text/javascript">
+        function validateForm(form){
+            if(form.replyContent.value == ""){
+                alert("내용을 입력하세요");
+                form.replyContent.focus();
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
-<%--<h2>댓글 목록</h2>--%>
+<!--댓글 목록-->
 <hr/>
+    <form method="get">
     <c:choose>
-        <c:when test="${empty list}"> <!--댓글 없을 때-->
-    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+        <c:when test="${empty list}">
+    <div class="card text-bg-light mb-3" style="
+    max-width: 18rem;">
         <div class="card-header">
             <p style="align-content: center">
                 등록된 댓글이 없습니다.
@@ -33,6 +44,7 @@
             <c:forEach var="reply" items="${list}">
     <div class="card text-bg-light mb-3" style="max-width: 18rem;">
         <div class="card-header">
+            <a href="/GongCheck_war_exploded/gck/ReplyViews.do?postIdx=${reply.postIdx}}"></a>
         <p>작성자: ${reply.memberIdx}</p>
         <p>작성일시: ${reply.replyWriteDate}</p>
         </div>
@@ -44,6 +56,23 @@
             </c:forEach>
         </c:otherwise>
     </c:choose>
+    </form>
+
+    <!--댓글 작성 칸-->
+<div class="container">
+    <div class="form-group">
+      <form name="ReplyWrite" method="post" encType = "multipart/form-data"
+            action="/GongCheck_war_exploded/gck/ReplyWrite.do" onsubmit="return validateForm(this);">
+            <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+                <input type="hidden" name="postIdx" value="${postIdx}" />
+                <tr>
+                    <input type="hidden" name="memberIdx" value="${memberIdx}" />
+                    <td><input type="text" style="height:100px;" class="form-control" placeholder="내용을 입력해주세요" name = "replyContent"></td>
+                    <td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>
+                </tr>
+            </table>
+        </form>
     </div>
+</div>
 </body>
 </html>

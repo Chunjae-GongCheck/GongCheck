@@ -20,7 +20,7 @@
     <update id="updatePostImage" parameterType="com.gck.post.model.PostImageVO">
         update post_images
         set post_image_path = #{postImagePath}, post_t_image_path = #{postTImagePath}
-        where post_image_idx = #{postImageIdx}
+        where post_idx = #{postIdx}
     </update>
 
     <select id="selectAllPostImageList" parameterType="map" resultType="com.gck.post.model.PostImageVO">

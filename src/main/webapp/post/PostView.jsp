@@ -81,6 +81,8 @@
                 <button class="btn btn-outline-secondary" type="button" id="closeBtn">닫기</button>
             </div>
         </div>
+        <!--지혜-->
+        <%@ include file="/reply/Reply.jsp" %>
 </div>
 </div>
 

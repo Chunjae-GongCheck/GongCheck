@@ -36,7 +36,7 @@ public class PostDeleteController extends HttpServlet {
         Integer memberIdx = (Integer) req.getSession().getAttribute("memberIdx");
         if (memberIdx == null) {
             // 로그인되지 않은 경우 처리
-            JSFunction.alertLocation(resp, "로그인이 필요합니다.", "/gck/Login.do");
+            JSFunction.alertLocation(resp, "로그인이 필요합니다.", "/GongCheck_war_exploded/member/loginform.do");
             return;
         }
 
@@ -82,6 +82,6 @@ public class PostDeleteController extends HttpServlet {
         dao.deletePost(postIdx);
 
         // 5. 삭제 후 리다이렉트
-        JSFunction.alertLocation(resp, "게시물이 삭제되었습니다.", "/gck/MainView.do");
+        JSFunction.alertLocation(resp, "게시물이 삭제되었습니다.", "/GongCheck_war_exploded/gck/MainView.do");
     }
 }

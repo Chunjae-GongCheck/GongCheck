@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name="ReplyView", value="/reply/ReplyViews.do")
+@WebServlet(name="ReplyView", value="/gck/ReplyViews.do")
 public class ReplyController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
