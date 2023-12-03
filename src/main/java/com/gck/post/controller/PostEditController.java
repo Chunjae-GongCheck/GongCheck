@@ -36,6 +36,19 @@ import java.util.ArrayList;
         // 기존 게시물 내용을 VO객체의 req 영역에 저장하고난 후 포워드
         PostDAO dao = new PostDAOImpl();
         PostVO postVO = dao.selectView(postIdx);
+
+        // 현재 로그인한 사용자의 정보 가져오기
+        int memberIdx = (Integer) req.getSession().getAttribute("memberIdx");
+
+        // 작성자의 정보 가져오기
+        int postAuthorIdx = postVO.getMemberIdx();
+
+        // 권한 확인: 현재 로그인한 사용자가 작성자가 아니면 수정 권한이 없음
+        if (memberIdx != postAuthorIdx) {
+            JSFunction.alertLocation(resp, "글 수정에 관한 권한이 없습니다.",
+                    "/GongCheck_war_exploded/gck/MainView.do");
+            return;
+        }
         req.setAttribute("postVO", postVO);
         req.getRequestDispatcher("/post/PostEdit.jsp").forward(req, resp);
 
