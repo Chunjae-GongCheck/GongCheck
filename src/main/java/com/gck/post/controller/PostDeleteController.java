@@ -56,7 +56,7 @@ public class PostDeleteController extends HttpServlet {
 
         if (postVO == null || postVO.getMemberIdx() != memberIdx) {
             // 권한이 없는 경우 처리
-            JSFunction.alertLocation(resp, "게시물에 대한 권한이 없습니다.", "/gck/MainView.do");
+            JSFunction.alertLocation(resp, "게시물에 대한 권한이 없습니다.", "/GongCheck_war_exploded/gck/MainView.do");
             return;
         }
 
