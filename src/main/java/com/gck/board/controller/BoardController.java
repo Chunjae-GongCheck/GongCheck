@@ -40,7 +40,7 @@ public class BoardController extends HttpServlet {
 
         String searchField = req.getParameter("searchField");
         String searchWord = req.getParameter("searchWord");
-        System.out.println("test");
+        System.out.println("searchWord =======> " + searchWord);
 
 
         // Service를 통해 전체 게시물 수 조회
@@ -107,18 +107,21 @@ public class BoardController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 list.jsp로 포워드
 
 
-
         // 이동할 주소
-        String url = "";
+        String url = "../board/MainView.jsp";
         // 로그인 여부 확인
-        if(session.getAttribute("memberIdx") != null){   // 로그인이 되어 있음
-            url = "/board/MainViewAfterLogin.jsp";
-        }else{
-            url = "/board/MainView.jsp";
-        }
+
+//        if(session.getAttribute("memberIdx") != null){// 로그인이 되어 있음
+//            url = "/board/MainViewAfterLogin.jsp";
+//        }else{
+//            url = "/board/MainView.jsp";
+//        }
         req.setAttribute("map",map);
         req.setAttribute("postImageVOList",postImageVOList);
         req.setAttribute("boardLists", boardLists);
+//        resp.sendRedirect(req.getContextPath()+"/gck/MainView.do");
         req.getRequestDispatcher(url).forward(req, resp);
+
+
     }
 }
