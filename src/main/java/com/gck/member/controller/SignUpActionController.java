@@ -2,7 +2,6 @@ package com.gck.member.controller;
 
 import com.gck.member.service.MemberService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -63,8 +62,8 @@ public class SignUpActionController extends HttpServlet {
 
         // 회원가입 성공 여부에 따른 페이지 이동
         if(result){ // 회원가입 성공
-            // 메인 화면으로 리다이렉트
-            url += "/member/signupsuccess.jsp"; // [@@@@@@@@@] 메인 화면 컨트롤러로 수정해야 함
+            // 회원가입 축하 화면으로 리다이렉트
+            url += "/member/signupsuccess.jsp";
             resp.sendRedirect(url);
             return;
         }else{      // 회원가입 실패
@@ -80,12 +79,6 @@ public class SignUpActionController extends HttpServlet {
             writer.print(script);
             writer.flush();
             writer.close();
-
-            /*
-            // 다시 회원가입 폼 페이지로 리다이렉트
-            url += "/member/signupform.do";
-            resp.sendRedirect(url);
-            */
         }
     }
 }
