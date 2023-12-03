@@ -49,4 +49,10 @@
         from members
         where member_idx = #{memberIdx}
     </select>
+
+    <select id="getMember" parameterType="int" resultType="com.gck.member.model.MemberVO">
+        select *
+        from members
+        where member_idx = #{memberIdx}
+    </select>
 </mapper>

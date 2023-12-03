@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// 아이디, 닉네임, 이메일 중복 확인 컨트롤러 (회원가입 페이지)
 @WebServlet("/member/overlapcheck.do")
 public class NicknameOverlapCheck extends HttpServlet {
     private static final long serialVersionUID = 1L;

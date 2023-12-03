@@ -3,6 +3,7 @@ package com.gck.member.service;
 import com.gck.encryption.Sha256;
 import com.gck.factory.MyBatisFactory;
 import com.gck.member.model.MemberDAO;
+import com.gck.member.model.MemberVO;
 import com.gck.member.model.PasswordMemberDAO;
 import com.gck.member.model.PasswordMemberVO;
 import org.apache.ibatis.session.SqlSession;
@@ -209,6 +210,31 @@ public class MemberService {
         }finally {
             sqlSession.close();
             return memberNickname;
+        }
+    }
+
+    // 회원 정보 조회
+    public MemberVO getMember(String memberIdxStr){
+        if(memberIdxStr == null)   return null;
+
+        int memberIdx = (int)Integer.parseInt(memberIdxStr);
+        MemberVO memberVo = null;
+
+        try {
+            this.sqlSession = MyBatisFactory.getSqlSession();
+            mapperMembers = this.sqlSession.getMapper(MemberDAO.class);
+
+            // memberVO 조회
+            memberVo = mapperMembers.getMember(memberIdx);
+
+            if(memberVo == null){ // 오류
+                return null;
+            }
+        }catch (Exception e){
+            System.out.println("MemberService_exception_getMember");
+        }finally {
+            sqlSession.close();
+            return memberVo;
         }
     }
 }
