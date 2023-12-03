@@ -60,19 +60,28 @@ Class Diagram
 </details>
 
 <details>
-<summary>ERD</summary>
+<summary>Usecase Diagram</summary>
 <div markdown="1">       
 
-erd
+Usecase Diagram
 
 </div>
 </details>
 
 <details>
-<summary>ERD</summary>
+<summary>Block Diagram</summary>
 <div markdown="1">       
 
-erd
+Block Diagram
+
+</div>
+</details>
+
+<details>
+<summary>Sequence Diagram</summary>
+<div markdown="1">       
+
+Sequence Diagram
 
 </div>
 </details>
