@@ -18,5 +18,6 @@
 <a href="${contextPath}/member/logout.do?redirecturl=${pageContext.request.getServletPath()}">로그아웃</a><br>
 <a href="${contextPath}/logouttest.jsp">로그아웃 테스트 페이지 1</a><br>
 <a href="${contextPath}/member/logouttest.jsp">로그아웃 테스트 페이지 2</a><br>
+<a href="${contextPath}/member/edit.do">회원정보 수정 하러가기</a><br>
 </body>
 </html>
