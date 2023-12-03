@@ -139,7 +139,7 @@
                     // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                     var addr = ''; // 주소 변수 (도로명 혹은 지번 주소)
 
-                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                     if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                         addr = data.roadAddress;
                     } else { // 사용자가 지번 주소를 선택했을 경우(J)
@@ -171,7 +171,7 @@
                 <div class="row">
                     <div class="col-md-8 mb-3">
                         <label for="memberId">아이디</label>
-                        <input type="text" class="form-control" id="memberId" name="memberId" value="${ memberVo.memberId }" readonly>
+                        <input type="text" class="form-control" id="memberId" name="memberId" value="${ memberVo.memberId }" disabled readonly>
                     </div>
                 </div>
 
@@ -201,7 +201,7 @@
                 <div class="row">
                     <div class="col-md-8 mb-3">
                         <label for="memberEmail">이메일</label>
-                        <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" value="${ memberVo.memberEmail }" readonly>
+                        <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" value="${ memberVo.memberEmail }" disabled readonly>
                     </div>
                 </div>
 
@@ -209,7 +209,7 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="memberZonecode">우편번호</label>
-                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" value="${ memberVo.memberZonecode }" readonly>
+                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" value="${ memberVo.memberZonecode }" disabled readonly>
                         <div class="invalid-feedback">
                             우편번호를 검색해 주세요.
                         </div>
@@ -222,7 +222,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="memberAddress">주소</label>
-                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" value="${ memberVo.memberAddress }" readonly>
+                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" value="${ memberVo.memberAddress }" disabled readonly>
                     <div class="invalid-feedback">
                         주소를 입력해 주세요.
                     </div>
