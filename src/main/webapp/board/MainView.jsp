@@ -34,7 +34,16 @@
 
 
 </style>
+<%--    <script>--%>
 
+<%--        const myModal = document.getElementById('myModal')--%>
+<%--        const myInput = document.getElementById('myInput')--%>
+
+<%--        myModal.addEventListener('shown.bs.modal', () => {--%>
+<%--            myInput.focus()--%>
+<%--        })--%>
+
+<%--    </script>--%>
 </head>
 
 <body>
@@ -52,10 +61,19 @@
                 <!-- 검색 -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#searchModal">검색</a>
-                        <jsp:include page="../SearchModal.jsp" flush="false"/>
+
+                        <form class="d-flex justify-content-end" action="${pageContext.request.contextPath}/gck/MainView.do" id="navright_">
+                            <select class="form-select-sm" name="searchField">
+                                <option value="title">제목</option>
+                                <option value="content">내용</option>
+                            </select>
+
+                            <input type="text" name="searchWord" value="${param.searchWord}"/>
+                            <input type="submit" value="검색하기" class="btn btn-outline-dark" style="margin-right: 50px"/>
+                        </form>
 
                     </li>
+<%--                    <jsp:include page="SearchModal.jsp" flush="false"/>--%>
                     <!-- 공지사항 -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">
@@ -92,9 +110,9 @@
 <%--클릭하면 해당 게시물의 url 자체를 불러올 것이냐--%>
 <%--새로 이미지 ?? 버튼을 저기다 넣어볼까--%>
 <%--<div class="d-flex justify-content-center"></div>--%>
-<a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#imageModal">검색
-<jsp:include page="../ImageModal.jsp" flush="false"/>
-</a>
+<%--<a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#imageModal">검색--%>
+<%--<jsp:include page="../ImageModal.jsp" flush="false"/>--%>
+<%--</a>--%>
 <%--메인 게시판--%>
 
 <div class="container">
@@ -115,38 +133,33 @@
                 <c:forEach items="${ boardLists }" var="row" varStatus="loop">
                         <div class="thumb_post_img" id="thumb_post_img" >
                             <!-- 게시물 번호 -->
-                                <%--              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
+                                ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
 
 
                             <!-- 해당 게시물 링크 -->
                                 <%--            <div class="d-flex justify-content-center"></div>--%>
     <%--                        <a type="button" class="image_Modal" data-bs-toggle="modal" data-bs-target="#imageModal">--%>
 
-                            <a type="button" class="image_modal"
-                               data-bs-toggle="modal"
-                               data-bs-target="#imageModal"
-                               href="../gck/PostView.do?postIdx=${ row.postIdx }">
-
+                            <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
                                 <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
                                 <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
 
                                     <%-- if문이 없었다면 다중 for 문에 의해 postIdx 마다 모든 게시물이 출력될 것임--%>
                                     <c:if test="${row.postIdx == posts.postIdx}" var="result">
 
-                                        <%-- 절대경로+ 서버에 저장된 이미지 불러오기 / loop를 계속 수행하는 동안 부모 foreach 문과 나의 Idx 가 일치하는지 확인하고 맞으면 출력 아니면 점프 --%>
-    <%--                                    <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#imageModal">--%>
-    <%--                                    <jsp:include page="../ImageModal.jsp" flush="false"/>--%>
+
                                         <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}"
                                              alt="posts${loop.index}"
                                              class="shadow p-3 mb-5 bg-body-tertiary rounded"
                                              id="post_img"/>
+
     <%--                                    </a>--%>
 
                                     </c:if>
                                 </c:forEach>
                             </a>
                         </div>
-                    <jsp:include page="../ImageModal.jsp" flush="false"/>
+<%--                    <jsp:include page="../ImageModal.jsp" flush="false"/>--%>
 
                 </c:forEach>
             </div>

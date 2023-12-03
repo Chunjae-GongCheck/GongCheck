@@ -52,7 +52,7 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#searchModal">검색</a>
-                        <jsp:include page="../SearchModal.jsp" flush="false"/>
+                        <jsp:include page="SearchModal.jsp" flush="false"/>
                     </li>
                     <!-- 공지사항 -->
                     <li class="nav-item">
