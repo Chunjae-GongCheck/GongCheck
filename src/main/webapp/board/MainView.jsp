@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GongCheck</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
     <link href="/css/navbar_jy.css" rel="stylesheet"/>
 
     <style>
@@ -24,7 +25,7 @@
     margin: 0 auto;
     position: relative;
 }
-#post_img{
+#imagePath{
     margin-top: 2vh;
     margin-bottom: 10px;
     width: 20rem;
@@ -34,16 +35,8 @@
 
 
 </style>
-<%--    <script>--%>
 
-<%--        const myModal = document.getElementById('myModal')--%>
-<%--        const myInput = document.getElementById('myInput')--%>
 
-<%--        myModal.addEventListener('shown.bs.modal', () => {--%>
-<%--            myInput.focus()--%>
-<%--        })--%>
-
-<%--    </script>--%>
 </head>
 
 <body>
@@ -52,7 +45,7 @@
 
         <div class="container">
             <!-- 로고 -->
-            <a class="navbar-brand" href="#">GongCheck</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/gck/MainView.do">GongCheck</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span></button>
 
@@ -60,20 +53,21 @@
 
                 <!-- 검색 -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item">검색
+                        <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#searchModal">검색</a>
+                        <jsp:include page="SearchModal.jsp" flush="false"/>
 
-                        <form class="d-flex justify-content-end" action="${pageContext.request.contextPath}/gck/MainView.do" id="navright_">
-                            <select class="form-select-sm" name="searchField">
-                                <option value="title">제목</option>
-                                <option value="content">내용</option>
-                            </select>
+<%--                        <form class="d-flex justify-content-end" action="${pageContext.request.contextPath}/gck/MainView.do" id="navright_">--%>
+<%--                            <select class="form-select-sm" name="searchField">--%>
+<%--                                <option value="title">제목</option>--%>
+<%--                                <option value="content">내용</option>--%>
+<%--                            </select>--%>
 
-                            <input type="text" name="searchWord" value="${param.searchWord}"/>
-                            <input type="submit" value="검색하기" class="btn btn-outline-dark" style="margin-right: 50px"/>
-                        </form>
+<%--                            <input type="text" name="searchWord" value="${param.searchWord}"/>--%>
+<%--                            <input type="submit" value="검색하기" class="btn btn-outline-dark" style="margin-right: 50px"/>--%>
+<%--                        </form>--%>
 
                     </li>
-<%--                    <jsp:include page="SearchModal.jsp" flush="false"/>--%>
                     <!-- 공지사항 -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">
@@ -130,42 +124,47 @@
         <%--d-flex align-content-end flex-wrap  style="max-width: 70%;"--%>
         <c:otherwise>  <!-- 게시물이 있을 때 -->
             <div class="d-flex align-content-between flex-wrap" id="gridsys" >
+
                 <c:forEach items="${ boardLists }" var="row" varStatus="loop">
+                    <a type="button"
+                        <%-- href="../gck/PostView.do?postIdx=${ row.postIdx }"--%>
+                       class="imageModal"
+                       data-bs-toggle="modal"
+                       data-bs-target="#imageModal">
                         <div class="thumb_post_img" id="thumb_post_img" >
                             <!-- 게시물 번호 -->
-                                ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
+<%--                                ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
 
 
                             <!-- 해당 게시물 링크 -->
                                 <%--            <div class="d-flex justify-content-center"></div>--%>
-    <%--                        <a type="button" class="image_Modal" data-bs-toggle="modal" data-bs-target="#imageModal">--%>
 
-                            <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
+
+<%--                            <a href="../gck/PostView.do?postIdx=${ row.postIdx }">--%>
                                 <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
                                 <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
 
                                     <%-- if문이 없었다면 다중 for 문에 의해 postIdx 마다 모든 게시물이 출력될 것임--%>
-                                    <c:if test="${row.postIdx == posts.postIdx}" var="result">
+                                    <c:if test="${row.postIdx == posts.postIdx}" var="result" scope="request">
 
 
                                         <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}"
-                                             alt="posts${loop.index}"
+                                             alt="${loop.index}"
                                              class="shadow p-3 mb-5 bg-body-tertiary rounded"
-                                             id="post_img"/>
-
-    <%--                                    </a>--%>
+                                             id="imagePath"/>
 
                                     </c:if>
                                 </c:forEach>
-                            </a>
                         </div>
-<%--                    <jsp:include page="../ImageModal.jsp" flush="false"/>--%>
-
+                    </a>
+                    <jsp:include page="../ImageModal.jsp" flush="false"/>
                 </c:forEach>
             </div>
         </c:otherwise>
     </c:choose>
 </div>
+
+
 <%-- 하단 메뉴(바로가기)--%>
 
     <div class="pagination justify-content-center" >
@@ -184,7 +183,34 @@
 <jsp:include page="../footer_jy.jsp" flush="false"/>
 
 <%-- 검색 버튼 모달 창 스크립트 --%>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
+
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
+
+    <%--$("#imagePath").on("click", function(e) {--%>
+    <%--    $.ajax({--%>
+    <%--        url: '${pageContext.request.contextPath}' + "/gck/MainView.do",--%>
+    <%--        type: "POST",--%>
+    <%--        success: function (data) {--%>
+    <%--            console.log(data);--%>
+    <%--            const obj = JSON.parse(data); // string 형식(문자열)을 JS 객체로 변환--%>
+    <%--            console.log(obj);--%>
+    <%--            let str = "image: " + obj.image;--%>
+    <%--            $("#imagePathBody").text(str);--%>
+    <%--        },--%>
+    <%--        error: function (error) {--%>
+    <%--            console.log(error);--%>
+    <%--        }--%>
+    <%--    })--%>
+    <%--})--%>
 
 </script>
 

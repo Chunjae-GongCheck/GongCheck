@@ -6,6 +6,16 @@
 <%--    String searchWord = request.getParameter("searchWord");--%>
 <%--    String searchField = request.getParameter("searchField");--%>
 <%--%>--%>
+<%--<script>--%>
+
+<%--    const myModal = document.getElementById('myModal')--%>
+<%--    const myInput = document.getElementById('myInput')--%>
+
+<%--    myModal.addEventListener('shown.bs.modal', () => {--%>
+<%--        myInput.focus()--%>
+<%--    })--%>
+
+<%--</script>--%>
 <body>
     <div class="modal fade" id="searchModal" tabindex="2" aria-labelledby="searchHead" aria-hidden="true">
         <div class="modal-dialog">
@@ -17,14 +27,15 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <%--                    드롭다운 입력 칸--%>
-                        <div class="input-group mb-lg-0">
-                            <select class="form-select"
-                                    name="searchField">
-                                <option value="title">제목</option>
-                                <option value="content">내용</option>
-                            </select>
-                            <input type="text" class="form-control" name="searchWord" value="${param.searchWord}" aria-label="검색어를 입력하세요"/>
-                        </div>
+                            <form class="d-flex justify-content-end" action="${pageContext.request.contextPath}/gck/MainView.do" id="navright_">
+                                <select class="form-select-sm" name="searchField">
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                </select>
+
+                                <input type="text" name="searchWord" value="${param.searchWord}"/>
+                                <input type="submit" value="검색하기" class="btn btn-outline-dark" style="margin-right: 50px"/>
+                            </form>
                         <%--                    드롭다운 end--%>
                     </div>
                     <div class="modal-footer">

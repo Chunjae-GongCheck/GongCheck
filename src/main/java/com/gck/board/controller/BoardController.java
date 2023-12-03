@@ -1,15 +1,11 @@
 package com.gck.board.controller;
 
 
-import com.gck.board.model.BoardDAO;
 import com.gck.board.model.BoardVO;
 import com.gck.board.service.BoardService;
 import com.gck.paging.BoardPage;
-import com.gck.post.controller.PostWriteController;
-import com.gck.post.model.PostImageDAO;
 import com.gck.post.model.PostImageDAOImpl;
 import com.gck.post.model.PostImageVO;
-import com.gck.post.model.PostVO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -119,9 +115,23 @@ public class BoardController extends HttpServlet {
         req.setAttribute("map",map);
         req.setAttribute("postImageVOList",postImageVOList);
         req.setAttribute("boardLists", boardLists);
-//        resp.sendRedirect(req.getContextPath()+"/gck/MainView.do");
         req.getRequestDispatcher(url).forward(req, resp);
 
 
     }
+
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+//            throws ServletException, IOException {
+//
+//        System.out.println("클릭이벤트로 doPost호출");
+//        ImageJsonVO imageJsonVO = new ImageJsonVO("params");
+//        String imagePath = req.getParameter("imagePath");
+//
+//        Gson gson = new Gson();
+//        String json = gson.toJson(imageJsonVO);
+//
+//        System.out.println("VO에 담기는지 확인" + imageJsonVO);
+//
+//
+//    }
 }
