@@ -19,4 +19,6 @@ public interface MemberDAO {
     public String getNickname(int memberIdx);
     // 회원 정보 수정 : 회원 정보 조회
     public MemberVO getMember(int memberIdx);
+    // 회원 정보 수정
+    public Integer updateMember(HashMap<String, String> map);
 }
