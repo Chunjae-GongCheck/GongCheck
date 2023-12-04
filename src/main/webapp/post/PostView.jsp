@@ -50,7 +50,7 @@
 <div class="d-flex align-content-between flex-wrap" id="flex-container">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <div class="card mb-3" id="card_line">
-            <h5 class="card-title">아이디 : ${vo.memberIdx}</h5>
+            <h5 class="card-title">닉네임 : ${vo.memberNickname}</h5>
             <c:forEach items="${ piVO }" var="posts" varStatus="loop">
                 <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}" alt="main1" class="card-img" id="img_">
             </c:forEach>
