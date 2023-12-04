@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
     <!--    페이지 번호-->
     <context-param>
         <param-name>POSTS_PER_PAGE</param-name>
@@ -12,4 +13,24 @@
         <param-name>PAGES_PER_BLOCK</param-name>
         <param-value>5</param-value>
     </context-param>
+
+    <!-- 한글 인코딩 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+
+        <filter-class>
+            org.apache.catalina.filters.SetCharacterEncodingFilter
+        </filter-class>
+
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- 한글 인코딩 -->
 </web-app>

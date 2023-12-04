@@ -11,15 +11,27 @@
     <title>Log in to GongCheck</title>
     <link href="css/login.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function validateForm(form){
+            if(!form.memberId.value){
+                alert("아이디를 입력하세요.");
+                return false;
+            }
+            if(!form.passwordMember.value){
+                alert("비밀번호를 입력하세요.");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="login-page">
   <div class="form">
-    <form class="login-form" method="post" action="../member/login.do">
+    <form class="login-form" method="post" action="${pageContext.request.contextPath}/member/login.do" onsubmit="return validateForm(this);">
       <input type="text" placeholder="아이디" name="memberId"/>
       <input type="password" placeholder="비밀번호" name="passwordMember"/>
       <button>로그인</button>
-      <p class="message">아직 회원이 아니신가요?  <a href="./signup.jsp">회원가입</a></p>
+      <p class="message">아직 회원이 아니신가요?  <a href="${pageContext.request.contextPath}/member/signupform.do">회원가입</a></p>
         <p>${message}</p>
     </form>
   </div>

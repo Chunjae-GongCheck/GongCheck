@@ -20,9 +20,20 @@
     </environments>
 
     <mappers>
-<!--        <mapper resource="mapper/PostMapperSample.xml"/>-->
-        <mapper resource="mapper/MemberMapper.xml"/>
+        <!-- admin -->
+
+        <!-- board -->
         <mapper resource="mapper/BoardMapper.xml"/>
+        <!-- member -->
+        <mapper resource="mapper/MemberMapper.xml"/>
+        <mapper resource="mapper/PasswordMemberMapper.xml"/>
+        <!-- notice -->
+
+        <!-- post -->
+        <mapper resource="mapper/PostMapper.xml"/>
+        <mapper resource="mapper/PostImageMapper.xml"/>
+        <!-- reply -->
+        <mapper resource="mapper/ReplyMapper.xml" />
     </mappers>
 </configuration>
-<!-- https://mybatis.org/mybatis-3/ko/getting-started.html#xml%EC%97%90%EC%84%9C-sqlsessionfactory-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0 -->
+        <!-- https://mybatis.org/mybatis-3/ko/getting-started.html#xml%EC%97%90%EC%84%9C-sqlsessionfactory-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0 -->

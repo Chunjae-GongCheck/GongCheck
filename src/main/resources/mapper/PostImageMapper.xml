@@ -7,7 +7,41 @@
 <mapper namespace="com.gck.post.model.PostImageDAO">
     <insert id="insertPostImage" parameterType="com.gck.post.model.PostImageVO">
         INSERT
-        INTO post_images(post_idx, post_image_originalname, post_image_savedname)
-        VALUES(#{postIdx}, #{postImageOriginalname}, #{postImageSavedname})
+        INTO post_images(post_idx, post_image_path, post_t_image_path)
+        VALUES(#{postIdx}, #{postImagePath}, #{postTImagePath})
     </insert>
+
+    <delete id="deletePostImage">
+        delete
+        from post_images
+        where post_image_idx = #{postImageIdx}
+    </delete>
+
+    <update id="updatePostImage" parameterType="com.gck.post.model.PostImageVO">
+        update post_images
+        set post_image_path = #{postImagePath}, post_t_image_path = #{postTImagePath}
+        where post_idx = #{postIdx}
+    </update>
+
+    <select id="selectAllPostImageList" parameterType="map" resultType="com.gck.post.model.PostImageVO">
+        select Distinct p.post_idx , p.board_idx , p.post_title , p.post_content , p.member_idx , p.post_likecount , p.post_write_date , p.post_update_date , p.post_visitcount , i.post_image_idx , i.post_idx , i.post_image_path , i.post_t_image_path
+        From posts p
+        join post_images i
+        on p.post_idx = i.post_idx
+        <if test="searchWord != null and !searchWord.equals('')">
+            <choose>
+                <when test="searchField == 'title'">
+                    WHERE post_title LIKE CONCAT('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    WHERE post_content LIKE CONCAT('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
+        order by post_write_date desc;
+    </select>
+
+    <select id="getPostImagesByPostIdx" resultType="com.gck.post.model.PostImageVO">
+        SELECT * FROM post_images WHERE post_idx = #{postIdx}
+    </select>
 </mapper>

@@ -14,4 +14,39 @@
         on m.member_idx = p.member_idx
         where m.member_id = #{memberId} and p.password_member = #{passwordMember}
     </select>
+
+    <select id="getMemberIdxById" parameterType="String" resultType="Integer">
+        select member_idx
+        from members
+        where member_id = #{memberId}
+    </select>
+
+    <insert id="insertMember" parameterType="java.util.HashMap">
+        insert into members(member_id, member_nickname, member_email, member_zonecode, member_address, member_address_detailed)
+        VALUE(#{memberId}, #{memberNickname}, #{memberEmail}, #{memberZonecode}, #{memberAddress}, #{memberAddressDetailed});
+    </insert>
+
+    <select id="searchId" parameterType="String" resultType="Integer">
+        select count(*)
+        from members
+        where member_id = #{memberId}
+    </select>
+
+    <select id="searchNickname" parameterType="String" resultType="Integer">
+        select count(*)
+        from members
+        where member_nickname = #{memberNickname}
+    </select>
+
+    <select id="searchEmail" parameterType="String" resultType="Integer">
+        select count(*)
+        from members
+        where member_email = #{memberEmail}
+    </select>
+
+    <select id="getNickname" parameterType="int" resultType="String">
+        select member_nickname
+        from members
+        where member_idx = #{memberIdx}
+    </select>
 </mapper>

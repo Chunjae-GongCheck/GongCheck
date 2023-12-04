@@ -7,7 +7,12 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class PasswordMemberVO {
-    int passwordMemberIdx;  // 비밀번호 index
-    int memberIdx;          // 회원 index
-    String passwordMember;  // 비밀번호
+    private int passwordMemberIdx;  // 비밀번호 index
+    private int memberIdx;          // 회원 index
+    private String passwordMember;  // 비밀번호
+
+    public PasswordMemberVO(int memberIdx, String passwordMember){
+        this.memberIdx = memberIdx;
+        this.passwordMember = passwordMember;
+    }
 }

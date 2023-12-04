@@ -1,243 +1,140 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GongCheck</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+    <link href="/css/navbar_jy.css" rel="stylesheet"/>
+
+    <style>
 <%-- 네비게이션 바 --%>
 *{
   margin: 0;
   padding: 0;
 }
-  #logo{
-  width: 3rem;
-  }
-  #img {
-  width: 3rem;
-  border-radius: 100%;
-  }
-#img_ {
-  width: 3rem;
-  border-radius: 100%;
+#writebtn {
+    margin-top: 10px;
 }
-.btn_ {
-  border: 0px;
+.d-flex {
+    margin: 0 auto;
+    position: relative;
 }
-#writebtn{
-  float: right;
-  margin: 1rem;
+#imagePath{
+    margin-top: 2vh;
+    margin-bottom: 10px;
+    width: 20rem;
+    height: 20rem;
+    object-fit: fill;
 }
-/*팝업 디자인*/
-/*.wrap{padding:10px;}
 
-.btn_open{
-  font-weight:bold;
-  margin:5px;
-  padding:4px 6px;
-  background:#000; color:#fff;
-}
-.pop_wrap{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background:rgba(0,0,0,.5);
-  font-size:0;
-  text-align:center;
-}
-.pop_wrap:after{
-  display:inline-block;
-  height:100%;
-  vertical-align:middle;
-  content:'';
-}
-.pop_wrap .pop_inner{
-  display:inline-block;
-  padding:20px 30px;
-  background:#fff; width:200px;
-  vertical-align:middle;
-  font-size:15px;
-}*/
+
 </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-<%--  <script type="text/javascript">
-    $(document).click(function() {
-        $.ajax({
-          type:"get",
-          url:"../gck/PostView.jsp?postIdx=1",
-          data:"html",
-          error: function (){
-            alert('통신실패!!!');
-          },
-          success:function(result){//result (변수명은 어떤것이든 상관없음)
-            //success function 매개변수로 서버가 응답한 데이터가 전달
-            alert('통신 데이터 값 :' +result);
-            $("wrap").html(result);
-          }
-        });//ajax
-      });//click
 
-  </script>--%>
 </head>
 
 <body>
+<%--수정된 nav--%>
 
-<h1>GongCheck</h1>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="../img/logo.jpg" id="logo"/>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="main_menu">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Notice</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Rank
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">주간 조회수 Top 10</a></li>
-            <li><a class="dropdown-item" href="#">주간 좋아요 Top 10</a></li>
-<%--            <li><hr class="dropdown-divider"></li>--%>
-<%--            <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
-          </ul>
-        </li>
-<%--        <li class="nav-item">--%>
-<%--          <a class="nav-link" href="#">Disabled</a>--%>
-<%--        </li>--%>
-      </ul>
-      <form class="d-flex" role="search" action="${pageContext.request.contextPath}/gck/MainView.do">
-<%--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--%>
-        <table border="1" width="90%">
-          <tr>
-            <td align="center">
-              <select name="searchField">
-                <option value="post_title">제목</option>
-                <option value="post_content">내용</option>
-              </select>
+<%--두번째 모달--%>
+<%--클릭하면 해당 게시물의 url 자체를 불러올 것이냐--%>
+<%--새로 이미지 ?? 버튼을 저기다 넣어볼까--%>
+<%--<div class="d-flex justify-content-center"></div>--%>
+<%--<a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#imageModal">검색--%>
+<%--<jsp:include page="../ImageModal.jsp" flush="false"/>--%>
+<%--</a>--%>
+<%--메인 게시판--%>
 
-              <input type="text" name="searchWord" value="${param.searchWord}"/>
-              <input type="submit" value="검색하기"/>
-            </td>
-          </tr>
-        </table>
-        <button class="btn_" type="submit" >
-          <img src="../img/프로필1.png" id="img_" />
-        </button>
-      </form>
-    </div>
-  </div>
-</nav>
-<table border="1" width="100%">
-  <tr>
-    <th width="10%">번호</th>
-    <th width="*">제목</th>
-    <th width="15%">작성자</th>
-    <th width="10%">조회수</th>
-    <th width="15%">작성일</th>
-    <th width="8%">첨부</th>
-  </tr>
+<div class="container">
+    <%--choose when otherwise 는 java로 치면
+    if else 문이랑 비슷한 반복문 성질을 가지고 있다.
+    MVC2 패턴을 잘 나타내고 분리된 메서드를 이용해 동적으로 처리하기 위함.--%>
+    <c:choose>
+        <c:when test="${ empty boardLists }">  <!-- 게시물이 없을 때 -->
+            <div>
+                <div align="center">
+                    등록된 게시물이 없습니다^^*
+                </div>
+            </div>
+        </c:when>
+        <%--d-flex align-content-end flex-wrap  style="max-width: 70%;"--%>
+        <c:otherwise>  <!-- 게시물이 있을 때 -->
+            <div class="d-flex align-content-between flex-wrap" id="gridsys" >
 
-  <%--choose when otherwise 는 java로 치면
-  if else 문이랑 비슷한 반복문 성질을 가지고 있다.
-  MVC2 패턴을 잘 나타내고 분리된 메서드를 이용해 동적으로 처리하기 위함.--%>
-  <c:choose>
-    <c:when test="${ empty boardLists }">  <!-- 게시물이 없을 때 -->
-      <tr>
-        <td colspan="6" align="center">
-          등록된 게시물이 없습니다^^*
-        </td>
-      </tr>
-    </c:when>
+                <c:forEach items="${ boardLists }" var="row" varStatus="loop">
+                    <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
+                        <div class="thumb_post_img" id="thumb_post_img" >
+                            <!-- 게시물 번호 -->
+<%--                                ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
 
-    <c:otherwise>  <!-- 게시물이 있을 때 -->
-<%--      <c:set var="no" value="${ map.totalCount - ((map.pageNum - 1) * 10)}" />--%>
+                            <!-- 해당 게시물 링크 -->
+                                <%--            <div class="d-flex justify-content-center"></div>--%>
 
-      <c:forEach items="${ boardLists }" var="row" varStatus="loop">
-        <tr align="center">
-          <td>  <!-- 번호 -->
-              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
-<%--              ${no}--%>
-          </td>
-          <td align="left">  <!-- 제목(링크) -->
-            <a href="../post/PostView.jsp?postIdx=${ row.postIdx }" id="ajaxBtn">${ row.postTitle }</a>
-          </td>
-          <td>${ row.memberIdx }</td>  <!-- 작성자 -->
-          <td>${ row.postVisitcount }</td>  <!-- 조회수 -->
-          <td>${ row.postWriteDate }</td>  <!-- 작성일 -->
-          <td>
-          </td>
-<%--          <td>  <!-- 첨부 파일 -->--%>
-<%--            <c:if test="${ not empty row.ofile }">--%>
-<%--              <a href="../board/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.postIdx }">[Down]</a>--%>
-<%--            </c:if>--%>
-<%--          </td>--%>
-        </tr>
-<%--        <c:set var="no" value="${no - 1}" />--%>
-      </c:forEach>
-    </c:otherwise>
-  </c:choose>
-</table>
+<%--                            <a href="../gck/PostView.do?postIdx=${ row.postIdx }">--%>
+                                <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
+                                <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
 
-<!-- 하단 메뉴(바로가기, 글쓰기) -->
-<table border="1" width="100%">
-  <tr align="center">
-    <td>
-      ${ map.pagingImg }
-    </td>
-    <td width="100"><button type="button"
-                            onclick="location.href='../post/PostWrite.jsp';">글쓰기</button></td>
-  </tr>
-</table>
-<div class="wrap">
-<%--  <a href="#pop_info_1" class="btn_open">팝업 열기1</a>--%>
-  <a href="#"><img src="../img/logo.jpg" alt="post" id="img"></a>
-  <div id="pop_info_1" class="pop_wrap" style="display:none;">
-    <div class="pop_inner">
-      <p class="dsc">팝업 안내문구 입니다.</p>
-      <button type="button" class="btn_close">닫기</button>
-    </div>
-  </div>
+                                    <%-- if문이 없었다면 다중 for 문에 의해 postIdx 마다 모든 게시물이 출력될 것임--%>
+                                    <c:if test="${row.postIdx == posts.postIdx}" var="result" scope="request">
 
+                                        <%-- 절대경로+ 서버에 저장된 이미지 불러오기 / loop를 계속 수행하는 동안 부모 foreach 문과 나의 Idx 가 일치하는지 확인하고 맞으면 출력 아니면 점프 --%>
+
+                                        <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}"
+                                             alt="${loop.index}"
+                                             class="shadow p-3 mb-5 bg-body-tertiary rounded"
+                                             id="imagePath"/>
+
+                                    </c:if>
+                                </c:forEach>
+                        </div>
+                    </a>
+<%--                    <jsp:include page="../ImageModal.jsp" flush="false"/>--%>
+                </c:forEach>
+            </div>
+        </c:otherwise>
+    </c:choose>
 </div>
+
+
+<%-- 하단 메뉴(바로가기)--%>
+
+    <div class="pagination justify-content-center" >
+        <div class="d-flex">
+          ${ map.pagingImg }
+        </div>
+    </div>
+
+
+
+<%--글쓰기 버튼--%>
+<div class="d-grid gap-2 d-md-flex justify-content-lg-center" id="writebtn">
+<button type="button" class="btn btn-outline-danger" onclick="location.href='../post/PostWrite.jsp';">글쓰기</button>
+</div>
+<%-- footer --%>
+<jsp:include page="../footer_jy.jsp" flush="false"/>
+
+<%-- 검색 버튼 모달 창 스크립트 --%>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
+
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<%--<script>--%>
-<%--  var target = document.querySelectorAll('.btn_open');--%>
-<%--  var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');--%>
-<%--  var targetID;--%>
 
-<%--  // 팝업 열기--%>
-<%--  for(var i = 0; i < target.length; i++){--%>
-<%--    target[i].addEventListener('click', function(){--%>
-<%--      targetID = this.getAttribute('href');--%>
-<%--      document.querySelector(targetID).style.display = 'block';--%>
-<%--    });--%>
-<%--  }--%>
 
-<%--  // 팝업 닫기--%>
-<%--  for(var j = 0; j < target.length; j++){--%>
-<%--    btnPopClose[j].addEventListener('click', function(){--%>
-<%--      this.parentNode.parentNode.style.display = 'none';--%>
-<%--    });--%>
-<%--  }--%>
-<%--</script>--%>
 </body>
 </html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    <mapper namespace="com.gck.reply.model.ReplyDAO">
+        <!-- 댓글 전체 목록 가져오기 -->
+        <select id="getRepliesByPost" parameterType="int" resultType="com.gck.reply.model.ReplyVO">
+            SELECT * FROM replies WHERE post_idx = #{postIdx}
+        </select>
+
+        <!-- 삽입 -->
+        <insert id="createReplies"  parameterType="com.gck.reply.model.ReplyVO">
+            INSERT INTO replies (post_id, reply_content, member_idx, parent_no, dept_no, orderid)
+            VALUES (#{postIdx}, #{replyContent}, #{memberIdx}, 0, 0, 0)
+
+        </insert>
+
+        <!-- 삽입, 업데이트, 삭제 추가 예정) -->
+    </mapper>
