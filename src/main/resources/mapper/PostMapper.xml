@@ -28,6 +28,13 @@
         where post_idx = #{postIdx}
     </select>
 
+    <select id="selectView1" parameterType="int" resultType="com.gck.post.model.PostMemberVO">
+        select *
+        from posts p
+        inner join members m on p.member_idx = m. member_idx
+        where post_idx = #{postIdx}
+    </select>
+
     <update id="updateVisitCount" parameterType="String">
         update posts
         set post_visitcount = post_visitcount + 1
