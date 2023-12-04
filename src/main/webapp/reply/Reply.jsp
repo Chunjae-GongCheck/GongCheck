@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<%@ include file="../post/PostView.jsp"%>--%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
 <body>
 <!--댓글 목록-->
 <hr/>
-    <form method="get">
+    <form method="get" action="/GongCheck_war_exploded/gck/ReplyViews.do">
     <c:choose>
         <c:when test="${empty list}">
     <div class="card text-bg-light mb-3" style="
@@ -59,20 +59,22 @@
     </form>
 
     <!--댓글 작성 칸-->
-<div class="container">
-    <div class="form-group">
-      <form name="ReplyWrite" method="post" encType = "multipart/form-data"
-            action="/GongCheck_war_exploded/gck/ReplyWrite.do" onsubmit="return validateForm(this);">
-            <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-                <input type="hidden" name="postIdx" value="${postIdx}" />
-                <tr>
-                    <input type="hidden" name="memberIdx" value="${memberIdx}" />
-                    <td><input type="text" style="height:100px;" class="form-control" placeholder="내용을 입력해주세요" name = "replyContent"></td>
-                    <td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-</div>
+<%--<div class="container">--%>
+<%--    <div class="form-group">--%>
+<%--      <form name="ReplyWrite" method="post" encType = "multipart/form-data"--%>
+<%--            action="${contextPath}/gck/ReplyWrite.do" onsubmit="return validateForm(this);">--%>
+<%--            <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">--%>
+<%--                <input type="hidden" name="postIdx" value="${param.postIdx}" />--%>
+<%--                <tr>--%>
+<%--                    <p>postIdx 값: ${param.postIdx}</p>--%>
+<%--                    <input type="hidden" name="memberIdx" value="${memberIdx}" />--%>
+<%--                    <p>작성자 : ${memberIdx}</p>--%>
+<%--                    <td><input type="text" style="height:100px;" class="form-control" placeholder="내용을 입력해주세요" name="replyContent" value="${vo.replyContent}"></td>--%>
+<%--                    <td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>--%>
+<%--                </tr>--%>
+<%--            </table>--%>
+<%--        </form>--%>
+<%--    </div>--%>
+<%--</div>--%>
 </body>
 </html>
