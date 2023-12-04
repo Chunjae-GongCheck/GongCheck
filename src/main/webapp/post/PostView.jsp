@@ -83,6 +83,7 @@
         </div>
         <!--지혜-->
         <%@ include file="/reply/Reply.jsp" %>
+        <%@ include file="/reply/ReplyWrite.jsp" %>
 </div>
 </div>
 
