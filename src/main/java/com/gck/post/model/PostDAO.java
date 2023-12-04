@@ -29,4 +29,5 @@ public interface PostDAO {
 
     public PostVO getPostByIdx(int postIdx);
 
+    public PostMemberVO selectView1(int postIdx);
 }
