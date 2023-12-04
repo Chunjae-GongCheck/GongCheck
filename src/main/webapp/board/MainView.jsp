@@ -53,7 +53,7 @@
 
                 <!-- 검색 -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">검색
+                    <li class="nav-item">
                         <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#searchModal">검색</a>
                         <jsp:include page="SearchModal.jsp" flush="false"/>
 
@@ -78,11 +78,11 @@
                     <!-- 랭킹 -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            랭킹
+                            Dropdown
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">주간 조회수 Top 10</a></li>
-                            <li><a class="dropdown-item" href="#">주간 좋아요 Top 10</a></li>
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
                         </ul>
                     </li>
 
@@ -126,19 +126,13 @@
             <div class="d-flex align-content-between flex-wrap" id="gridsys" >
 
                 <c:forEach items="${ boardLists }" var="row" varStatus="loop">
-                    <a type="button"
-                        <%-- href="../gck/PostView.do?postIdx=${ row.postIdx }"--%>
-                       class="imageModal"
-                       data-bs-toggle="modal"
-                       data-bs-target="#imageModal">
+                    <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
                         <div class="thumb_post_img" id="thumb_post_img" >
                             <!-- 게시물 번호 -->
 <%--                                ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
 
-
                             <!-- 해당 게시물 링크 -->
                                 <%--            <div class="d-flex justify-content-center"></div>--%>
-
 
 <%--                            <a href="../gck/PostView.do?postIdx=${ row.postIdx }">--%>
                                 <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
@@ -147,6 +141,7 @@
                                     <%-- if문이 없었다면 다중 for 문에 의해 postIdx 마다 모든 게시물이 출력될 것임--%>
                                     <c:if test="${row.postIdx == posts.postIdx}" var="result" scope="request">
 
+                                        <%-- 절대경로+ 서버에 저장된 이미지 불러오기 / loop를 계속 수행하는 동안 부모 foreach 문과 나의 Idx 가 일치하는지 확인하고 맞으면 출력 아니면 점프 --%>
 
                                         <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}"
                                              alt="${loop.index}"
@@ -157,7 +152,7 @@
                                 </c:forEach>
                         </div>
                     </a>
-                    <jsp:include page="../ImageModal.jsp" flush="false"/>
+<%--                    <jsp:include page="../ImageModal.jsp" flush="false"/>--%>
                 </c:forEach>
             </div>
         </c:otherwise>
@@ -194,23 +189,6 @@
     myModal.addEventListener('shown.bs.modal', () => {
         myInput.focus()
     })
-
-    <%--$("#imagePath").on("click", function(e) {--%>
-    <%--    $.ajax({--%>
-    <%--        url: '${pageContext.request.contextPath}' + "/gck/MainView.do",--%>
-    <%--        type: "POST",--%>
-    <%--        success: function (data) {--%>
-    <%--            console.log(data);--%>
-    <%--            const obj = JSON.parse(data); // string 형식(문자열)을 JS 객체로 변환--%>
-    <%--            console.log(obj);--%>
-    <%--            let str = "image: " + obj.image;--%>
-    <%--            $("#imagePathBody").text(str);--%>
-    <%--        },--%>
-    <%--        error: function (error) {--%>
-    <%--            console.log(error);--%>
-    <%--        }--%>
-    <%--    })--%>
-    <%--})--%>
 
 </script>
 
