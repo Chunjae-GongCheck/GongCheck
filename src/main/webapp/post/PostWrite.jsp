@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>글 작성하기</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -115,7 +115,7 @@
     </script>
 </head>
 <body>
-<h1>파일 업로드</h1>
+<h1>글 작성하기</h1>
 <form name="writefrm" method="post" enctype="multipart/form-data"
       action="../gck/PostWrite.do" onsubmit="return validateForm(this)">
 

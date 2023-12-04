@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>파일 업로드</title>
+    <title>글 수정하기</title>
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
@@ -99,7 +102,7 @@
     </script>
 </head>
 <body>
-<h1>파일 업로드</h1>
+<h1>글 수정하기</h1>
 <form name="writefrm" method="post" enctype="multipart/form-data" action="../gck/PostEdit.do" onsubmit="return validateForm(this)">
     <input type="hidden" name="postIdx" value="${postVO.postIdx}" />
     <input type="hidden" name="postImagePath" value="${postImageVO.postImagePath}" />
