@@ -20,10 +20,9 @@ import java.util.List;
 import java.util.Map;
 
 
-@WebServlet(name = "MainView", value = "/gck/MainView.do")
+@WebServlet(name = "MainView", value = "/board/MainView.do")
 public class BoardController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    // 서비스 생성 후 getter 만들어서 싱글톤 유지하면 편할 것 같습니다.
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -105,33 +104,12 @@ public class BoardController extends HttpServlet {
 
         // 이동할 주소
         String url = "";
-        // 로그인 여부 확인
 
-        if(session.getAttribute("memberIdx") != null){// 로그인이 되어 있음
-            url = "/board/MainViewAfterLogin.jsp";
-        }else{
-            url = "/board/MainView.jsp";
-        }
+        url = "/board/MainView.jsp";
+
         req.setAttribute("map",map);
         req.setAttribute("postImageVOList",postImageVOList);
         req.setAttribute("boardLists", boardLists);
         req.getRequestDispatcher(url).forward(req, resp);
-
-
     }
-
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-//            throws ServletException, IOException {
-//
-//        System.out.println("클릭이벤트로 doPost호출");
-//        ImageJsonVO imageJsonVO = new ImageJsonVO("params");
-//        String imagePath = req.getParameter("imagePath");
-//
-//        Gson gson = new Gson();
-//        String json = gson.toJson(imageJsonVO);
-//
-//        System.out.println("VO에 담기는지 확인" + imageJsonVO);
-//
-//
-//    }
 }
