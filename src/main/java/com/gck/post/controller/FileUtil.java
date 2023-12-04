@@ -40,6 +40,8 @@ public class FileUtil {
 		//전송된 파일이 있다면 디렉토리에 저장
 		if (!FileName.isEmpty()) {
 			part.write(sDirectory+ File.separator +FileName);
+            System.out.println("filename: " + FileName);
+            System.out.println("full : " + sDirectory+ File.separator +FileName);
 		}
 		 
 		//원본 파일명 반환
