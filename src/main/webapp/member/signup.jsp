@@ -225,7 +225,7 @@
 
 <body>
 <!-- Responsive navbar-->
-<jsp:include page="../navbarAfterLogin.jsp" flush="false"/>
+<jsp:include page="../navbar.jsp" flush="false"/>
 
 <div class="container">
     <div class="input-form-backgroud row">
@@ -403,7 +403,7 @@
 </div>
 
 <!-- Footer-->
-<jsp:include page="../footer_jy.jsp" flush="false"/>
+<jsp:include page="../footer.jsp" flush="false"/>
 
 <script>
     // required 속성이 있는데 빈칸이 입력되었을 때, invalid-feedback 출력

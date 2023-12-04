@@ -10,7 +10,7 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="gck/MainView.do">MainView로 이동</a><br>
+<a href="board/MainView.do">MainView로 이동</a><br>
 
 <a href="${contextPath}/member/loginform.do">로그인 하러가기</a><br>
 <a href="${contextPath}/member/login_bootstrap.jsp">로그인 하러가기(부트스트랩 사용)</a><br>

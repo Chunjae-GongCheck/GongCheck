@@ -51,6 +51,6 @@
 </header>
 
 <!-- Footer-->
-<jsp:include page="../footer_jy.jsp" flush="false"/>
+<jsp:include page="../footer.jsp" flush="false"/>
 </body>
 </html>

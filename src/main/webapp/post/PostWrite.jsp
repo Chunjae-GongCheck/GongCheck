@@ -5,154 +5,103 @@
 <head>
     <meta charset="UTF-8">
     <title>글 작성하기</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link href="../css/signup_bootstrap.css" rel="stylesheet">
 
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            border-bottom: 0; /* 테이블 아래 테두리 제거 */
-        }
-
-        td, th {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-            border-bottom: 0; /* 각 셀의 아래 테두리 제거 */
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input[type="text"],
-        input[type="file"],
-        textarea {
-            width: calc(100% - 16px);
-            padding: 10px;
-            margin: 6px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        textarea {
-            resize: vertical;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .reset-btn {
-            background-color: #f44336;
-        }
-
-        .reset-btn:hover {
-            background-color: #d32f2f;
-        }
-
-        .link-btn {
-            background-color: #2196F3;
-        }
-
-        .link-btn:hover {
-            background-color: #0d47a1;
-        }
-
-    </style>
-
-    <script type="text/javascript">
-        function validateForm(form) {
-            if (form.title.value == "") {
-                alert("제목을 입력하세요.");
-                form.title.focus();
-                return false;
-            }
-            if (form.content.value == "") {
-                alert("내용을 입력하세요.");
-                form.content.focus();
-                return false;
+    <script>
+        // 입력이 들어오면 invalid 경고 문구를 지운다.
+        let inputDataCheck = (id) => {
+            if (id) {
+                $("#" + id).removeClass("is-invalid");
+                $("#" + id).removeClass("is-valid");
             }
         }
-
     </script>
 </head>
 <body>
-<h1>글 작성하기</h1>
-<form name="writefrm" method="post" enctype="multipart/form-data"
-      action="../gck/PostWrite.do" onsubmit="return validateForm(this)">
+<!-- nav -->
+<jsp:include page="/navbar.jsp">
+    <jsp:param name="memberIdx" value="${ sessionScope.memberIdx }"/>
+    <jsp:param name="memberNickname" value="${ sessionScope.memberNickname }"/>
+</jsp:include>
 
+<!-- content -->
+<div class="container">
+    <div class="input-form-backgroud row">
+        <div class="input-form col-md-12 mx-auto">
+            <h4 class="mb-3">글 작성하기</h4>
 
-    <table border = "1" width="700px">
-<%--        <div>--%>
-<%--        <tr>--%>
-<%--            <td width="10%" align="center">날짜</td>--%>
-<%--            <td width="10%" align="center">${ vo.postWriteDate }</td><br/>--%>
-<%--            <td width="10%" align="center">조회수</td>--%>
-<%--            <td width="10%" align="center">${ vo.postVisitcount }</td>--%>
-<%--        </tr>--%>
-<%--        </div>--%>
-        <div class="form-group">
-            <label for="postTitle">제목</label>
-            <input type="text" value="${ vo.postTitle }"
-                   class="form-control" id="postTitle" name="postTitle"
-                   placeholder="제목을 입력하세요.">
+            <form name="writefrm" method="post" enctype="multipart/form-data" class="writefrm" action="${pageContext.request.contextPath}/post/PostWrite.do" novalidate>
+                <!-- 제목 -->
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="postTitle">제목</label>
+                        <input type="text" type="text" class="form-control" id="postTitle" name="postTitle" placeholder="제목을 입력해 주세요." required
+                               onInput="inputDataCheck(this.id)">
+                        <div class="invalid-feedback">
+                            제목을 입력해 주세요.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 내용 -->
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="postContent">내용</label>
+                        <textarea class="form-control" id="postContent" name="postContent" rows="10" placeholder="내용을 입력해 주세요." required
+                        onInput="inputDataCheck(this.id)"></textarea>
+                        <div class="invalid-feedback">
+                            내용을 입력해 주세요.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 첨부 파일 -->
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="postImagePath">사진 업로드</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="postImagePath" name="postImagePath" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required>
+                        </div>
+                        <div class="invalid-feedback">
+                            사진을 첨부해 주세요.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">등록하기</button>
+                    <button type="reset" class="btn btn-primary">다시 작성하기</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/board/MainView.do';">목록보기</button>
+                </div>
+            </form>
         </div>
-        <br/>
-        <div class="form-group">
-            <label for="postContent">내용</label>
-            <textarea class="form-control" id="postContent" name="postContent" placeholder="내용을 입력하세요."
-                      rows="3" style="margin-bottom : 20px">${ vo.postContent }</textarea>
-        </div>
-        <div class="form-group">
-            <label for="postImagePath">첨부 파일</label>
-            <input multiple type="file" class="form-control" id="postImagePath" name="postImagePath">
-        </div> <br/><br/>
-        <div class="form-group">
-                <button type="submit">작성 완료</button>
-                <button type="reset">RESET</button>
-                <button type="button" onclick="location.href='../gck/MainView.do';">
-                    목록 바로가기
-                </button>
-        </div>
-    </table>
-</form>
+    </div>
+</div>
+
+<!-- footer -->
+<jsp:include page="../footer.jsp" flush="false"/>
+
+<script>
+    // required 속성이 있는데 빈칸이 입력되었을 때, invalid-feedback 출력
+    window.addEventListener('load', () => {
+        const forms = document.getElementsByClassName('writefrm');
+
+        Array.prototype.filter.call(forms, (form) => {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        });
+
+    }, false);
+</script>
+
 </body>
 </html>

@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 
-    <link href="/css/navbar_jy.css" rel="stylesheet"/>
+    <link href="/css/navbar.css" rel="stylesheet"/>
 
     <style>
         <%-- 네비게이션 바 --%>
@@ -163,7 +163,7 @@
     <button type="button" class="btn btn-outline-danger" onclick="location.href='../post/PostWrite.jsp';">글쓰기</button>
 </div>
 <%-- footer --%>
-<jsp:include page="../footer_jy.jsp" flush="false"/>
+<jsp:include page="../footer.jsp" flush="false"/>
 
 <%-- 검색 버튼 모달 창 스크립트 --%>
 

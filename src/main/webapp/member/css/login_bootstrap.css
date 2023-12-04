@@ -57,19 +57,19 @@ body {
 }
 
 /* 회원가입 링크 */
-a:link {
+#signup a:link {
     color : #FFB701;
     text-decoration: none;
 }
-a:visited { /* 방문한 적이 있을 때 */
+#signup a:visited { /* 방문한 적이 있을 때 */
     color : #FFB701;
     text-decoration: none;
 }
-a:hover { /* 마우스가 글자 위에 있을 때 */
+#signup a:hover { /* 마우스가 글자 위에 있을 때 */
     color : #dfa001;
     text-decoration: none;
 }
-a:active { /* 클릭하고 있을 때 */
+#signup a:active { /* 클릭하고 있을 때 */
     color : #FFB701;
     text-decoration: none;
 }
