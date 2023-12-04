@@ -41,64 +41,7 @@
 
 <body>
 <%--수정된 nav--%>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <div class="container">
-            <!-- 로고 -->
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/gck/MainView.do">GongCheck</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span></button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <!-- 검색 -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#searchModal">검색</a>
-                        <jsp:include page="SearchModal.jsp" flush="false"/>
-
-<%--                        <form class="d-flex justify-content-end" action="${pageContext.request.contextPath}/gck/MainView.do" id="navright_">--%>
-<%--                            <select class="form-select-sm" name="searchField">--%>
-<%--                                <option value="title">제목</option>--%>
-<%--                                <option value="content">내용</option>--%>
-<%--                            </select>--%>
-
-<%--                            <input type="text" name="searchWord" value="${param.searchWord}"/>--%>
-<%--                            <input type="submit" value="검색하기" class="btn btn-outline-dark" style="margin-right: 50px"/>--%>
-<%--                        </form>--%>
-
-                    </li>
-                    <!-- 공지사항 -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            공지사항
-                        </a>
-                    </li>
-
-                    <!-- 랭킹 -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- 로그인 -->
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="${pageContext.request.contextPath}/member/loginform.do"
-                           role="button"
-                           aria-expanded="false">
-                           로그인
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
 <%--두번째 모달--%>
 <%--클릭하면 해당 게시물의 url 자체를 불러올 것이냐--%>

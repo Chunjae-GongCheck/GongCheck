@@ -104,14 +104,14 @@ public class BoardController extends HttpServlet {
 
 
         // 이동할 주소
-        String url = "../board/MainView.jsp";
+        String url = "";
         // 로그인 여부 확인
 
-//        if(session.getAttribute("memberIdx") != null){// 로그인이 되어 있음
-//            url = "/board/MainViewAfterLogin.jsp";
-//        }else{
-//            url = "/board/MainView.jsp";
-//        }
+        if(session.getAttribute("memberIdx") != null){// 로그인이 되어 있음
+            url = "/board/MainViewAfterLogin.jsp";
+        }else{
+            url = "/board/MainView.jsp";
+        }
         req.setAttribute("map",map);
         req.setAttribute("postImageVOList",postImageVOList);
         req.setAttribute("boardLists", boardLists);
