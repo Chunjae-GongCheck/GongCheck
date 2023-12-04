@@ -49,4 +49,21 @@
         from members
         where member_idx = #{memberIdx}
     </select>
+
+    <select id="getMember" parameterType="int" resultType="com.gck.member.model.MemberVO">
+        select *
+        from members
+        where member_idx = #{memberIdx}
+    </select>
+
+    <update id="updateMember" parameterType="java.util.HashMap">
+        update members
+        set
+            member_nickname = #{memberNickname},
+            member_email = #{memberEmail},
+            member_zonecode = #{memberZonecode},
+            member_address = #{memberAddress},
+            member_address_detailed = #{memberAddressDetailed}
+        where member_idx = #{memberIdx}
+    </update>
 </mapper>

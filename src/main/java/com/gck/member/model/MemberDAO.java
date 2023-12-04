@@ -17,4 +17,8 @@ public interface MemberDAO {
     public Integer searchEmail(String memberEmail);
     // 닉네임 조회
     public String getNickname(int memberIdx);
+    // 회원 정보 수정 : 회원 정보 조회
+    public MemberVO getMember(int memberIdx);
+    // 회원 정보 수정
+    public Integer updateMember(HashMap<String, String> map);
 }

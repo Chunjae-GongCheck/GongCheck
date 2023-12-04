@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>GongCheck: Welcome</title>
+    <title>GongCheck: Welcome!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
@@ -42,7 +42,7 @@
     <div class="container px-lg-5">
         <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
             <div class="m-4 m-lg-5">
-                <h1 class="display-5 fw-bold">회원가입을 축하드립니다!</h1>
+                <h1 class="display-5 fw-bold">회원가입을 축하합니다!</h1>
                 <p class="fs-4">공첵에서 매일 게시물을 작성하며 공부 습관을 길러 봐요!</p>
                 <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/member/loginform.do">로그인 하러 가기</a>
             </div>
