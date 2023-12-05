@@ -194,7 +194,7 @@ Tomcat 8090 포트 연결
 </summary>
  <br/>  
 
-[- 수정 및 삭제](#)
+[- 회원수정 및 삭제](#)
 <br/>
 <img src="#" width="350px" height="150px">
    
