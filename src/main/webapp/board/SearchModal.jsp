@@ -39,13 +39,13 @@
                         <%--                    드롭다운 end--%>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                        <button type="button" class="btn btn-dark">
-                            <a class="link-light"
-                               href="${pageContext.request.contextPath}/gck/MainView.do" style="text-decoration: none">
-                                검색
-                            </a>
-                        </button>
+<%--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>--%>
+<%--                        <button type="button" class="btn btn-dark">--%>
+<%--                            <a class="link-light"--%>
+<%--                               href="${pageContext.request.contextPath}/gck/MainView.do" style="text-decoration: none">--%>
+<%--                                검색--%>
+<%--                            </a>--%>
+<%--                        </button>--%>
                     </div>
                 </div>
             </div>
