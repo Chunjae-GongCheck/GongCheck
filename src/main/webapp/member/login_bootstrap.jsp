@@ -94,7 +94,7 @@
 </head>
 <body>
 <!-- Responsive navbar-->
-<jsp:include page="../navbar.jsp" flush="false"/>
+<%--<jsp:include page="../navbar.jsp" flush="false"/>--%>
 
 <main class="form-signin">
     <form action="${pageContext.request.contextPath}/member/login.do" method="post" name="" class="validation-form" onsubmit="return frm_check();">
@@ -123,7 +123,7 @@
 </main>
 
 <!-- Footer-->
-<jsp:include page="../footer.jsp" flush="false"/>
+<%--<jsp:include page="../footer.jsp" flush="false"/>--%>
 
 <script>
     // 아이디, 비밀번호 빈칸 유효성 검사
