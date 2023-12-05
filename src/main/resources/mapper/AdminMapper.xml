@@ -10,7 +10,7 @@
     <select id="selectAdminList" resultType="com.gck.admin.model.AdminVO">
         select a.admin_idx, a.admin_id
         from admins as a
-    </select>
+    </select> 
 
     <select id="selectAdmin" parameterType="String" resultType="com.gck.admin.model.AdminVO">
         select a.admin_idx, a.admin_id
