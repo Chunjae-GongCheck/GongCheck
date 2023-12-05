@@ -6,8 +6,8 @@
 
 1. [📂 PPT](#-PPT-)
 2. [📖 프로젝트 소개](#-gongcheck-프로젝트-)
-3. [💡 Development Environment](#Development_Environment)
-4. [💡 Prerequisite](#기획-의도)
+3. [💡 Development Environment](#development-environment)
+4. [💡 Prerequisite](#prerequisite)
 5. [💡 How to Run in IntelliJ](#how-to-run-in-intellij)
 6. [💡 기획 의도](#기획-의도)
 7. [🙋‍♀️ Team_Member](#%EF%B8%8F-team_member-%EF%B8%8F)
