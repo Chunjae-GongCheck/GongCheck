@@ -81,11 +81,11 @@ Tomcat 8090 포트 연결
 
 ## 🙋‍♀️ Team_Member 🙋‍♀️
 
-#### [🌱 Gwon Jincheol 👉 GitHub](https://github.com/Jincheol-11)
-#### [🎵 SEOKEUN PARK 👉 GitHub](https://github.com/seokeunpark)
-#### [🧟 Jiyeon Lee 👉 GitHub](https://github.com/thegreatjy)
-#### [☕ CK 👉 GitHub](https://github.com/kidchang93)
-#### [☕ JIHYE 👉 GitHub](https://github.com/jyeeeh)
+#### [😆 Gwon Jincheol 👉 GitHub](https://github.com/Jincheol-11)
+#### [😆 SEOKEUN PARK 👉 GitHub](https://github.com/seokeunpark)
+#### [😆 Jiyeon Lee 👉 GitHub](https://github.com/thegreatjy)
+#### [😆 CK 👉 GitHub](https://github.com/kidchang93)
+#### [😆 JIHYE 👉 GitHub](https://github.com/jyeeeh)
 
 ## 📋개발 일지📋
 <details><summary>개발 일지</summary>
