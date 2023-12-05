@@ -170,8 +170,8 @@
                 <!-- 아이디 -->
                 <div class="row">
                     <div class="col-md-8 mb-3">
-                        <label for="memberId">아이디</label>
-                        <input type="text" class="form-control" id="memberId" name="memberId" value="${ memberVo.memberId }" disabled readonly>
+                        <label for="memberId">아이디 (수정 불가)</label>
+                        <input type="text" class="form-control" id="memberId" name="memberId" value="${ memberVo.memberId }" readonly>
                     </div>
                 </div>
 
@@ -200,8 +200,8 @@
                 <!-- 이메일 -->
                 <div class="row">
                     <div class="col-md-8 mb-3">
-                        <label for="memberEmail">이메일</label>
-                        <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" value="${ memberVo.memberEmail }" disabled readonly>
+                        <label for="memberEmail">이메일 (수정 불가)</label>
+                        <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" value="${ memberVo.memberEmail }" readonly>
                     </div>
                 </div>
 
@@ -209,7 +209,7 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="memberZonecode">우편번호</label>
-                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" value="${ memberVo.memberZonecode }" disabled readonly>
+                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" value="${ memberVo.memberZonecode }" readonly required>
                         <div class="invalid-feedback">
                             우편번호를 검색해 주세요.
                         </div>
@@ -222,7 +222,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="memberAddress">주소</label>
-                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" value="${ memberVo.memberAddress }" disabled readonly>
+                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" value="${ memberVo.memberAddress }" readonly required>
                     <div class="invalid-feedback">
                         주소를 입력해 주세요.
                     </div>
