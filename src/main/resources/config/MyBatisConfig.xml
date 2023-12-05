@@ -32,6 +32,7 @@
         <!-- post -->
         <mapper resource="mapper/PostMapper.xml"/>
         <mapper resource="mapper/PostImageMapper.xml"/>
+        <mapper resource="mapper/LikesMapper.xml"/>
         <!-- reply -->
         <mapper resource="mapper/ReplyMapper.xml" />
     </mappers>
