@@ -14,7 +14,7 @@ import java.util.List;
 //*회원정보 조회* //
 
 @WebServlet("/MemberListServlet")
-public class AdminBoardListController extends HttpServlet {
+public class AdminBoardListController extends HttpServlet { 
 
     private final AdminBoardService adminBoardService = new AdminBoardService();
 
