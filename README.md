@@ -1,6 +1,6 @@
 #  ✏️ 에듀테크 풀스택 3기 4조 GongCheck ✏️
 ```bash
-프로젝트 기간 2023년 11월 20일 ~ 2023년 12월 8일
+프로젝트 기간 : 2023년 11월 20일 ~ 2023년 12월 8일
 ```
 ## 📚 목차 📚
 
@@ -104,7 +104,7 @@ Tomcat 8090 포트 연결
   <img src="#">
 </details>
 
-## 📊 다이어그램 📊
+## 📊 Diagram 📊
 
 <details><summary>Usecase</summary>
 <img src="#g">
