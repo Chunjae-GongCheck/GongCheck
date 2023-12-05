@@ -5,7 +5,7 @@
 ## 📚 목차 📚
 
 1. [📂 PPT](#-PPT-)
-2. [📖 프로젝트 소개](#-book_store-프로젝트-)
+2. [📖 프로젝트 소개](#-gongcheck-프로젝트-)
 3. [💡 Development Environment](#Development_Environment)
 4. [💡 Prerequisite](#기획-의도)
 5. [💡 How to Run in IntelliJ](#기획-의도)
