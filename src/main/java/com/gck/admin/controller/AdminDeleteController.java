@@ -12,7 +12,7 @@ import java.io.IOException;
 // *회원정보 삭제* /
 
 @WebServlet("/DeleteMemberServlet")
-public class AdminDeleteController extends HttpServlet {
+public class AdminDeleteController extends HttpServlet { 
 
     private final AdminBoardService adminBoardService = new AdminBoardService();
 
