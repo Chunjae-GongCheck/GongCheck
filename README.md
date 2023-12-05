@@ -1,4 +1,4 @@
-#  💻 에듀테크 풀스택 3기 4조 GongCheck 💻
+#  ✏️ 에듀테크 풀스택 3기 4조 GongCheck ✏️
 ```bash
 프로젝트 기간 2023년 11월 20일 ~ 2023년 12월 8일
 ```
@@ -6,9 +6,9 @@
 
 1. [📂 PPT](#-PPT-)
 2. [📖 프로젝트 소개](#-gongcheck-프로젝트-)
-3. [💡 Development Environment](#development-environment)
-4. [💡 Prerequisite](#prerequisite)
-5. [💡 How to Run in IntelliJ](#how-to-run-in-intellij)
+3. [🔧Development Environment](#development-environment)
+4. [🔔 Prerequisite](#prerequisite)
+5. [❗ How to Run in IntelliJ](#how-to-run-in-intellij)
 6. [💡 기획 의도](#기획-의도)
 7. [🙋‍♀️ Team_Member](#%EF%B8%8F-team_member-%EF%B8%8F)
 8. [📋 개발 일지](#개발-일지)
@@ -55,19 +55,19 @@
 ```bash프로젝트 소개
 공부인증 기능을 JSP와 MyBatis로 구현한 웹 페이지
 ```
-## 💡Development Environment💡
+## 🔧Development Environment🔧
 ```
 Java 11
 MariaDB 3.2.0
 MyBatis 3.5.13
 IntelliJ
 ```
-## 💡Prerequisite💡
+## 🔔Prerequisite🔔
 ```
 MariaDB 3306 포트로 연결 및 DDL 실행
 Tomcat 8090 포트 연결
 ```
-## 💡How to Run in IntelliJ💡
+## ❗How to Run in IntelliJ❗
 ```
 1. File > Project Structure > Project Settings > Modules > Dependencies >
 + > 1. Add Jars에 lombok.jar, mariadb-java-client-3.2.0.jar, mybatis-3.5.13.jar 파일을 추가한다.
