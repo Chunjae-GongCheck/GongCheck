@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Data
-public class AdminBoardService {
+public class AdminBoardService { 
 
     public List<AdminResultVO> selectAdminList() {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
