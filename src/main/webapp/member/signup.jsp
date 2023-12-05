@@ -305,7 +305,7 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="memberZonecode">우편번호</label>
-                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" placeholder="" required disabled>
+                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" placeholder="" required readonly>
                         <div class="invalid-feedback">
                             우편번호를 검색해 주세요.(readonly)
                         </div>
@@ -318,7 +318,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="memberAddress">주소</label>
-                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" placeholder="서울특별시 강남구" required disabled>
+                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" placeholder="서울특별시 강남구" required readonly>
                     <div class="invalid-feedback">
                         주소를 입력해 주세요.
                     </div>
