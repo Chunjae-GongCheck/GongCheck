@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/gck/PostEdit.do")
+@WebServlet("/post/PostEdit.do")
 @MultipartConfig(
         maxFileSize = 1024 * 1024 * 1,
         maxRequestSize = 1024 * 1024 * 10
@@ -27,7 +27,6 @@ import java.util.ArrayList;
             throws ServletException, IOException {
         // 수정할 게시물의 일련번호를 받아옴
         String postIdx = req.getParameter("postIdx");
-        System.out.println("postIdx in servlet (doGet): " + postIdx);
 
         // postIdx가 null 또는 빈 문자열인 경우 -1로 설정
         if (postIdx == null || postIdx.isEmpty()) {
@@ -46,7 +45,7 @@ import java.util.ArrayList;
         // 권한 확인: 현재 로그인한 사용자가 작성자가 아니면 수정 권한이 없음
         if (memberIdx != postAuthorIdx) {
             JSFunction.alertLocation(resp, "글 수정에 관한 권한이 없습니다.",
-                    "/GongCheck_war_exploded/gck/MainView.do");
+                    "/GongCheck_war_exploded/board/MainView.do");
             return;
         }
         req.setAttribute("postVO", postVO);
@@ -145,7 +144,7 @@ import java.util.ArrayList;
         System.out.println("Post 수정 성공!");
 
 
-        resp.sendRedirect(req.getContextPath()+"/gck/MainView.do");
+        resp.sendRedirect(req.getContextPath()+"/board/MainView.do");
 
 
     }

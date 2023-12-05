@@ -149,4 +149,20 @@ public class PostDAOImpl implements PostDAO {
         sqlSession.close();
         return result;
     }
+
+    @Override
+    public PostMemberVO selectView1(int postIdx) {
+        SqlSession sqlSession = MyBatisFactory.getSqlSession();
+        PostDAO mapper = sqlSession.getMapper(PostDAO.class);
+        PostMemberVO result = mapper.selectView1(postIdx);
+
+        if (result != null) {
+            System.out.println("조회된 게시물 내용: " + result);
+        } else {
+            System.out.println("게시물이 조회되지 않았습니다. postIdx: " + postIdx);
+        }
+
+        sqlSession.close();
+        return result;
+    }
 }

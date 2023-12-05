@@ -1,0 +1,36 @@
+body {
+    min-height: 100vh;
+}
+
+.input-form {
+    max-width: 680px;
+
+    margin-top: 80px;
+    padding: 32px;
+
+    background: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
+
+/* 로그인 버튼 */
+.btn-primary {
+    --bs-btn-color: #fff !important;
+    --bs-btn-bg: #FFB701 !important;
+    --bs-btn-border-color: #FFB701 !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-hover-bg: #dfa001 !important;
+    --bs-btn-hover-border-color: #c68e00 !important;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253 !important;
+    --bs-btn-active-color: #fff !important;
+    --bs-btn-active-bg: #FFB701 !important;
+    --bs-btn-active-border-color: #FFB701 !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+    --bs-btn-disabled-color: #fff !important;
+    --bs-btn-disabled-bg: #FFB701 !important;
+    --bs-btn-disabled-border-color: #FFB701 !important;
+}

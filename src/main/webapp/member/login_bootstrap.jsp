@@ -8,10 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>GongCheck: Login</title>
+    <title>GongCheck: 로그인</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link href="css/login_bootstrap.css" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script type="text/javascript">
@@ -92,6 +93,9 @@
     </script>
 </head>
 <body>
+<!-- Responsive navbar-->
+<jsp:include page="../navbar.jsp" flush="false"/>
+
 <main class="form-signin">
     <form action="${pageContext.request.contextPath}/member/login.do" method="post" name="" class="validation-form" onsubmit="return frm_check();">
         <p>${message != null ? message : ""}</p>
@@ -114,28 +118,31 @@
             </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
-        <p class="message">아직 회원이 아니신가요?  <a href="${pageContext.request.contextPath}/member/signupform.do">회원가입</a></p>
-
+        <p class="message" id="signup">아직 회원이 아니신가요?  <a href="${pageContext.request.contextPath}/member/signupform.do">회원가입</a></p>
     </form>
-
-    <script>
-        // 아이디, 비밀번호 빈칸 유효성 검사
-        window.addEventListener('load', () => {
-            const forms = document.getElementsByClassName('validation-form');
-
-            Array.prototype.filter.call(forms, (form) => {
-                form.addEventListener('submit', function (event) {
-                    // input 태그에 required가 있는데 빈칸이라면 false
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    </script>
 </main>
+
+<!-- Footer-->
+<jsp:include page="../footer.jsp" flush="false"/>
+
+<script>
+    // 아이디, 비밀번호 빈칸 유효성 검사
+    window.addEventListener('load', () => {
+        const forms = document.getElementsByClassName('validation-form');
+
+        Array.prototype.filter.call(forms, (form) => {
+            form.addEventListener('submit', function (event) {
+                // input 태그에 required가 있는데 빈칸이라면 false
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+</script>
+
 </body>
 </html>

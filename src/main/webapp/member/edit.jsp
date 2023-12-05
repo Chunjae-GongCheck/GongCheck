@@ -6,12 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GongCheck: 회원가입</title>
+    <title>GongCheck: 회원정보 수정</title>
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -46,69 +47,6 @@
             if (id) {
                 $("#" + id).removeClass("is-invalid");
                 $("#" + id).removeClass("is-valid");
-            }
-        }
-
-        // id 중복 확인
-        function id_overlap_check(object) {
-            // 아이디
-            let inputMemberId =  $("#memberId").val();
-
-            // null 입력
-            if(!inputMemberId){
-                //alert("아이디를 입력해 주세요.");
-                object.addClass("is-invalid");
-                return;
-            }
-
-            // id 길이 미만 혹은 초과 시, 경고 문구 출력
-            if(object.val().length < object.minLength || object.val().length > object.maxLength){
-                object.addClass("is-invalid");
-                return;
-            }
-
-            $.ajax({
-                url : "${pageContext.request.contextPath}/member/idoverlapcheck.do", // 요청 주소
-                type : 'POST',
-                data : { // 요청 시, 넘겨줄 데이터
-                    memberId : inputMemberId
-                },
-                success : function(data) {
-                    // data : 응답 정보. url의 실행 결과가 넘어 온다. (주석 포함)
-                    // alert('data: ' + $.trim(data));
-
-                    if ($.trim(data) == "1") { // data의 앞 뒤 공백을 제거(trim)한 후 "1"인지 확인
-                        alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-                        //아이디가 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인
-                        $("#memberId").addClass("is-invalid")
-                        // $("#memberId").removeClass("has-success")
-                        $("#memberId").focus();
-                    } else {
-                        alert("사용 가능한 아이디입니다.");
-                        //아이디가 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인
-                        // $("#memberId").addClass("has-success")
-                        $("#memberId").removeClass("is-invalid")
-                        $("#memberId").focus();
-                    }
-                }
-            });
-        }
-
-        // 비밀번호 일치 확인
-        function passwordCheck(){
-            let passwordMember = $("#passwordMember").val();
-            let passwordMemberCheck = $("#passwordMemberCheck").val();
-
-            if(passwordMember !== passwordMemberCheck){ // 불일치
-                // $("#passwordMemberCheck").addClass("is-invalid");
-                $("#passwordMemberCheck").removeClass("has-validation");
-                $("#passwordMemberCheck").addClass("is-invalid");
-                return false;
-            }else{  // 일치
-                $("#passwordMemberCheck").addClass("has-validation");
-                $("#passwordMemberCheck").removeClass("is-invalid");
-                return true;
-                // $("#passwordMemberCheck").addClass("has-success")
             }
         }
 
@@ -188,10 +126,7 @@
         }
 
         function checkErrorMsg(){
-            if($("#memberId").hasClass("is-invalid"))           return false;
-            if($("#passwordMember").hasClass("is-invalid"))     return false;
             if($("#memberNickname").hasClass("is-invalid"))     return false;
-            if($("#memberEmail").hasClass("is-invalid"))        return false;
 
             return true;
         }
@@ -204,7 +139,7 @@
                     // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                     var addr = ''; // 주소 변수 (도로명 혹은 지번 주소)
 
-                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                     if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                         addr = data.roadAddress;
                     } else { // 사용자가 지번 주소를 선택했을 경우(J)
@@ -230,50 +165,27 @@
 <div class="container">
     <div class="input-form-backgroud row">
         <div class="input-form col-md-12 mx-auto">
-            <h4 class="mb-3">회원가입</h4>
-
-            <form class="validation-form" method="post" action="${pageContext.request.contextPath}/member/signup.do" novalidate>
+            <h4 class="mb-3">회원 정보 수정</h4>
+            <form class="validation-form" method="post" action="${pageContext.request.contextPath}/member/edit.do" novalidate>
                 <!-- 아이디 -->
                 <div class="row">
                     <div class="col-md-8 mb-3">
                         <label for="memberId">아이디</label>
-                        <input type="text" class="form-control" id="memberId" name="memberId" placeholder="5자 이상 30자 이하의 영문과 숫자 조합을 입력해 주세요." required
-                        minlength="5" maxlength="30" onInput="inputDataCheck(this.id)" onKeyUp="maxLengthCheck(this.id)">
-                        <div class="invalid-feedback">
-                            아이디를 다시 입력해 주세요.(5자 이상 30자 이하)
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <br/>
-                        <button id="memberIdCheck" class="btn btn-primary btn-sm btn-block" type="button" onclick="nickname_overlap_check('0')">중복확인</button>
+                        <input type="text" class="form-control" id="memberId" name="memberId" value="${ memberVo.memberId }" disabled readonly>
                     </div>
                 </div>
 
                 <!-- 비밀번호 -->
                 <div class="mb-3">
                     <label for="passwordMember">비밀번호</label>
-                    <input type="password" class="form-control" id="passwordMember" name="passwordMember" placeholder="5자 이상 30자 이하의 영문과 숫자 조합을 입력해 주세요." required
-                    minlength="5" maxlength="128" onInput="maxLengthCheck(this.id);" onKeyUp="inputDataCheck(this.id);">
-                    <div class="invalid-feedback">
-                        비밀번호를 다시 입력해 주세요. (5자 이상 128자 이하)
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="passwordMemberCheck">비밀번호 확인</label>
-                    <input type="password" class="form-control" id="passwordMemberCheck" placeholder="5자 이상 30자 이하의 영문과 숫자 조합을 입력해 주세요." required
-                    onInput="return passwordCheck(); " onsubmit="return passwordCheck();">
-                    <div class="invalid-feedback">
-                        비밀번호를 정확히 입력해 주세요.
-                    </div>
+                    <button id="passwordMember" class="btn btn-primary btn-sm btn-block" type="button" onclick="nickname_overlap_check('1');">비밀번호 재설정</button>
                 </div>
 
                 <!-- 닉네임 -->
                 <div class="row">
                     <div class="col-md-8 mb-3">
                         <label for="memberNickname">닉네임</label>
-                        <input type="text" class="form-control" id="memberNickname" name="memberNickname" placeholder="2자 이상 30자 이하의 영문과 숫자 조합을 입력해 주세요." required
+                        <input type="text" class="form-control" id="memberNickname" name="memberNickname" value="${ memberVo.memberNickname }" required
                         minlength="2" maxlength="30" onInput="maxLengthCheck(this.id)" onKeyUp="inputDataCheck(this.id)">
                         <div class="invalid-feedback">
                             닉네임을 다시 입력해 주세요. (2자 이상 30자 이하)
@@ -289,15 +201,7 @@
                 <div class="row">
                     <div class="col-md-8 mb-3">
                         <label for="memberEmail">이메일</label>
-                        <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" required
-                       minlength="2" maxlength="30" onInput="maxLengthCheck(this.id)" onKeyUp="inputDataCheck(this.id)">
-                        <div class="invalid-feedback">
-                            이메일을 다시 입력해 주세요.
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <br/>
-                        <button id="memberEmailSearch" class="btn btn-primary btn-sm btn-block" type="button" onclick="nickname_overlap_check('2');">중복확인</button>
+                        <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" value="${ memberVo.memberEmail }" disabled readonly>
                     </div>
                 </div>
 
@@ -305,9 +209,9 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="memberZonecode">우편번호</label>
-                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" placeholder="" required readonly>
+                        <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" value="${ memberVo.memberZonecode }" disabled readonly>
                         <div class="invalid-feedback">
-                            우편번호를 검색해 주세요.(readonly)
+                            우편번호를 검색해 주세요.
                         </div>
                     </div>
 
@@ -318,7 +222,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="memberAddress">주소</label>
-                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" placeholder="서울특별시 강남구" required readonly>
+                    <input type="text" class="form-control" id="memberAddress" name="memberAddress" value="${ memberVo.memberAddress }" disabled readonly>
                     <div class="invalid-feedback">
                         주소를 입력해 주세요.
                     </div>
@@ -326,12 +230,11 @@
 
                 <div class="mb-3">
                     <label for="memberAddressDetailed">상세주소</label>
-                    <input type="text" class="form-control" id="memberAddressDetailed" name="memberAddressDetailed" placeholder="상세주소를 입력해 주세요." required>
+                    <input type="text" class="form-control" id="memberAddressDetailed" name="memberAddressDetailed" value="${ memberVo.memberAddressDetailed }" required>
                     <div class="invalid-feedback">
                         상세주소를 입력해 주세요.
                     </div>
                 </div>
-
                 <!--
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -388,14 +291,8 @@
                     </div>
                 </div>
                 -->
-                <hr class="mb-4">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="agreement" required>
-                    <label class="custom-control-label" for="agreement">개인정보 수집 및 이용에 동의합니다.</label>
-                </div>
-
                 <div class="d-grid col-6 mx-auto">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">수정하기</button>
                 </div>
             </form>
         </div>
@@ -417,12 +314,6 @@
                     event.preventDefault();
                     event.stopPropagation();
                     console.log("here 1");
-                }
-
-                if(!passwordCheck()){
-                    event.preventDefault();
-                    event.stopPropagation();
-                    console.log("here 2");
                 }
 
                 if(!checkErrorMsg()){

@@ -32,11 +32,15 @@ public class ReplyController extends HttpServlet {
     // 댓글 [목록] 불러오기
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("--------");
         System.out.println("ReplyController_test");
         ReplyService replyService = new ReplyService();
-        System.out.println(req.getParameter("postIdx"));
-        List<ReplyVO> list = replyService.getRepliesByPost(Integer.parseInt(req.getParameter("postIdx")));
-        //System.out.println((Integer) req.getAttribute("postIdx"));
+        // 요청 파라미터에서 게시물 인덱스 추출
+        String postIdx = req.getParameter("postIdx");
+
+        System.out.println(postIdx);
+        List<ReplyVO> list = replyService.getRepliesByPost(Integer.parseInt(postIdx));
+
         //테스트용
         for(ReplyVO replyVO: list){
             System.out.println(replyVO.getReplyContent());
@@ -44,7 +48,8 @@ public class ReplyController extends HttpServlet {
 
         //뷰 전달
         req.setAttribute("list",list);
-        req.getRequestDispatcher("../reply/Reply.jsp").forward(req,resp);
+        req.getRequestDispatcher("../post/PostView.jsp").forward(req,resp);
+        System.out.println("--------");
     }
 
 

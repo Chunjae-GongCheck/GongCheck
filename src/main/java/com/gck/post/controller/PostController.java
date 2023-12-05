@@ -1,9 +1,6 @@
 package com.gck.post.controller;
 
-import com.gck.post.model.PostDAOImpl;
-import com.gck.post.model.PostImageDAOImpl;
-import com.gck.post.model.PostImageVO;
-import com.gck.post.model.PostVO;
+import com.gck.post.model.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "PostView", value = "/gck/PostView.do")
+@WebServlet(name = "PostView", value = "/post/PostView.do")
 public class PostController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -43,7 +40,7 @@ public class PostController extends HttpServlet {
     // 조회수 증가 메서드 호출
     postDaoImpl.updateVisitCount(postIdx);
     // 게시물 조회 메서드 호출
-    PostVO vo = postDaoImpl.selectView(postIdx);
+    PostMemberVO vo = postDaoImpl.selectView1(Integer.parseInt(postIdx));
     // 게시물 안에 사진들을 가져옴
     ArrayList<PostImageVO> piVO = postImageDAOImpl.getPostImagesByPostIdx((int)Integer.parseInt(postIdx));
 

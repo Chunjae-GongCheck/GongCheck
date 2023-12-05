@@ -10,6 +10,6 @@
 
 <link href="css/signup_bootstrap.css" rel="stylesheet">
 
-<footer class="py-5 bg-dark">
-  <div class="container"><p class="m-0 text-center text-white">Copyright &copy; GongCheck 2023</p></div>
+<footer class="py-5 bg-white">
+  <div class="container"><p class="m-0 text-center text-black">Copyright &copy; GongCheck 2023</p></div>
 </footer>
