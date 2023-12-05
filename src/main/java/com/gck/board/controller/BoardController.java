@@ -1,11 +1,13 @@
 package com.gck.board.controller;
 
 
+import com.gck.board.model.BoardMemberVO;
 import com.gck.board.model.BoardVO;
 import com.gck.board.service.BoardService;
 import com.gck.paging.BoardPage;
 import com.gck.post.model.PostImageDAOImpl;
 import com.gck.post.model.PostImageVO;
+import com.gck.post.model.PostMemberVO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -32,13 +34,12 @@ public class BoardController extends HttpServlet {
         BoardService brdService = new BoardService();
         PostImageDAOImpl piDao = new PostImageDAOImpl();
         Map<String, Object> map = new HashMap<>();
+        BoardMemberVO bmVO = new BoardMemberVO();
 
         String searchField = req.getParameter("searchField");
         String searchWord = req.getParameter("searchWord");
+
         System.out.println("searchWord =======> " + searchWord);
-
-
-        // Service를 통해 전체 게시물 수 조회
 
 
 
@@ -47,11 +48,23 @@ public class BoardController extends HttpServlet {
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
         }
-        System.out.println("searchWord =========> "+searchWord);
-        System.out.println("searchField =========> "+searchField);
+        System.out.println("searchWord =========> "+searchWord); // 콘솔출력문
+        System.out.println("searchField =========> "+searchField); // 콘솔출력문
+        // Service를 통해 전체 게시물 수 조회
+        // 항상 검색어 조건 하단에 위치 해야 한다.
         int totalCount = brdService.selectCount(map);
-        System.out.println("totalCount ======" + totalCount);
 
+        System.out.println("totalCount ======" + totalCount); // 콘솔 출력문
+
+        // 출력된 게시물의 정보 불러오고 map에 저장
+
+        List<BoardMemberVO> memberNickname = brdService.selectNickView(map);
+        map.put("memberNickname",memberNickname);
+        System.out.println("memberNickname =============> "+memberNickname);
+
+
+
+        // 콘솔 출력문
         // 페이징 처리
         // ServletContext 객체를 통해 웹 애플리케이션의 초기 파라미터 값 가져오기
         ServletContext application = getServletContext();

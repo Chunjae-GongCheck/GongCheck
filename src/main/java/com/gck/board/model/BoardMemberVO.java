@@ -21,6 +21,6 @@ public class BoardMemberVO {
     private Date postUpdateDate;        // 수정일시
     private int postVisitcount;         // 조회수
     private String boardDescription;    // 게시판 설명
-    // postImage의 정보도 필요해서 추가
+    // member 정보도 필요해서 추가
     private String memberNickname;
 }

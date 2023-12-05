@@ -54,19 +54,19 @@ public class BoardService {
     }
 
 
-//    public BoardMemberVO selectNickView(Map<String,Object>map) {
-//        this.sqlSession = MyBatisFactory.getSqlSession();
-//        BoardDAO mapper = this.sqlSession.getMapper(BoardDAO.class);
-//        BoardMemberVO result = mapper.selectNickView(map);
-//
-//        if (result != null) {
-//            System.out.println("조회된 게시물 내용: " + result);
-//        } else {
-//            System.out.println("게시물이 조회되지 않았습니다. postIdx: " + postIdx);
-//        }
-//
-//        sqlSession.close();
-//        return result;
-//    }
+    public List<BoardMemberVO> selectNickView(Map<String,Object>map) {
+        this.sqlSession = MyBatisFactory.getSqlSession();
+        BoardDAO mapper = this.sqlSession.getMapper(BoardDAO.class);
+        List<BoardMemberVO> result = mapper.selectNickView(map);
+
+        if (result != null) {
+            System.out.println("조회된 게시물 : " + result);
+        } else {
+            System.out.println("게시물이 조회되지 않았습니다. postIdx: " + map);
+        }
+
+        sqlSession.close();
+        return result;
+    }
 
 }

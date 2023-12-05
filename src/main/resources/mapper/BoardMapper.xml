@@ -40,5 +40,11 @@
     </if>
 --     order by idx desc
 </select>
+    <select id="selectNickView" parameterType="map" resultType="com.gck.board.model.BoardMemberVO">
+        select *
+        from posts p
+        inner join members m on p.member_idx = m. member_idx
+        where post_idx = #{postIdx}
+    </select>
 
 </mapper>
