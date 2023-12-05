@@ -114,7 +114,7 @@
             <div class="d-flex align-content-between flex-wrap" id="gridsys" >
 
                 <c:forEach items="${ boardLists }" var="row" varStatus="loop">
-                    <a href="../gck/PostView.do?postIdx=${ row.postIdx }">
+                    <a href="../post/PostView.do?postIdx=${ row.postIdx }">
                         <div class="thumb_post_img" id="thumb_post_img" >
                             <!-- 게시물 번호 -->
                                 <%--                                ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
