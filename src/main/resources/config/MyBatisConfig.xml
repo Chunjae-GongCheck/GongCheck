@@ -21,7 +21,7 @@
 
     <mappers>
         <!-- admin -->
-
+            <mapper resource="com/gck/admin/mapper/MemberMapper.xml"/>
         <!-- board -->
         <mapper resource="mapper/BoardMapper.xml"/>
         <!-- member -->
