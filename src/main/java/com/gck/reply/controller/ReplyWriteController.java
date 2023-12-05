@@ -66,7 +66,7 @@ public class ReplyWriteController extends HttpServlet {
 
         //글쓰기 성공
 
-        resp.sendRedirect(req.getContextPath() + "/gck/PostView.do");
+        resp.sendRedirect(req.getContextPath() + "/post/PostView.do");
 
 
 //        RequestDispatcher dispatcher = req.getRequestDispatcher("/reply/Reply.jsp");

@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "PostView", value = "/gck/PostView.do")
+@WebServlet(name = "PostView", value = "/post/PostView.do")
 public class PostController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

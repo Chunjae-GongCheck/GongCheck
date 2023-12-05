@@ -92,7 +92,7 @@
                     </div>
                 </div>
 
-                <div class="col">
+                <div class="col justify-content-center">
                     <button type="submit" class="btn btn-primary">등록하기</button>
                     <button type="reset" class="btn btn-primary">다시 작성하기</button>
                     <button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/board/MainView.do';">목록보기</button>
