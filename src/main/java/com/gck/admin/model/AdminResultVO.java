@@ -3,7 +3,7 @@ package com.gck.admin.model;
 import lombok.Data;
 
 @Data
-public class AdminResultVO {
+public class AdminResultVO { 
     private int adminIdx;       // 관리자 index
     private String adminId;     // 관리자 id
     private int passwordAdminIdx;   // 비밀번호 index
