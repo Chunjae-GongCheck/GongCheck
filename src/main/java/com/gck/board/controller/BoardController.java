@@ -39,8 +39,7 @@ public class BoardController extends HttpServlet {
 
 
         // Service를 통해 전체 게시물 수 조회
-        int totalCount = brdService.selectCount(map);
-        System.out.println("totalCount ======" + totalCount);
+
 
 
         // 검색어가 존재하는 경우, Map에 추가
@@ -50,13 +49,14 @@ public class BoardController extends HttpServlet {
         }
         System.out.println("searchWord =========> "+searchWord);
         System.out.println("searchField =========> "+searchField);
-
+        int totalCount = brdService.selectCount(map);
+        System.out.println("totalCount ======" + totalCount);
 
         // 페이징 처리
         // ServletContext 객체를 통해 웹 애플리케이션의 초기 파라미터 값 가져오기
         ServletContext application = getServletContext();
-        int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE")); //
-        int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+        int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE")); // 5
+        int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK")); // 8
 
         // 현재 페이지 확인
         int pageNum = 1; // 기본값
@@ -83,7 +83,7 @@ public class BoardController extends HttpServlet {
 
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
-                blockPage, pageNum,"../gck/MainView.do" ,searchField, searchWord );  // 바로가기 영역 HTML 문자열
+                blockPage, pageNum,"../board/MainView.do" ,searchField, searchWord );  // 바로가기 영역 HTML 문자열
         // map 에 키와 값 추가
         map.put("pagingImg", pagingImg);
         map.put("totalCount", totalCount);

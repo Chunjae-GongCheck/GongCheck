@@ -30,7 +30,7 @@
         on p.post_idx = i.post_idx
         <if test="searchWord != null and !searchWord.equals('')">
             <choose>
-                <when test="searchField == 'title'">
+                <when test="searchField == 'post_title'">
                     WHERE post_title LIKE CONCAT('%', #{searchWord}, '%')
                 </when>
                 <otherwise>
@@ -38,7 +38,7 @@
                 </otherwise>
             </choose>
         </if>
-        order by post_write_date desc;
+        order by post_write_date desc
     </select>
 
     <select id="getPostImagesByPostIdx" resultType="com.gck.post.model.PostImageVO">

@@ -13,7 +13,7 @@
         FROM  posts p,(SELECT @ROWNUM := 0 ) TMP
         <if test="searchWord != null and !searchWord.equals('')">
             <choose>
-                <when test="searchField == 'title'">
+                <when test="searchField == 'post_title'">
                     WHERE post_title LIKE CONCAT('%', #{searchWord}, '%')
                 </when>
                 <otherwise>
@@ -30,7 +30,7 @@
     <if test="searchWord != null and !searchWord.equals('')">
         where
         <choose>
-            <when test="searchField == 'title'">
+            <when test="searchField == 'post_title'">
                 post_title like concat('%', #{searchWord}, '%')
             </when>
             <otherwise>

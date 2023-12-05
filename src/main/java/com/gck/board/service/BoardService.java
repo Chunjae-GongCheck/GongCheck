@@ -44,10 +44,8 @@ public class BoardService {
     }
 
     public int selectCount (Map <String,Object> map) {
-        this.sqlSession =MyBatisFactory.getSqlSession();
+        this.sqlSession = MyBatisFactory.getSqlSession();
         mapper = this.sqlSession.getMapper(BoardDAO.class);
-
-
         int result = mapper.selectCount(map);
         sqlSession.close();
         return result;

@@ -29,8 +29,8 @@
                         <%--                    드롭다운 입력 칸--%>
                             <form class="d-flex justify-content-end" action="${pageContext.request.contextPath}/board/MainView.do" id="navright_">
                                 <select class="form-select-sm" name="searchField">
-                                    <option value="title">제목</option>
-                                    <option value="content">내용</option>
+                                    <option value="post_title">제목</option>
+                                    <option value="post_content">내용</option>
                                 </select>
 
                                 <input type="text" name="searchWord" value="${param.searchWord}"/>

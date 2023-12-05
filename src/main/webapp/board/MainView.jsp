@@ -112,7 +112,7 @@
 </div>
 
 <%-- 하단 메뉴(바로가기)--%>
-<div class="pagination justify-content-center">
+<div class="d-flex justify-content-center">
     <div class="d-flex" id="pagingNumber">
         ${ map.pagingImg }
     </div>
