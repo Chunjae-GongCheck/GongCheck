@@ -1,5 +1,11 @@
 package com.gck.admin.model;
 
-public interface AdminDAO {
+import java.util.List;
 
+public interface AdminDAO { 
+
+    List<AdminVO> selectAdminList();
+    int deleteAdmin(String adminId);
+
+    AdminVO selectAdmin(String adminId);
 }
