@@ -11,7 +11,7 @@
     <title>GongCheck: 로그인</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link href="css/login_bootstrap.css" rel="stylesheet">
+    <!-- <link href="css/login_bootstrap.css" rel="stylesheet">-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -96,31 +96,50 @@
 <!-- Responsive navbar-->
 <jsp:include page="../navbar.jsp" flush="false"/>
 
-<main class="form-signin">
-    <form action="${pageContext.request.contextPath}/member/login.do" method="post" name="" class="validation-form" onsubmit="return frm_check();">
-        <p>${message != null ? message : ""}</p>
+    <div class="container">
+        <div class="input-form-backgroud row">
+            <div class="input-form col-md-12 mx-auto">
+                <form action="${pageContext.request.contextPath}/member/login.do" method="post" name="" class="validation-form" onsubmit="return frm_check();">
+                    <p>${message != null ? message : ""}</p>
 
-        <h4 class="mb-3">로그인</h4>
+                    <h4 class="mb-3">로그인</h4>
 
-        <div class="form-floating">
-            <input type="text" class="form-control" id="memberId" placeholder="아이디" name="memberId" required>
-            <label for="memberId">아이디</label>
+                    <!-- 아이디 -->
+                    <div class="mb-3">
+                        <label for="memberId">아이디</label>
+                        <input type="text" class="form-control" id="memberId" name="memberId" required
+                               minlength="5" maxlength="30" onInput="inputDataCheck(this.id)" onKeyUp="maxLengthCheck(this.id)">
+                        <div class="invalid-feedback">
+                            아이디를 다시 입력해 주세요.(5자 이상 30자 이하)
+                        </div>
+                    </div>
+
+
+                    <!-- 비밀번호 -->
+                    <div class="mb-3">
+                        <label for="passwordMember">비밀번호</label>
+                        <input type="password" class="form-control" id="passwordMember" name="passwordMember" required
+                               minlength="5" maxlength="128" onInput="maxLengthCheck(this.id);" onKeyUp="inputDataCheck(this.id);">
+                        <div class="invalid-feedback">
+                            비밀번호를 다시 입력해 주세요. (5자 이상 128자 이하)
+                        </div>
+                    </div>
+
+
+                    <div class="d-grid col-6 mx-auto">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
+                    </div>
+
+                    <figure class="text-center">
+                        <blockquote class="blockquote">
+                            <h6>아직 회원이 아니신가요?  <a href="${pageContext.request.contextPath}/member/signupform.do">회원가입</a></h6>
+                        </blockquote>
+                    </figure>
+                </form>
+            </div>
         </div>
+    </div>
 
-        <div class="form-floating">
-            <input type="password" class="form-control" id="passwordMember" placeholder="비밀번호" name="passwordMember" required>
-            <label for="passwordMember">비밀번호</label>
-        </div>
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me" name="remember-me" id="remember-me"> 아이디 저장
-            </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
-        <p class="message" id="signup">아직 회원이 아니신가요?  <a href="${pageContext.request.contextPath}/member/signupform.do">회원가입</a></p>
-    </form>
-</main>
 
 <!-- Footer-->
 <jsp:include page="../footer.jsp" flush="false"/>
