@@ -147,6 +147,30 @@ Tomcat 8090 포트 연결
 <details><summary>메인화면
 </summary>
 <br/>
+
+### [ 상단 고정 메뉴 ( Header ) ]
+- home, 검색, 공지사항, 마이페이지, 게시글의 랭킹, 로그인 등을 볼 수 있는 태그
+- 게시물 검색 기능
+  - 제목과 내용에 따라 검색 가능
+- 로그인이 되어 있지 않은 경우
+  - Header에 있는 로그인 버튼을 클릭하여 로그인
+- 로그인이 되어 있는 경우
+  - 로그인 버튼이 본인의 닉네임을 나타내는 풀 다운 메뉴로 변환
+  - 그 풀 다운 메뉴에는 본인 정보를 수정할 수 있으며, 자신이 쓴 글을 볼 수 있음.
+  - 로그아웃 
+- 랭킹에는 한 주마다 가장 많은 조회수, 가장 많은 좋아요수를 받은 게시물들이 나타남.
+
+| 비회원 & 메뉴 |
+| --- |
+| <img width="1094" alt="image" src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/678dec32-f5fd-45db-91ea-b3fed6235a82"> | 
+
+</br>
+
+| 회원 & 풀다운 메뉴 |
+| --- |
+| <img width="1081" alt="image" src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/ca0b2ab4-51c3-4f96-8499-62ec77b9e983"> |
+
+<br>
    
 [- 회원가입](#)
 <br/>
