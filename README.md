@@ -52,7 +52,7 @@
 
 
 </details>
-      
+
 ## 📖 GongCheck 프로젝트 📖
 ```bash프로젝트 소개
 공부인증 기능을 JSP와 MyBatis로 구현한 웹 페이지
@@ -93,7 +93,7 @@ Tomcat 8090 포트 연결
 
 ## 📋개발 일지📋
 <details><summary>개발 일지</summary>
-   
+
 ![개발일지](https://github.com/seokeunpark/Team_ProJect/assets/145525099/d637af23-b72b-4d7b-90c1-45ca18ff9103)
 )
 </details>
@@ -117,37 +117,37 @@ Tomcat 8090 포트 연결
 </details>
 
 <details><summary>Usecase</summary>
-      
+
 ![유스케이스](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/8295bd03-9533-4ac7-ad05-ef643d66b918)
 
 </details>
 
 <details><summary>Class</summary>
-  
+
 <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/74610908/a08c510d-ea15-43d3-b246-70c15b37129a">
 
 </details>
 
 <details><summary>Sequence</summary>
-    
- 1. Actor : 회원 ( Writer )
-  ![시퀀스 Writer](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/712f61a2-d742-4de2-8b6a-c18e40ba891e)
 
-  2. Actor : 회원 ( Replier )
-  ![시퀀스 Replier](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/dabf967d-b678-47f9-8b1f-ca74408374b8)
+1. Actor : 회원 ( Writer )
+   ![시퀀스 Writer](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/712f61a2-d742-4de2-8b6a-c18e40ba891e)
+
+2. Actor : 회원 ( Replier )
+   ![시퀀스 Replier](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/dabf967d-b678-47f9-8b1f-ca74408374b8)
 
 
 </details>
 
 <details><summary>Block</summary>
-    
+
 <img src="#">
-    
+
 </details>
 
 
 ## 📝 기능 설명 📝
-> 클릭시 코드로 이동합니다. 
+> 클릭시 코드로 이동합니다.
 
 <details><summary>메인화면
 </summary>
@@ -162,7 +162,7 @@ Tomcat 8090 포트 연결
 - 로그인이 되어 있는 경우
   - 로그인 버튼이 본인의 닉네임을 나타내는 풀 다운 메뉴로 변환
   - 그 풀 다운 메뉴에는 본인 정보를 수정할 수 있으며, 자신이 쓴 글을 볼 수 있음.
-  - 로그아웃 
+  - 로그아웃
 - 랭킹에는 한 주마다 가장 많은 조회수, 가장 많은 좋아요수를 받은 게시물들이 나타남.
 
 | 비회원 & 메뉴 |
@@ -261,18 +261,18 @@ Tomcat 8090 포트 연결
 ## 📹 시연 영상 📹
 
 <details><summary>회원가입 및 로그인</summary>
-   
+
 ![noLogin](#)
 </details>
-    
+
 <details><summary>게시판</summary>
-    
+
 ![login](#)
 
 </details>
 
 <details><summary>관리자</summary>
-    
+
 ![admin](#)
 
 
