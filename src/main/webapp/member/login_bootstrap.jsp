@@ -94,55 +94,55 @@
 </head>
 <body>
 <!-- Responsive navbar-->
-<%--<jsp:include page="../navbar.jsp" flush="false"/>--%>
+<jsp:include page="../navbar.jsp" flush="false"/>
 
-    <div class="container">
-        <div class="input-form-backgroud row">
-            <div class="input-form col-md-12 mx-auto">
-                <form action="${pageContext.request.contextPath}/member/login.do" method="post" name="" class="validation-form" onsubmit="return frm_check();">
-                    <p>${message != null ? message : ""}</p>
+<div class="container">
+    <div class="input-form-backgroud row">
+        <div class="input-form col-md-12 mx-auto">
+            <form action="${pageContext.request.contextPath}/member/login.do" method="post" name="" class="validation-form" onsubmit="return frm_check();">
+                <p>${message != null ? message : ""}</p>
 
-                    <h4 class="mb-3">로그인</h4>
+                <h4 class="mb-3">로그인</h4>
 
-                    <!-- 아이디 -->
-                    <div class="mb-3">
-                        <label for="memberId">아이디</label>
-                        <input type="text" class="form-control" id="memberId" name="memberId" required
-                               minlength="5" maxlength="30" onInput="inputDataCheck(this.id)" onKeyUp="maxLengthCheck(this.id)">
-                        <div class="invalid-feedback">
-                            아이디를 다시 입력해 주세요.(5자 이상 30자 이하)
-                        </div>
+                <!-- 아이디 -->
+                <div class="mb-3">
+                    <label for="memberId">아이디</label>
+                    <input type="text" class="form-control" id="memberId" name="memberId" required
+                           minlength="5" maxlength="30" onInput="inputDataCheck(this.id)" onKeyUp="maxLengthCheck(this.id)">
+                    <div class="invalid-feedback">
+                        아이디를 다시 입력해 주세요.(5자 이상 30자 이하)
                     </div>
+                </div>
 
 
-                    <!-- 비밀번호 -->
-                    <div class="mb-3">
-                        <label for="passwordMember">비밀번호</label>
-                        <input type="password" class="form-control" id="passwordMember" name="passwordMember" required
-                               minlength="5" maxlength="128" onInput="maxLengthCheck(this.id);" onKeyUp="inputDataCheck(this.id);">
-                        <div class="invalid-feedback">
-                            비밀번호를 다시 입력해 주세요. (5자 이상 128자 이하)
-                        </div>
+                <!-- 비밀번호 -->
+                <div class="mb-3">
+                    <label for="passwordMember">비밀번호</label>
+                    <input type="password" class="form-control" id="passwordMember" name="passwordMember" required
+                           minlength="5" maxlength="128" onInput="maxLengthCheck(this.id);" onKeyUp="inputDataCheck(this.id);">
+                    <div class="invalid-feedback">
+                        비밀번호를 다시 입력해 주세요. (5자 이상 128자 이하)
                     </div>
+                </div>
 
 
-                    <div class="d-grid col-6 mx-auto">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
-                    </div>
+                <div class="d-grid col-6 mx-auto">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
+                </div>
 
-                    <figure class="text-center">
-                        <blockquote class="blockquote">
-                            <h6>아직 회원이 아니신가요?  <a href="${pageContext.request.contextPath}/member/signupform.do">회원가입</a></h6>
-                        </blockquote>
-                    </figure>
-                </form>
-            </div>
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <h6>아직 회원이 아니신가요?  <a href="${pageContext.request.contextPath}/member/signupform.do">회원가입</a></h6>
+                    </blockquote>
+                </figure>
+            </form>
         </div>
     </div>
+</div>
 
 
 <!-- Footer-->
-<%--<jsp:include page="../footer.jsp" flush="false"/>--%>
+<jsp:include page="../footer.jsp" flush="false"/>
 
 <script>
     // 아이디, 비밀번호 빈칸 유효성 검사
