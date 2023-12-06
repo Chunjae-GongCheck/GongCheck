@@ -44,9 +44,7 @@
 ![19](https://github.com/seokeunpark/Team_ProJect/assets/145525099/a21401af-dbfc-44f5-8296-05b36c27a7b9)
 ![20](https://github.com/seokeunpark/Team_ProJect/assets/145525099/766bbe6d-20d0-480a-afb9-bce89eedd60c)
 ![21](https://github.com/seokeunpark/Team_ProJect/assets/145525099/77da97df-ed07-4bbf-be94-7f0fa571024d)
-![22](https://github.com/seokeunpark/Team_ProJect/assets/145525099/056f6a50-0cf2-44c1-a65f-42cb63f11be7)
-![23](https://github.com/seokeunpark/Team_ProJect/assets/145525099/1f8579ac-6bac-42ba-aeb4-ef3b619711c4)
-![24](https://github.com/seokeunpark/Team_ProJect/assets/145525099/bcabadc2-ff26-46a4-8f28-b7152b8e1897)
+
 
 
 </details>
