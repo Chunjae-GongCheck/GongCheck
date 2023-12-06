@@ -91,7 +91,7 @@ Tomcat 8090 포트 연결
 <details><summary>개발 일지</summary>
    
 ![개발일지](https://github.com/seokeunpark/Team_ProJect/assets/145525099/d637af23-b72b-4d7b-90c1-45ca18ff9103)
-)
+
 </details>
 
 
