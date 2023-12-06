@@ -112,6 +112,11 @@ CREATE TABLE likes(
 );
 
 
+ALTER TABLE likes
+ADD CONSTRAINT FK_post_idx FOREIGN KEY (post_idx) REFERENCES posts(post_idx) on delete cascade on update cascade;
+ALTER TABLE likes
+ADD CONSTRAINT FK_member_idx FOREIGN KEY (member_idx) REFERENCES members(member_idx) on delete cascade on update cascade;
+
 -- drop TABLE
 /*
 drop table likes;
