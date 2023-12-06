@@ -1,6 +1,7 @@
 package com.gck.board.controller;
 
 
+import com.gck.board.model.BoardDAO;
 import com.gck.board.model.BoardMemberVO;
 import com.gck.board.model.BoardVO;
 import com.gck.board.service.BoardService;
@@ -34,7 +35,6 @@ public class BoardController extends HttpServlet {
         BoardService brdService = new BoardService();
         PostImageDAOImpl piDao = new PostImageDAOImpl();
         Map<String, Object> map = new HashMap<>();
-        BoardMemberVO bmVO = new BoardMemberVO();
 
         String searchField = req.getParameter("searchField");
         String searchWord = req.getParameter("searchWord");
@@ -56,15 +56,7 @@ public class BoardController extends HttpServlet {
 
         System.out.println("totalCount ======" + totalCount); // 콘솔 출력문
 
-        // 출력된 게시물의 정보 불러오고 map에 저장
 
-        List<BoardMemberVO> memberNickname = brdService.selectNickView(map);
-        map.put("memberNickname",memberNickname);
-        System.out.println("memberNickname =============> "+memberNickname);
-
-
-
-        // 콘솔 출력문
         // 페이징 처리
         // ServletContext 객체를 통해 웹 애플리케이션의 초기 파라미터 값 가져오기
         ServletContext application = getServletContext();
@@ -84,6 +76,10 @@ public class BoardController extends HttpServlet {
         map.put("start", start);
         map.put("end", end);
 
+
+//        String memberNickname = brdService.selectNickView(result);
+
+
         List<BoardVO> boardLists = brdService.selectListPage(map);
 
         System.out.println("boardLists ====== " + boardLists); // 콘솔출력용
@@ -93,6 +89,11 @@ public class BoardController extends HttpServlet {
         List<PostImageVO> postImageVOList = piDao.selectAllPostImageList(map);
 
         System.out.println("postImageVOList =======" +postImageVOList);
+
+        // 출력된 게시물의 정보 불러오고 map에 저장
+        // outer join 을 이용해서 posts 테이블과 member 테이블에서 memberidx 를 반환해 postIdx 값을 가져온다
+
+
 
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,

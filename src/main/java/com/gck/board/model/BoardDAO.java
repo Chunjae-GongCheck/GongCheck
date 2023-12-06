@@ -9,5 +9,5 @@ import java.util.Map;
 public interface BoardDAO {
     public List<BoardVO> selectListPage(Map<String,Object> map);
     public int selectCount (Map<String,Object> map);
-    public List<BoardMemberVO> selectNickView(Map<String,Object>map);
+    public String selectNickView(int postIdx);
 }
