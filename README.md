@@ -12,11 +12,11 @@
 6. [💡 기획 의도](#기획-의도)
 7. [🙋‍♀️ Team_Member](#%EF%B8%8F-team_member-%EF%B8%8F)
 8. [📋 개발 일지](#개발-일지)
-9. [📈  요구 명세서](#-요구-명세서-)
-10. [📊 Diagram](#-다이어그램-)
-11. [📝 기능 설명](#-기능-설명-)
-12. [📹 시연 영상](#-시연-영상-)
-13. [🔨사용 기술](#-사용-기술-)
+9. [🔨사용 기술](#-사용-기술-)
+10. [📈  요구 명세서](#-요구-명세서-)
+11. [📊 Diagram](#-다이어그램-)
+12. [📝 기능 설명](#-기능-설명-)
+13. [📹 시연 영상](#-시연-영상-) 
 
 
 ## 📂 PPT 📂
@@ -92,7 +92,24 @@ Tomcat 8090 포트 연결
 
 </details>
 
-
+## 🔨 사용 기술 🔨
+<div>
+<img src="https://img.shields.io/badge/Html5-E34F26?style=flat-square&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/css3-1572B6?style=flat-square&logo=CSS3&logoColor=white">
+<br>    
+<img src="https://img.shields.io/badge/JAVA-C01818?style=flat-square&logo=coffeescript&logoColor=white" />
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white" />
+<img src="https://img.shields.io/badge/MariaDB-003545?style=flat&logo=MariaDB&logoColor=white" />
+<br>
+<img src="https://img.shields.io/badge/IntelliJ-000000?style=flat-square&logo=intellijidea&logoColor=white" />
+<img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=slack&logoColor=white" />
+<img src="https://img.shields.io/badge/StarUML-E25A1C?style=flat-square&logo=apachespark&logoColor=white" />
+<br>
+<img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white" />
+<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" />
+<img src="https://img.shields.io/badge/Sourcetree-0052CC?style=flat-square&logo=Sourcetree&logoColor=blue" />
+<br>
 
 
 ## 📈 요구 명세서 📈
@@ -218,24 +235,7 @@ Tomcat 8090 포트 연결
 </details>
 
 
-## 🔨 사용 기술 🔨
-<div>
-<img src="https://img.shields.io/badge/Html5-E34F26?style=flat-square&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/css3-1572B6?style=flat-square&logo=CSS3&logoColor=white">
-<br>    
-<img src="https://img.shields.io/badge/JAVA-C01818?style=flat-square&logo=coffeescript&logoColor=white" />
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white" />
-<img src="https://img.shields.io/badge/MariaDB-003545?style=flat&logo=MariaDB&logoColor=white" />
-<br>
-<img src="https://img.shields.io/badge/IntelliJ-000000?style=flat-square&logo=intellijidea&logoColor=white" />
-<img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=slack&logoColor=white" />
-<img src="https://img.shields.io/badge/StarUML-E25A1C?style=flat-square&logo=apachespark&logoColor=white" />
-<br>
-<img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white" />
-<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" />
-<img src="https://img.shields.io/badge/Sourcetree-0052CC?style=flat-square&logo=Sourcetree&logoColor=blue" />
-<br>
+
 
 </div>
 
