@@ -75,7 +75,7 @@
                             <%--            <div class="d-flex justify-content-center"></div>--%>
                             <%--            <a type="button" class="image_Modal" data-bs-toggle="modal" data-bs-target="#imageModal"></a>--%>
 
-                        <a href="../posts/PostView.do?postIdx=${ row.postIdx }">
+                        <a href="../post/PostView.do?postIdx=${ row.postIdx }">
 
                                 <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
                             <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
