@@ -110,8 +110,13 @@ Tomcat 8090 포트 연결
 <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" />
 <img src="https://img.shields.io/badge/Sourcetree-0052CC?style=flat-square&logo=Sourcetree&logoColor=blue" />
 <br>
-
-
+<img src="https://img.shields.io/badge/JSP-E34F26?style=flat-square&logo=JSP&logoColor=white">
+<img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=AWS&logoColor=yellow" />
+<img src="https://img.shields.io/badge/MyBatis-000000?style=flat-square&logo=MyBatis&logoColor=white" />
+<img src="https://img.shields.io/badge/Servlet-E25A1C?style=flat-square&logo=Servlet&logoColor=white" />
+<br>
+<img src="https://img.shields.io/badge/Bootstrap-80247B?style=flat-square&logo=Bootstrap&logoColor=white" />
+      
 ## 📈 요구 명세서 📈
 
 <details><summary>요구 명세서</summary>
