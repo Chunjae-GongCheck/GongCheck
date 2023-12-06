@@ -181,18 +181,27 @@ Tomcat 8090 포트 연결
 | 페이지네이션 |
 | --- |
 | <img width="1081" alt="image" src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/156e5ad2-8ea2-471f-b610-ecd7a4d0a4c5"> |
-   
-[- 회원가입](#)
-<br/>
-<img src="#" width="350px" height="150px">
 
 <br/>
 
-[- 로그인](#)
-<br/>
-<img src="#" width="350px" height="150px">
+| 회원가입 |
+| -- |
+| <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/74610908/eff35fd6-7aa1-4345-b049-133c30ecefe2" width="1081" > |
 
 <br/>
+
+| 로그인 |
+| -- |
+| <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/74610908/30b39898-0173-4719-a3dc-f79e25ebecfd" width="1081" > |
+<br/>
+
+| 회원정보 수정 |
+| -- |
+| <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/74610908/9c0ae289-aee4-4bb9-b698-cb6e162d3e61" width="1081"> |
+
+<br/>
+
+
 </details>
 
 <details><summary>게시판
