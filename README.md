@@ -1,6 +1,6 @@
 #  ✏️ 에듀테크 풀스택 3기 1조 GongCheck ✏️ 
 ```bash
-프로젝트 기간 : 2023년 11월 20일 ~ 2023년 12월 8일
+프로젝트 기간 : 2023년 11월 27일 ~ 2023년 12월 11일
 ```
 ## 📚 목차 📚
 
@@ -88,7 +88,7 @@ Tomcat 8090 포트 연결
 ## 📋개발 일지📋
 <details><summary>개발 일지</summary>
    
-![개발일지](https://github.com/seokeunpark/Team_ProJect/assets/145525099/d637af23-b72b-4d7b-90c1-45ca18ff9103)
+![개발일지](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/5ac7ac12-4e39-46c2-a1ce-548e7c9bb748)
 
 </details>
 
@@ -209,8 +209,9 @@ Tomcat 8090 포트 연결
 
 [- 회원수정 및 삭제](#)
 <br/>
-<img src="#" width="350px" height="150px">
-   
+<img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/4e77f6b0-96f3-4399-b3bd-ef3e1b843919" width="800px" height="500px">
+<br/> 
+<img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/59b7eaa2-aead-4db3-aea4-0acc88d10cad)" width="800px" height="500px">
 <br/>
 </details>
 
