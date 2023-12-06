@@ -112,7 +112,7 @@ Tomcat 8090 포트 연결
 
 <details><summary>Class</summary>
   
-<img src="#">
+<img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/a6994ff8-e996-437f-b8f0-13877b6e2d2d">
 
 </details>
 <details><summary>Sequence</summary>
