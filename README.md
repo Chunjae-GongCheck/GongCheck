@@ -207,51 +207,51 @@ Tomcat 8090 포트 연결
 <details><summary>게시판
 </summary>
 <br/>   
-   
-[- 작성](#)
-<br/>
-![글쓰기](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/201d545b-3eec-4b04-b25b-f8c1a763b4c0)
 
-[- 수정](#)
-<br/>
-![글 수정하기](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/f09c2b75-a423-48b5-8e49-a3c2bd60449c)
-
-[- 삭제](#)
-<br/>
-![글 삭제하기](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/5ece4b74-82c7-4caf-bdcd-f85e36b3f805)
+| 게시물 작성 |
+| -- |
+| <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/201d545b-3eec-4b04-b25b-f8c1a763b4c0" width="1081"> |
 
 <br/>
+
+| 게시물 수정 |
+| -- |
+| <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/f09c2b75-a423-48b5-8e49-a3c2bd60449c" width="1081"> |
+
+<br/>
+
+| 게시물 삭제 |
+| -- |
+| <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/5ece4b74-82c7-4caf-bdcd-f85e36b3f805" width="1081"> |
+
+<br/>
+
 </details>
 
 <details><summary>댓글
 </summary>
 <br/>
-   
-[- 작성](#)
-<br/>
-<img src="#" width="350px" height="150px">
 
-[- 수정](#)
-<br/>
-<img src="#" width="350px" height="150px">
+| 댓글 작성 |
+| -- |
+| <img src="#" width="1081"> |
 
-[- 삭제](#)
 <br/>
-<img src="#" width="350px" height="150px">
-   
+
+| 댓글 수정 |
+| -- |
+| <img src="#" width="1081"> |
+
 <br/>
+
+| 댓글 삭제 |
+| -- |
+| <img src="#" width="1081"> |
+
+<br/>
+
 </details>
 
-<details><summary>관리자
-</summary>
- <br/>  
-
-[- 회원수정 및 삭제](#)
-<br/>
-<img src="#" width="350px" height="150px">
-   
-<br/>
-</details>
 
 ## 📹 시연 영상 📹
 
