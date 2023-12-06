@@ -207,7 +207,7 @@ Tomcat 8090 포트 연결
 </summary>
  <br/>  
 
-[- 회원수정 및 삭제](#)
+[- 회원수정 및 삭제](https://github.com/Chunjae-GongCheck/GongCheck/blob/0a76af7f2878cfe2a99e633eca6560c931798467/src/main/java/com/gck/admin/controller/AdminDeleteController.java#L26-L53)
 <br/>
 <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/4e77f6b0-96f3-4399-b3bd-ef3e1b843919" width="800px" height="500px">
 <br/> 
