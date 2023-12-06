@@ -100,8 +100,8 @@ Tomcat 8090 포트 연결
 ## 📈 요구 명세서 📈
 
 <details><summary>요구 명세서</summary>
-
-  <img src="#">
+      
+  <img src="(https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/0f685782-7ae8-4acd-832e-ed0abbd978f7)">
 </details>
 
 ## 📊 Diagram 📊
