@@ -57,10 +57,12 @@
 ```
 ## 🔧Development Environment🔧
 ```
-Java 11
-MariaDB 3.2.0
-MyBatis 3.5.13
-IntelliJ
+언어 : Java(jdk 11), JSP
+서버 : Apache Tomcat 9.0, AWS EC2
+프레임워크 : MyBatis (3.5.11)
+DBMS : MariaDB (3.2.0), Amazon RDS
+IDE : IntelliJ IDEA
+API, 라이브러리 : Daum Map API, JQuery, Lombok
 ```
 ## 🔔Prerequisite🔔
 ```
@@ -101,15 +103,16 @@ Tomcat 8090 포트 연결
 
 <details><summary>요구 명세서</summary>
 
-  <img src="#">
+![요구사항명세서](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/d16c3a72-8c43-4ae2-8600-5740c6c76bb0)
 </details>
 
 ## 📊 Diagram 📊
 
 <details><summary>Usecase</summary>
-<img src="#g">
-</details>
+      
+![유스케이스](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/8295bd03-9533-4ac7-ad05-ef643d66b918)
 
+</details>
 <details><summary>Class</summary>
   
 <img src="#">
@@ -117,7 +120,12 @@ Tomcat 8090 포트 연결
 </details>
 <details><summary>Sequence</summary>
     
-<img src="#">
+ 1. Actor : 회원 ( Writer )
+  ![시퀀스 Writer](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/712f61a2-d742-4de2-8b6a-c18e40ba891e)
+
+  2. Actor : 회원 ( Replier )
+  ![시퀀스 Replier](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/dabf967d-b678-47f9-8b1f-ca74408374b8)
+
 
 </details>
 
@@ -128,8 +136,9 @@ Tomcat 8090 포트 연결
 </details>
 
 <details><summary>ERD</summary>
-<img src="#">
-    
+
+![erd](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/5f970df2-4f9b-4366-b751-f2b2d62d3dcd)
+
 </details>
 
 ## 📝 기능 설명 📝
