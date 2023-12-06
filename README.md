@@ -106,29 +106,28 @@ Tomcat 8090 포트 연결
 ## 📊 Diagram 📊
 
 <details><summary>Usecase</summary>
-<img src="#g">
+<img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/a51563fa-d066-43d9-acbe-9daf5045e518">
 </details>
 
 <details><summary>Class</summary>
-  
 <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/a6994ff8-e996-437f-b8f0-13877b6e2d2d">
 
 </details>
 <details><summary>Sequence</summary>
-    
-<img src="#">
+<img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/204a25c8-1b3a-426d-8240-2704fa6d98a1">
+<img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/dd4944fa-f729-48f4-8897-f10cbeee41d5">
 
 </details>
 
 <details><summary>Block</summary>
-    
 <img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/f6201177-68d9-4e09-81da-4edd70410ef7">
     
 </details>
 
 <details><summary>ERD</summary>
-<img src="#">
-    
+<img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/db84e93c-2856-4587-ae72-b318c843b9e4">
+
+
 </details>
 
 ## 📝 기능 설명 📝
