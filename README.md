@@ -201,16 +201,16 @@ Tomcat 8090 포트 연결
    
 [- 작성](#)
 <br/>
-<img src="#" width="350px" height="150px">
+![글쓰기](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/201d545b-3eec-4b04-b25b-f8c1a763b4c0)
 
 [- 수정](#)
 <br/>
-<img src="#" width="350px" height="150px">
+![글 수정하기](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/f09c2b75-a423-48b5-8e49-a3c2bd60449c)
 
 [- 삭제](#)
 <br/>
-<img src="#" width="350px" height="150px">
-   
+![글 삭제하기](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/5ece4b74-82c7-4caf-bdcd-f85e36b3f805)
+
 <br/>
 </details>
 
