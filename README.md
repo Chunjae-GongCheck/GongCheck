@@ -170,7 +170,17 @@ Tomcat 8090 포트 연결
 | --- |
 | <img width="1081" alt="image" src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/ca0b2ab4-51c3-4f96-8499-62ec77b9e983"> |
 
-<br>
+<br/>
+
+| 검색창 모달 화면 |
+| --- |
+| <img width="1081" alt="image" src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/ce55ae62-8c43-4aec-9445-3c01e0419b79"> |
+
+<br/>
+
+| 페이지네이션 |
+| --- |
+| <img width="1081" alt="image" src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/156e5ad2-8ea2-471f-b610-ecd7a4d0a4c5"> |
    
 [- 회원가입](#)
 <br/>
