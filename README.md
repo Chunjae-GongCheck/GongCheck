@@ -108,16 +108,24 @@ Tomcat 8090 포트 연결
 
 ## 📊 Diagram 📊
 
+<details><summary>ERD</summary>
+
+![erd](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/5f970df2-4f9b-4366-b751-f2b2d62d3dcd)
+
+</details>
+
 <details><summary>Usecase</summary>
       
 ![유스케이스](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/8295bd03-9533-4ac7-ad05-ef643d66b918)
 
 </details>
+
 <details><summary>Class</summary>
   
-<img src="#">
+<img src="https://github.com/Chunjae-GongCheck/GongCheck/assets/74610908/a08c510d-ea15-43d3-b246-70c15b37129a">
 
 </details>
+
 <details><summary>Sequence</summary>
     
  1. Actor : 회원 ( Writer )
@@ -135,11 +143,6 @@ Tomcat 8090 포트 연결
     
 </details>
 
-<details><summary>ERD</summary>
-
-![erd](https://github.com/Chunjae-GongCheck/GongCheck/assets/145963704/5f970df2-4f9b-4366-b751-f2b2d62d3dcd)
-
-</details>
 
 ## 📝 기능 설명 📝
 > 클릭시 코드로 이동합니다. 
