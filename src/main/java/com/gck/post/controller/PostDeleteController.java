@@ -36,7 +36,7 @@ public class PostDeleteController extends HttpServlet {
         Integer memberIdx = (Integer) req.getSession().getAttribute("memberIdx");
         if (memberIdx == null) {
             // 로그인되지 않은 경우 처리
-            JSFunction.alertLocation(resp, "로그인이 필요합니다.", "/GongCheck_war_exploded/member/loginform.do");
+            JSFunction.alertLocation(resp, "로그인이 필요합니다.", req.getContextPath() + "/member/loginform.do");
             return;
         }
 
@@ -44,7 +44,7 @@ public class PostDeleteController extends HttpServlet {
         String postIdxStr = req.getParameter("postIdx");
         if (postIdxStr == null || postIdxStr.isEmpty()) {
             // 유효하지 않은 게시물 번호 처리
-            JSFunction.alertLocation(resp, "유효하지 않은 게시물입니다.", "/gck/MainView.do");
+            JSFunction.alertLocation(resp, "유효하지 않은 게시물입니다.", req.getContextPath() + "/board/MainView.do");
             return;
         }
 
@@ -56,7 +56,7 @@ public class PostDeleteController extends HttpServlet {
 
         if (postVO == null || postVO.getMemberIdx() != memberIdx) {
             // 권한이 없는 경우 처리
-            JSFunction.alertLocation(resp, "게시물에 대한 권한이 없습니다.", "/GongCheck_war_exploded/gck/MainView.do");
+            JSFunction.alertLocation(resp, "게시물에 대한 권한이 없습니다.", req.getContextPath() + "/board/MainView.do");
             return;
         }
 
@@ -82,6 +82,6 @@ public class PostDeleteController extends HttpServlet {
         dao.deletePost(postIdx);
 
         // 5. 삭제 후 리다이렉트
-        JSFunction.alertLocation(resp, "게시물이 삭제되었습니다.", "/GongCheck_war_exploded/gck/MainView.do");
+        JSFunction.alertLocation(resp, "게시물이 삭제되었습니다.", req.getContextPath() + "/board/MainView.do");
     }
 }

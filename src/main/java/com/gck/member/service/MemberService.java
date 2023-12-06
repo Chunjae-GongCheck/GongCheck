@@ -261,14 +261,16 @@ public class MemberService {
             // 실패
             if(updateResult == null || updateResult.intValue() != 1){
                 result = false;
+                sqlSession.close();
             }else {// update 성공
                 result = true;
+                sqlSession.commit();
+                sqlSession.close();
             }
         }catch (Exception e){
             System.out.println("MemberService_exception_getMember");
         }finally {
-            sqlSession.commit();
-            sqlSession.close();
+
             return result;
         }
     }
