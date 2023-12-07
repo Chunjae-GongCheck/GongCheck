@@ -235,12 +235,12 @@ Tomcat 8090 포트 연결
 
 <details><summary>회원가입 및 로그인</summary>
    
-![noLogin](#)
+![Join_Login](#)
 </details>
     
 <details><summary>게시판</summary>
     
-![login](#)
+![board](#)
 
 </details>
 
