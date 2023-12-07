@@ -5,7 +5,7 @@
 <configuration>
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings> 
+    </settings>
 
     <environments default="development">
         <environment id="development">
@@ -21,7 +21,8 @@
 
     <mappers>
         <!-- admin -->
-<!--            <mapper resource="com/gck/admin/mapper/MemberMapper.xml"/>-->
+        <mapper resource="mapper/AdminMapper.xml"/>
+        <mapper resource="mapper/PasswordAdminMapper.xml"/>
         <!-- board -->
         <mapper resource="mapper/BoardMapper.xml"/>
         <!-- member -->
@@ -32,7 +33,6 @@
         <!-- post -->
         <mapper resource="mapper/PostMapper.xml"/>
         <mapper resource="mapper/PostImageMapper.xml"/>
-        <mapper resource="mapper/LikesMapper.xml"/>
         <!-- reply -->
         <mapper resource="mapper/ReplyMapper.xml" />
     </mappers>
