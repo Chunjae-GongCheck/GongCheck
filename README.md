@@ -62,6 +62,7 @@
 ## 📖 GongCheck 프로젝트 📖
 ```bash프로젝트 소개
 공부인증 기능을 JSP와 MyBatis로 구현한 웹 페이지
++ Amazon AWS 배포
 ```
 ## 🔧Development Environment🔧
 ```
