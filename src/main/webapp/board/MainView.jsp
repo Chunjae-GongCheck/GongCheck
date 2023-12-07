@@ -97,7 +97,7 @@
                                     <%-- 절대경로+ 서버에 저장된 이미지 불러오기 / loop를 계속 수행하는 동안 부모 foreach 문과 나의 Idx 가 일치하는지 확인하고 맞으면 출력 아니면 점프 --%>
                                     <div class="nickName" style="float: left">
 <%--                                        여기에 프사 넣으면 될듯? --%>
-                                        <p><strong>${row.postIdx}</strong></p>
+                                        <p><strong>${posts.memberNickname}</strong></p>
                                     <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}"
                                          alt="posts${loop.index}" id="post_img"/>
                                     </div>

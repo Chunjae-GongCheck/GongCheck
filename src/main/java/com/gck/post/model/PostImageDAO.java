@@ -16,6 +16,5 @@ public interface PostImageDAO {
     int deletePostImage(PostImageVO vo);
 
     ArrayList<PostImageVO> getPostImagesByPostIdx(int postIdx);
-
 }
 

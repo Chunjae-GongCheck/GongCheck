@@ -12,6 +12,7 @@ public class PostImageVO {
     private String postImagePath;   // 원래 이름
     private String postTImagePath;  // 서버에 저장된 이름
 
+    private String memberNickname;
     public PostImageVO() {
 
     }

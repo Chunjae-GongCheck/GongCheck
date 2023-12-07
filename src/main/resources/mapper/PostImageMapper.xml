@@ -24,9 +24,10 @@
     </update>
 
     <select id="selectAllPostImageList" parameterType="map" resultType="com.gck.post.model.PostImageVO">
-        select Distinct p.post_idx , p.board_idx , p.post_title , p.post_content , p.member_idx , p.post_likecount , p.post_write_date , p.post_update_date , p.post_visitcount , i.post_image_idx , i.post_idx , i.post_image_path , i.post_t_image_path
+        select Distinct p.post_idx , p.board_idx , p.post_title , p.post_content , p.member_idx , p.post_likecount , p.post_write_date , p.post_update_date , p.post_visitcount , i.post_image_idx , i.post_idx , i.post_image_path , i.post_t_image_path , m.member_idx , m.member_nickname
         From posts p
         join post_images i
+        inner join members m
         on p.post_idx = i.post_idx
         <if test="searchWord != null and !searchWord.equals('')">
             <choose>
@@ -38,10 +39,18 @@
                 </otherwise>
             </choose>
         </if>
+        group by p.post_idx
         order by post_write_date desc
     </select>
 
     <select id="getPostImagesByPostIdx" resultType="com.gck.post.model.PostImageVO">
         SELECT * FROM post_images WHERE post_idx = #{postIdx}
+    </select>
+
+    <select id="selectNickView" parameterType="int" resultType="com.gck.post.model.PostImageVO">
+        SELECT *
+        FROM members m
+                 RIGHT OUTER JOIN posts p ON m.member_idx = p.member_idx
+        where post_idx = #{post_idx}
     </select>
 </mapper>
