@@ -126,9 +126,6 @@
     function updateLikes(){
         let postIdx = "${ vo.postIdx }";
         let memberIdx = "${ sessionScope.memberIdx }";
-        // let memberIdx = $("#memberIdx").val().toString();
-        // let memberIdx = { sessionScope.memberIdx };
-        // let memberIdx = sessionStorage.getItem("memberIdx");
 
         // 로그인 안 된 사용자가 좋아요를 눌렀을 때, 로그인 페이지로 이동
         if(!memberIdx || memberIdx.length <= 0){
