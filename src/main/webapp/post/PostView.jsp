@@ -7,6 +7,7 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <title>게시물 상세보기</title>
     <style>
         * {
@@ -48,8 +49,11 @@
 
 </head>
 <body>
-<!-- Responsive navbar-->
-<jsp:include page="../navbar.jsp" flush="false"/>
+<!-- nav -->
+<jsp:include page="/navbar.jsp">
+    <jsp:param name="memberIdx" value="${ sessionScope.memberIdx }"/>
+    <jsp:param name="memberNickname" value="${ sessionScope.memberNickname }"/>
+</jsp:include>
 
 <%--        카드 형 이미지 --%>
 <div class="d-flex align-content-between flex-wrap" id="flex-container">
