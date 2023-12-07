@@ -244,9 +244,9 @@ Tomcat 8090 포트 연결
 
 </details>
 
-<details><summary>관리자</summary>
+<details><summary>댓글</summary>
     
-![admin](#)
+![reply](#)
 
 
 </details>
