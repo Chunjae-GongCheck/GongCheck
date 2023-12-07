@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html>
@@ -23,11 +24,11 @@
                 </div>
                 <div class="card-body">
                     <p>정말로 이 게시물을 삭제하시겠습니까?</p>
-                    <form action="../gck/PostDelete.do" method="post">
+                    <form action="${contextPath}/gck/PostDelete.do" method="post">
                         <input type="hidden" name="postIdx" value="${param.postIdx}" />
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-danger me-md-2" onclick="location.href='../gck/MainView.do'">삭제하기</button>
+                            <button type="submit" class="btn btn-danger me-md-2" onclick="location.href='${contextPath}/gck/MainView.do'">삭제하기</button>
                             <button type="button" class="btn btn-secondary" onclick="history.go(-1)">취소</button>
                         </div>
                     </form>
