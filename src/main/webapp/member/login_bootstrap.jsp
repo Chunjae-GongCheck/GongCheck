@@ -127,7 +127,7 @@
 
 
                 <div class="d-grid col-6 mx-auto">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
                 </div>
 
                 <figure class="text-center">
