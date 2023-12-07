@@ -127,7 +127,7 @@ import java.util.ArrayList;
 
         // 새 파일이 등록된 경우
         // 기존 파일 삭제 및 새 파일 등록
-        if(flag) {
+
             // 파일 업로드를 처리하는 부분
             PostImageDAO postImageDAO = new PostImageDAOImpl();
 
@@ -158,7 +158,7 @@ import java.util.ArrayList;
                     postImageDAO.updatePostImage(postImageVO);
                 }
             }
-        }
+
         System.out.println("Post 수정 성공!");
 
 
