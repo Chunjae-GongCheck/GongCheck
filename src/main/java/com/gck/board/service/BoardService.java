@@ -49,20 +49,21 @@ public class BoardService {
         this.sqlSession = MyBatisFactory.getSqlSession();
         mapper = this.sqlSession.getMapper(BoardDAO.class);
         int result = mapper.selectCount(map);
+
         sqlSession.close();
         return result;
     }
 
 
-    public List<BoardMemberVO> selectNickView(Map<String,Object>map) {
+    public String selectNickView(int postIdx) {
         this.sqlSession = MyBatisFactory.getSqlSession();
         BoardDAO mapper = this.sqlSession.getMapper(BoardDAO.class);
-        List<BoardMemberVO> result = mapper.selectNickView(map);
+        String result = mapper.selectNickView(postIdx);
 
         if (result != null) {
             System.out.println("조회된 게시물 : " + result);
         } else {
-            System.out.println("게시물이 조회되지 않았습니다. postIdx: " + map);
+            System.out.println("게시물이 조회되지 않았습니다. postIdx: " + postIdx);
         }
 
         sqlSession.close();

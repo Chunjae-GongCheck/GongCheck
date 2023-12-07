@@ -1,6 +1,7 @@
 package com.gck.board.controller;
 
 
+import com.gck.board.model.BoardDAO;
 import com.gck.board.model.BoardMemberVO;
 import com.gck.board.model.BoardVO;
 import com.gck.board.service.BoardService;
@@ -33,8 +34,11 @@ public class BoardController extends HttpServlet {
         HttpSession session = req.getSession();
         BoardService brdService = new BoardService();
         PostImageDAOImpl piDao = new PostImageDAOImpl();
+        PostImageVO piVO = new PostImageVO();
         Map<String, Object> map = new HashMap<>();
-        BoardMemberVO bmVO = new BoardMemberVO();
+
+
+
 
         String searchField = req.getParameter("searchField");
         String searchWord = req.getParameter("searchWord");
@@ -56,15 +60,7 @@ public class BoardController extends HttpServlet {
 
         System.out.println("totalCount ======" + totalCount); // 콘솔 출력문
 
-        // 출력된 게시물의 정보 불러오고 map에 저장
 
-        List<BoardMemberVO> memberNickname = brdService.selectNickView(map);
-        map.put("memberNickname",memberNickname);
-        System.out.println("memberNickname =============> "+memberNickname);
-
-
-
-        // 콘솔 출력문
         // 페이징 처리
         // ServletContext 객체를 통해 웹 애플리케이션의 초기 파라미터 값 가져오기
         ServletContext application = getServletContext();
