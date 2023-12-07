@@ -24,7 +24,10 @@
     </update>
 
     <select id="selectAllPostImageList" parameterType="map" resultType="com.gck.post.model.PostImageVO">
-        select Distinct p.post_idx , p.board_idx , p.post_title , p.post_content , p.member_idx , p.post_likecount , p.post_write_date , p.post_update_date , p.post_visitcount , i.post_image_idx , i.post_idx , i.post_image_path , i.post_t_image_path , m.member_idx , m.member_nickname
+        select Distinct p.post_idx , p.board_idx , p.post_title , p.post_content ,
+                        p.member_idx , p.post_likecount , p.post_write_date , p.post_update_date ,
+                        p.post_visitcount , i.post_image_idx , i.post_idx , i.post_image_path ,
+                        i.post_t_image_path , m.member_idx , m.member_nickname
         From posts p
         join post_images i on p.post_idx = i.post_idx
         join members m on p.member_idx = m.member_idx
