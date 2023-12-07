@@ -1,4 +1,4 @@
-![18](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/c588df44-56bd-47a1-a703-07aae0dd2ac5)#  ✏️ 에듀테크 풀스택 3기 1조 GongCheck ✏️ 
+#  ✏️ 에듀테크 풀스택 3기 1조 GongCheck ✏️ 
 ```bash
 프로젝트 기간 : 2023년 11월 27일 ~ 2023년 12월 11일
 ```
