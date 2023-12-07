@@ -28,7 +28,7 @@
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="submit" class="btn btn-danger me-md-2" onclick="location.href='../gck/MainView.do'">삭제하기</button>
-                            <button type="button" class="btn btn-secondary" onclick="location.href='../gck/MainView.do'">취소</button>
+                            <button type="button" class="btn btn-secondary" onclick="history.go(-1)">취소</button>
                         </div>
                     </form>
                 </div>
