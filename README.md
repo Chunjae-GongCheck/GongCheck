@@ -235,12 +235,12 @@ Tomcat 8090 포트 연결
 
 <details><summary>회원가입 및 로그인</summary>
    
-![Join_Login](#)
+![Join_Login](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/b5ca3530-e44b-4846-bb70-26d81dfb8a99)
 </details>
     
 <details><summary>게시판</summary>
     
-![board](#)
+![board](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/a5d45e5a-a7e5-4875-a619-8a5bf00238c5)
 
 </details>
 
