@@ -33,8 +33,5 @@ public class MypageController extends HttpServlet {
         req.getRequestDispatcher(url).forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    }
 }

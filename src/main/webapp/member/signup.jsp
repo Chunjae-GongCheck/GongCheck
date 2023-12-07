@@ -313,7 +313,7 @@
 
                     <div class="col-md-4 mb-3">
                         <br/>
-                        <button id="memberZonecodeSearch" class="btn btn-primary btn-sm btn-block" onclick="findAddr()">우편번호 검색</button>
+                        <button type="button" id="memberZonecodeSearch" class="btn btn-primary btn-sm btn-block" onclick="findAddr()">우편번호 검색</button>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -413,19 +413,21 @@
         Array.prototype.filter.call(forms, (form) => {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                    // if(form.checkValidity() === false)
+                    alert("모든 입력란을 채워 주세요.");
                     event.preventDefault();
                     event.stopPropagation();
                     console.log("here 1");
                 }
 
                 if(!passwordCheck()){
+                    alert("비밀번호를 일치시켜 주세요.");
                     event.preventDefault();
                     event.stopPropagation();
                     console.log("here 2");
                 }
 
                 if(!checkErrorMsg()){
+                    alert("중복확인을 해주세요.");
                     event.preventDefault();
                     event.stopPropagation();
                     console.log("here 3");

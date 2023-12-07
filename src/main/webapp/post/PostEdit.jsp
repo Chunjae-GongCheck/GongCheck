@@ -48,6 +48,8 @@
     <jsp:param name="memberNickname" value="${ sessionScope.memberNickname }"/>
 </jsp:include>
 
+
+
 <!-- content -->
 <div class="container">
     <div class="input-form-backgroud row">
@@ -55,6 +57,9 @@
             <h4 class="mb-3">글 수정하기</h4>
 
             <form name="writefrm" method="post" enctype="multipart/form-data" class="writefrm" action="${pageContext.request.contextPath}/post/PostEdit.do" novalidate>
+                <input type="hidden" name="postIdx" value="${postVO.postIdx}" />
+                <input type="hidden" name="postImagePath" value="${postImageVO.postImagePath}" />
+                <input type="hidden" name="postTImagePath" value="${postImageVO.postTImagePath}" />
                 <!-- 제목 -->
                 <div class="row">
                     <div class="mb-3">

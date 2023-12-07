@@ -57,7 +57,7 @@ public class PostWriteController extends HttpServlet {
 
         // DAO를 통해 DB에 게시 내용 저장
         PostDAO dao = new PostDAOImpl();
-        int result = dao.insertPost(postVO);
+        Integer result = dao.insertPost(postVO);
         // 글 insert 실패
         if (result != 1) {
             JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.",
