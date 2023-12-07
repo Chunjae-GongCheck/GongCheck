@@ -8,6 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>게시물 상세보기</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -51,7 +59,10 @@
 <!-- Responsive navbar-->
 <jsp:include page="../navbar.jsp" flush="false"/>
 
-<%--        카드 형 이미지 --%>
+<!-- 세션에 저장되어 있는 로그인 정보 -->
+<input type="hidden" id="memberIdx" name="memberIdx" value="${sessionScope.memberIdx}" />
+
+<%-- 카드 형 이미지 --%>
 <div class="d-flex align-content-between flex-wrap" id="flex-container">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <div class="card mb-3" id="card_line">
@@ -65,27 +76,16 @@
                 <div class="card-title">
                     <h5 class="card-title">닉네임 : ${vo.memberNickname}</h5>
                     <%-- 좋아요 --%>
-                    <c:choose>
-                        <c:when test="${ empty vo.postLikecount }">
-                            <h5 class="card-title">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                                </svg>
-                                &nbsp;&nbsp;    ${vo.postLikecount}
-                            </h5>
-                        </c:when>
-                        <c:otherwise>
-                            <h5 class="card-title">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                </svg>
-                                &nbsp;&nbsp;    ${vo.postLikecount}
-                            </h5>
-                        </c:otherwise>
-                    </c:choose>
+                    <h5 class="card-title">
+                        <div class="likes" onclick="updateLikes();">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                            </svg>
+                            &nbsp;&nbsp;    ${vo.postLikecount}
+                        </div>
+                    </h5>
                     <h5 class="card-title">조회수 : ${vo.postVisitcount}</h5>
                 </div>
 
@@ -93,7 +93,6 @@
                 <h5 class="card-text">내용 : ${vo.postContent}</h5>
                 <div class="date">
                     <h5 class="card-text"><small class="text-body-secondary">작성 날짜 : ${vo.postWriteDate}</small></h5>
-                    <%-- <p class="card-text"><small class="text-body-secondary">수정 날짜 : ${vo.postUpdateDate}</small></p> --%>
                 </div>
             </div>
 
@@ -112,13 +111,61 @@
             </div>
         </div>
         <!-- 댓글 -->
-        <%@ include file="/reply/Reply.jsp" %>
-        <%@ include file="/reply/ReplyWrite.jsp" %>
+        <jsp:include page="../reply/Reply.jsp" >
+            <jsp:param name="postIdx" value="${ vo.postIdx }"/>
+        </jsp:include>
+        <!--  include file="/reply/ReplyWrite.jsp"  -->
     </div>
 </div>
 
 <!-- Footer-->
 <jsp:include page="../footer.jsp" flush="false"/>
+
+<!-- 좋아요 js -->
+<script>
+    function updateLikes(){
+        let postIdx = "${ vo.postIdx }";
+        let memberIdx = "${ sessionScope.memberIdx }";
+        // let memberIdx = $("#memberIdx").val().toString();
+        // let memberIdx = { sessionScope.memberIdx };
+        // let memberIdx = sessionStorage.getItem("memberIdx");
+
+        // 로그인 안 된 사용자가 좋아요를 눌렀을 때, 로그인 페이지로 이동
+        if(!memberIdx || memberIdx.length <= 0){
+            alert("먼저 로그인을 해주세요.");
+            location.href = "${pageContext.request.contextPath}/member/loginform.do";
+            return;
+        }
+
+        // 좋아요 컨트롤러 요청명
+        let url = "${pageContext.request.contextPath}/post/updatelikes.do";
+
+        $.ajax({
+            type : "POST",
+            url : url,
+            datatype:"text",
+            data : {
+                postIdx : postIdx,
+                memberIdx : memberIdx
+            },
+            success : function(likeCheck) {
+                if(likeCheck == 0){ // 좋아요 완료
+                    alert("좋아요!");
+                    location.reload();
+                }
+                else if (likeCheck == 1){   // 좋아요 취소
+                    alert("좋아요를 취소하였습니다.");
+                    location.reload();
+                }else{  // 오류
+                    alert("다시 시도해 주세요.");
+                }
+            },
+            error : function(){
+                alert("다시 시도해 주세요.");
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
