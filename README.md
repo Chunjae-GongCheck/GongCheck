@@ -1,4 +1,4 @@
-#  ✏️ 에듀테크 풀스택 3기 1조 GongCheck ✏️ 
+![18](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/c588df44-56bd-47a1-a703-07aae0dd2ac5)#  ✏️ 에듀테크 풀스택 3기 1조 GongCheck ✏️ 
 ```bash
 프로젝트 기간 : 2023년 11월 27일 ~ 2023년 12월 11일
 ```
@@ -22,30 +22,40 @@
 ## 📂 PPT 📂
 
 <details><summary>PPT</summary>
-
-![1](https://github.com/seokeunpark/Team_ProJect/assets/145525099/845cda3b-d2d6-426c-ba11-d7a3a2f9950d)
-![2](https://github.com/seokeunpark/Team_ProJect/assets/145525099/2ee6f5a1-9859-4fef-a5fb-0e498365e229)
-![3](https://github.com/seokeunpark/Team_ProJect/assets/145525099/c9f7b63c-2069-4810-8f9d-f61b8544739b)
-![4](https://github.com/seokeunpark/Team_ProJect/assets/145525099/5eea684b-c370-4732-bfb1-5d27515b1353)
-![5](https://github.com/seokeunpark/Team_ProJect/assets/145525099/c35549d1-ae0a-4657-8b95-6690a15729ac)
-![6](https://github.com/seokeunpark/Team_ProJect/assets/145525099/d2f005d6-8577-4d7e-913b-535129afccb0)
-![7](https://github.com/seokeunpark/Team_ProJect/assets/145525099/95a1312f-0e3e-4f45-9cc1-6fd4734fe9a7)
-![8](https://github.com/seokeunpark/Team_ProJect/assets/145525099/ff9a5226-d4a9-4c6e-9042-2fe169f15473)
-![9](https://github.com/seokeunpark/Team_ProJect/assets/145525099/2f54dbf8-5532-45a2-9669-094c5aa03791)
-![10](https://github.com/seokeunpark/Team_ProJect/assets/145525099/4a1d829a-4ecb-46dc-843c-6a252527f3a6)
-![11](https://github.com/seokeunpark/Team_ProJect/assets/145525099/d2d47509-c56b-4b30-b3af-bbf739c56fae)
-![12](https://github.com/seokeunpark/Team_ProJect/assets/145525099/5b964c21-ee3d-4025-9f57-5e6b4d142d71)
-![13](https://github.com/seokeunpark/Team_ProJect/assets/145525099/bc8387d7-53c7-4273-b081-be46826333a9)
-![14](https://github.com/seokeunpark/Team_ProJect/assets/145525099/8e6e3e6a-721c-4420-bc3d-8704ef80cf4c)
-![15](https://github.com/seokeunpark/Team_ProJect/assets/145525099/b0b72718-1806-4210-a2b8-6d6bb6c7e3b4)
-![16](https://github.com/seokeunpark/Team_ProJect/assets/145525099/e7619a9e-e3f7-4977-88a2-bbd2f743fd9a)
-![17](https://github.com/seokeunpark/Team_ProJect/assets/145525099/e3152df5-8fe9-4e72-baac-a21094af98e5)
-![18](https://github.com/seokeunpark/Team_ProJect/assets/145525099/eb8a9ed7-7925-42e5-88e4-a970b235e99a)
-![19](https://github.com/seokeunpark/Team_ProJect/assets/145525099/a21401af-dbfc-44f5-8296-05b36c27a7b9)
-![20](https://github.com/seokeunpark/Team_ProJect/assets/145525099/766bbe6d-20d0-480a-afb9-bce89eedd60c)
-![21](https://github.com/seokeunpark/Team_ProJect/assets/145525099/77da97df-ed07-4bbf-be94-7f0fa571024d)
-
-
+      
+![1](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/dafdcb42-18f7-4f8e-9882-4c0618ae5f30)
+![2](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/698d4e95-501e-4d36-b05d-a3ebf29181d5)  
+![3](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/ec74682f-0b81-4f2b-a927-1bbb7355539b)
+![4](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/d4db0e70-5df4-49ea-96eb-9330f3a4aa7d)
+![5](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/7cb37eb1-8b4a-4856-8ebc-4b8db0910180)
+![6](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/e55885c8-7788-4c03-ab1c-6abb93f64a76)
+![7](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/a23fd891-ce78-4d40-a34a-be659035edb2)
+![8](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/4d49230c-5bb3-456d-b89d-51f4a1361f8b)   
+![9](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/5fbba793-095a-46e8-b39c-41d8003fe720)
+![10](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/9c6cd842-40c1-416e-92a6-139499011d8b)
+![11](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/1a99356a-405a-4ad8-99c1-890ba42d5f90)
+![12](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/bed19616-0cc0-48b2-a9f3-34eee83958ff)
+![13](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/6c135029-cb7b-472e-bfec-87473f9d5ff1)
+![14](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/d45524c1-f279-4771-b8fc-dfa9112c258c)
+![15](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/fa5601fb-611d-4ec7-bc3f-1d5eb8859930)
+![16](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/03524413-c52c-459d-9b7a-c1c3e55c67e1)
+![17](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/700c5d25-90f4-4bec-a35b-ff429cbc501d)
+![18](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/5e3dc099-767b-4745-985f-83a474145564)
+![19](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/dc0e8ed9-5e25-4078-88de-67d991067b7b)
+![20](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/3218e17a-ce27-4b59-a169-3a26106c8ae4)
+![21](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/2fe2ccfa-d78a-4678-b91c-3c6e806ae030)
+![22](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/672005bb-2b5f-48f7-a1c5-3b0546a76bc3)
+![23](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/04a649cc-8772-4051-a106-571c7e1022e5)
+![24](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/00a91631-be57-4869-b1c5-4c5dce2bc37b)
+![25](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/7e1634a3-afd6-4242-86c6-798328690be3) 
+![26](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/f40b4de6-eb13-4fe2-b4f1-b13bc29a8b86)
+![27](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/0b64913f-ed74-4e58-84bc-d374edd7acea)
+![28](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/20d77e3f-070c-4874-8b02-5e1f6100f57f)
+![29](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/7d1629cc-1a5c-4014-8dba-c792b5dc91b1)
+![30](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/bea12284-2ff2-4ed0-a0ba-eaa78fda0d8b)
+![31](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/62e368a7-8f82-4765-918f-8097a47f5fe2)
+![32](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/4f273110-f331-4535-a341-276f862e1e36)
+![33](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/13c5aa53-2337-4617-b494-f91f50ee6388)
 
 </details>
       
