@@ -6,13 +6,13 @@
 
 1. [📂 PPT](#-PPT-)
 2. [📖 프로젝트 소개](#-gongcheck-프로젝트-)
-3. [🔧Development Environment](#development-environment)
+3. [🔧 Development Environment](#development-environment)
 4. [🔔 Prerequisite](#prerequisite)
 5. [❗ How to Run in IntelliJ](#how-to-run-in-intellij)
 6. [💡 기획 의도](#기획-의도)
 7. [🙋‍♀️ Team_Member](#%EF%B8%8F-team_member-%EF%B8%8F)
 8. [📋 개발 일지](#개발-일지)
-9. [🔨사용 기술](#-사용-기술-)
+9. [🔨 사용 기술](#-사용-기술-)
 10. [📈  요구 명세서](#-요구-명세서-)
 11. [📊 Diagram](#-다이어그램-)
 12. [📝 기능 설명](#-기능-설명-)
@@ -64,26 +64,26 @@
 공부인증 기능을 JSP와 MyBatis로 구현한 웹 페이지
 + Amazon AWS 배포
 ```
-## 🔧Development Environment🔧
+## 🔧 Development Environment 🔧
 ```
 Java 11
 MariaDB 3.2.0
 MyBatis 3.5.13
 IntelliJ
 ```
-## 🔔Prerequisite🔔
+## 🔔 Prerequisite 🔔
 ```
 MariaDB 3306 포트로 연결 및 DDL 실행
 Tomcat 8090 포트 연결
 ```
-## ❗How to Run in IntelliJ❗
+## ❗ How to Run in IntelliJ ❗
 ```
 1. File > Project Structure > Project Settings > Modules > Dependencies >
 + > 1. Add Jars에 lombok.jar, mariadb-java-client-3.2.0.jar, mybatis-3.5.13.jar 파일을 추가한다.
 2. 실행
 ```
 
-## 💡기획 의도💡
+## 💡 기획 의도 💡
 ```
 매일매일 그 날의 공부를 인증하며 스스로는 성취감을 얻고 다른 사람들의 게시물을 통해 '착한자극제' 가 되어 동기를 부여하기 위해 개발
 ```
@@ -96,7 +96,7 @@ Tomcat 8090 포트 연결
 #### [😆 CK 👉 GitHub](https://github.com/kidchang93)
 #### [😆 JIHYE 👉 GitHub](https://github.com/jyeeeh)
 
-## 📋개발 일지📋
+## 📋 개발 일지 📋
 <details><summary>개발 일지</summary>
    
 ![개발일지](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/5ac7ac12-4e39-46c2-a1ce-548e7c9bb748)
