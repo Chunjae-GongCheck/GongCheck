@@ -11,6 +11,7 @@
                  join replies as r
                       on m.member_idx = r.member_idx
         where r.post_idx = #{postIdx}
+        order by r.reply_idx desc
     </select>
 
     <!-- 삽입 -->
