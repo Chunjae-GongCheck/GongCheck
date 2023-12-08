@@ -299,9 +299,9 @@ Tomcat 8090 포트 연결
 
 </details>
 
-<details><summary>관리자</summary>
+<details><summary>댓글 및 좋아요</summary>
 
-![admin](#)
+![reply_like](#)
 
 
 </details>
