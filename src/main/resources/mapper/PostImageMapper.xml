@@ -29,9 +29,8 @@
                         p.post_visitcount , i.post_image_idx , i.post_idx , i.post_image_path ,
                         i.post_t_image_path , m.member_idx , m.member_nickname
         From posts p
-        join post_images i
-        inner join members m
-        on p.post_idx = i.post_idx
+        join post_images i on p.post_idx = i.post_idx
+        join members m on p.member_idx = m.member_idx
         <if test="searchWord != null and !searchWord.equals('')">
             <choose>
                 <when test="searchField == 'post_title'">

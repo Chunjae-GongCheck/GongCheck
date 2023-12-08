@@ -1,17 +1,18 @@
 package com.gck.reply.model;
 
-import java.util.List;
-import java.util.Map;
-
+import java.util.ArrayList;
 
 public interface ReplyDAO {
 
     //댓글 목록 불러오기
-    List<ReplyVO> getRepliesByPost(int postIdx);
+    ArrayList<ReplyDTO> getReplies(int postIdx);
 
     //댓글 작성
-    int createReplies(ReplyVO vo);
+    Integer createReplies(ReplyVO replyVO);
 
+    //댓글 수정
+    Integer updateReplies(ReplyVO replyVO);
 
-    // 삽입, 업데이트, 삭제 추가 예정
+    // 댓글 삭제
+    Integer deleteReplies(ReplyVO replyVO);
 }

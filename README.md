@@ -177,6 +177,10 @@ Tomcat 8090 포트 연결
 
 <br/>
 
+### [ 검색창 모달 화면 ( Modal ) ]
+- 검색 버튼 누르는 즉시 검색할 수 있는 대화상자 열림
+- 해당 모달 화면 외에 어느 곳을 누르던 대화상자가 닫히게 설정.
+
 | 검색창 모달 화면 |
 | --- |
 | <img width="1081" alt="image" src="https://github.com/Chunjae-GongCheck/GongCheck/assets/145524731/ce55ae62-8c43-4aec-9445-3c01e0419b79"> |
