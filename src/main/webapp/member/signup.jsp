@@ -307,7 +307,7 @@
                         <label for="memberZonecode">우편번호</label>
                         <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" placeholder="" required readonly>
                         <div class="invalid-feedback">
-                            우편번호를 검색해 주세요.(readonly)
+                            우편번호를 검색해 주세요.
                         </div>
                     </div>
 
