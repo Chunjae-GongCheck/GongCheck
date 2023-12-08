@@ -20,7 +20,7 @@
 
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-   <!-- daum api -->
+    <!-- daum api -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>-->
@@ -217,7 +217,7 @@
 
                     <div class="col-md-4 mb-3">
                         <br/>
-                        <button id="memberZonecodeSearch" class="btn btn-primary btn-sm btn-block" onclick="findAddr()">우편번호 검색</button>
+                        <button type="button" id="memberZonecodeSearch" class="btn btn-primary btn-sm btn-block" onclick="findAddr()">우편번호 검색</button>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -313,13 +313,11 @@
                     // if(form.checkValidity() === false)
                     event.preventDefault();
                     event.stopPropagation();
-                    console.log("here 1");
                 }
 
                 if(!checkErrorMsg()){
                     event.preventDefault();
                     event.stopPropagation();
-                    console.log("here 3");
                 }
 
                 form.classList.add('was-validated');
@@ -329,6 +327,6 @@
 
     }, false);
 </script>
-<script src="script/signup.js"></script>
+
 </body>
 </html>
