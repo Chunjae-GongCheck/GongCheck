@@ -18,14 +18,13 @@ where member_idx = 1;
 
 -- admins
 select * from admins;
-insert into admins(admin_id) VALUE ('admin');
+insert into admins(admin_id) VALUE ('admin11');
 
 
 -- password_admins
 select * from password_admins;
 insert into password_admins(admin_idx, password_admin)
-    VALUE (1, 'admin');
-
+    VALUE (1, 'admin11');
 
 -- boards
 select * from boards;

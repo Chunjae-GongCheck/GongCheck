@@ -13,7 +13,7 @@ import java.util.List;
 
 // ** 회원정보 조회를 위한 컨트롤러입니다. **//
 
-@WebServlet("/MemberListServlet")
+@WebServlet("/admin/AdminBoardList.do")
 public class AdminBoardListController extends HttpServlet {
 
     private final AdminBoardService adminBoardService = new AdminBoardService();
@@ -33,7 +33,7 @@ public class AdminBoardListController extends HttpServlet {
             request.setAttribute("adminResultVos", adminResultVOS);
 
             // AdminBoardList.jsp 페이지로 포워딩하여 결과를 해당 페이지에 전달합니다.
-            request.getRequestDispatcher("/admin/AdminBoardList.jsp").forward(request, response);
+            request.getRequestDispatcher("../admin/AdminBoardList.jsp").forward(request, response);
         } catch (Exception e) {
             // 예외 발생 시 로그를 출력합니다.
             e.printStackTrace();
