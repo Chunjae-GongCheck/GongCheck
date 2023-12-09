@@ -34,4 +34,10 @@
         set post_likecount = post_likecount - 1
         where post_idx = #{postIdxInt}
     </update>
+
+    <select id="countLikes" parameterType="int" resultType="int">
+        select count(*)
+        from likes
+        where post_idx = #{postIdx}
+    </select>
 </mapper>

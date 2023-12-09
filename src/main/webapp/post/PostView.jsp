@@ -83,7 +83,9 @@
                                 <path fill-rule="evenodd"
                                       d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                             </svg>
-                            &nbsp;&nbsp;    ${vo.postLikecount}
+                            <span class="countLikes" id="countLikes" name="countLikes" >
+                                &nbsp;${vo.postLikecount}
+                            </span>
                         </div>
                     </h5>
                     <h5 class="card-title">조회수 : ${vo.postVisitcount}</h5>
@@ -140,25 +142,31 @@
         $.ajax({
             type : "POST",
             url : url,
-            datatype:"text",
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data : {
                 postIdx : postIdx,
                 memberIdx : memberIdx
             },
             success : function(likeCheck) {
-                if(likeCheck == 0){ // 좋아요 완료
-                    alert("좋아요!");
-                    location.reload();
-                }
-                else if (likeCheck == 1){   // 좋아요 취소
-                    alert("좋아요를 취소하였습니다.");
-                    location.reload();
-                }else{  // 오류
+                let result = likeCheck.result; // 좋아요 결과(-1: 오류 / 0: 좋아요 등록 / 1: 좋아요 취소)
+                let countLikes = likeCheck.cntLikes; // 게시물 좋아요 개수
+
+                if(result == -1){       // 좋아요 오류
                     alert("다시 시도해 주세요.");
+                    location.reload(); // 새로고침
+                }else if(result == 0) {  // 좋아요 등록
+                    alert("좋아요!");
+                }else {                 // 좋아요 취소
+                    alert("좋아요를 취소하였습니다.");
                 }
+
+                // 좋아요 개수 부분 값만 변경한다.
+                $("#countLikes").text(" " + countLikes);
             },
             error : function(){
                 alert("다시 시도해 주세요.");
+                location.reload(); // 새로고침
             }
         });
     }

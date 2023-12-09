@@ -13,4 +13,6 @@ public interface LikesDAO {
     public Integer increaseLikes(int postIdx);
     // 게시물 좋아요 수 감소
     public Integer decreaseLikes(int postIdx);
+    // 게시물 좋아요 수 조회
+    public int countLikes(int postIdx);
 }
