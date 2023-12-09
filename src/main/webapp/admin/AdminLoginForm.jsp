@@ -1,14 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: thegreatjy
-  Date: 2023/11/28
-  Time: 18:00
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>GongCheck: 로그인</title>
+    <title>GongCheck: 관리자 로그인</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <!-- <link href="css/login_bootstrap.css" rel="stylesheet">-->
@@ -30,7 +24,7 @@
                 // 아이디 기억하기 버튼에 체크 표시
                 $("input:checkbox[id='remember-me']").prop("checked", true);
                 // 아이디 폼에 쿠키에 저장된 아이디 값을 넣어준다.
-                $('#memberId').val(cookieid);
+                $('#adminId').val(cookieid);
             }
         }
 
@@ -46,10 +40,10 @@
             // 아이디 기억하기 버튼이 체크되어 있다면
             if ($("#remember-me").is(":checked")) {
                 expdate.setTime(expdate.getTime() + 1000 * 3600 * 24 * 7);  // 7일 보관
-                setCookie("saveid", $("#memberId").val(), expdate);
+                setCookie("saveid", $("#adminId").val(), expdate);
             } else { // 버튼이 체크되어 있지 않다면
                 expdate.setTime(expdate.getTime() - 1000 * 3600 * 24 * 7); // 현재 시간 - 7일. 즉, 과거
-                setCookie("saveid", $("#memberId").val(), expdate);
+                setCookie("saveid", $("#adminId").val(), expdate);
             }
         }
 
@@ -106,8 +100,8 @@
 
                 <!-- 아이디 -->
                 <div class="mb-3">
-                    <label for="memberId">아이디</label>
-                    <input type="text" class="form-control" id="memberId" name="memberId" required
+                    <label for="adminId">아이디</label>
+                    <input type="text" class="form-control" id="adminId" name="adminId" required
                            minlength="5" maxlength="30" onInput="inputDataCheck(this.id)" onKeyUp="maxLengthCheck(this.id)">
                     <div class="invalid-feedback">
                         아이디를 다시 입력해 주세요.(5자 이상 30자 이하)
@@ -117,29 +111,17 @@
 
                 <!-- 비밀번호 -->
                 <div class="mb-3">
-                    <label for="passwordMember">비밀번호</label>
-                    <input type="password" class="form-control" id="passwordMember" name="passwordMember" required
+                    <label for="passwordAdmin">비밀번호</label>
+                    <input type="password" class="form-control" id="passwordAdmin" name="passwordAdmin" required
                            minlength="5" maxlength="128" onInput="maxLengthCheck(this.id);" onKeyUp="inputDataCheck(this.id);">
                     <div class="invalid-feedback">
                         비밀번호를 다시 입력해 주세요. (5자 이상 128자 이하)
                     </div>
                 </div>
 
-
                 <div class="d-grid col-6 mx-auto">
                     <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
                 </div>
-
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <h6>아직 회원이 아니신가요?  <a href="${pageContext.request.contextPath}/member/signupform.do">회원가입</a></h6>
-                    </blockquote>
-                </figure>
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                      <a href="${pageContext.request.contextPath}/admin/adminLogin.do">관리자 로그인</a>
-                    </blockquote>
-                </figure>
             </form>
         </div>
     </div>
