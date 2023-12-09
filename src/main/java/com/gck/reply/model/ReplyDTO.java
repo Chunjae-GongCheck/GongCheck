@@ -13,4 +13,5 @@ public class ReplyDTO {
     private String memberNickname;     // 회원 닉네임
     private String replyContent;    // 댓글 내용
     private Date replyWriteDate;    // 작성일시
+
 }

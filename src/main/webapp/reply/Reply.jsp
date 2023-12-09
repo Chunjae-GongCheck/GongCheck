@@ -57,17 +57,23 @@
                         for(i = 0; i < cCnt; i++){
                             html += "<div>";
                             html += "<input type='hidden' id='postIdx_"+ data.reply[i].replyIdx +"' name='postIdx_" + data.reply[i].replyIdx + "' value='" + postIdx + "' />";
-                            html += "<div><table class='table'><h6><strong>"+data.reply[i].memberIdx+"</strong></h6>";
-                            html += "<tr><td>" + data.reply[i].replyContent + "</td></tr>";
-                            html += "<tr><td>" + data.reply[i].replyWriteDate + "</td></tr>";
-                            html += "<tr><td><button type='button' class='btn btn-primary' onclick='showUpdateForm(" + data.reply[i].replyIdx + ", \"" + data.reply[i].replyContent + "\");'>수정</button></td></tr>";
-                            html += "</table></div>";
+                            html += "<div><table class='table'><thead><tr><h6><strong>"+data.reply[i].memberIdx+"</strong></h6></tr></thead>";
+                            html += "<tbody class='table-group-divider'><tr>";
+                            html += "<th scope='row'>내용</th>";
+                            html += "<td>" + data.reply[i].replyContent + "</td></tr>";
+                            html += "<tr><th scope='row'>작성일시</th>";
+                            html += "<td>" + data.reply[i].replyWriteDate + "</td></tr>";
+                            html += "</tbody></table></div>";
+                            html += "<button type='button' class='btn btn-primary btn-sm' onclick='showUpdateForm(" + data.reply[i].replyIdx + ", \"" + data.reply[i].replyContent + "\");'>수정</button>";
+                            html += "<button type='button' class='btn btn-secondary btn-sm' onclick='deleteComment(" + data.reply[i].replyIdx + ", \"" + data.reply[i].replyContent + "\");'>삭제</button>";
+                            html += "</div>";
+                            html += "<div>";
                             html += "</div>";
                             // 수정 폼(수정 버튼 클릭 시 화면 나옴)
                             html += "<div id='updateForm" + data.reply[i].replyIdx + "' style='display: none;'>";
                             html += "<textarea class='form-control' id='updateContent" + data.reply[i].replyIdx + "'>" + data.reply[i].replyContent + "</textarea>";
-                            html += "<button type='button' class='btn btn-success' onclick='updateComment(" + data.reply[i].replyIdx + ");'>수정 완료</button>";
-                            html += "<button type='reset'>Reset</button>";
+                            html += "<button type='button' class='btn btn-primary btn-sm' onclick='updateComment(" + data.reply[i].replyIdx + ");'>수정 완료</button>";
+                            html += "<button type='reset' class='btn btn-secondary btn-sm'>Reset</button>";
                             html += "</div>";
                         }
                     }
@@ -179,9 +185,36 @@
                 }
             });
 
+
+
             // 수정 폼 감추기
             $("#updateForm" + replyIdx).hide();
         }
+
+        //댓글 삭제
+        function deleteComment(replyIdx) {
+            // 삭제 확인
+            let url = "${contextPath}/gck/ReplyDelete.do";
+            if (
+                confirm("정말로 삭제하시겠습니까?")) {
+                // AJAX를 이용한 삭제 요청
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        replyIdx: replyIdx
+                    },
+                    success: function (result) {
+                        // 삭제 성공 시 댓글 목록 다시 불러오기
+                        getCommentList();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("AJAX 오류 발생: ", status, error);
+                    }
+                });
+            }
+        }
+
 
         // 수정 폼 보여주기
         function showUpdateForm(replyIdx, replyContent) {

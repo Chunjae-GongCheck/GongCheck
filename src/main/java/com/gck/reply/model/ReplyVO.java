@@ -38,4 +38,9 @@ public class ReplyVO {
     public ReplyVO(String replyContent) {
         this.replyContent=replyContent;
     }
+
+    public ReplyVO(int memberIdx, int replyIdx) {
+        this.memberIdx = memberIdx;
+        this.replyIdx = replyIdx;
+    }
 }

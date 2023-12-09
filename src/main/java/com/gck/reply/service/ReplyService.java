@@ -132,19 +132,21 @@ public class ReplyService {
     }
 
     // 댓글 delete
-    public int deleteReplies(ReplyVO replyVO) {
+    public int deleteReplies(int memberIdx, int replyIdx) {
         this.sqlSession = MyBatisFactory.getSqlSession();
         mapper = this.sqlSession.getMapper(ReplyDAO.class);
 
+        ReplyVO replyVO = new ReplyVO(memberIdx, replyIdx);
+
         Integer result = mapper.deleteReplies(replyVO);
 
-        // update 오류
+        // 삭제 오류
         if (result == null || result != 1) {
             sqlSession.close();
             return -1;
         }
 
-        // update 성공
+        // 삭제 성공
         sqlSession.commit();
         sqlSession.close();
         return result;
