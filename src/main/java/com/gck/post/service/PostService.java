@@ -5,6 +5,9 @@ import com.gck.post.model.LikesDAO;
 import com.gck.post.model.LikesVO;
 import com.gck.post.model.PostDAO;
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class PostService {
@@ -48,8 +51,9 @@ public class PostService {
     }
 
     // 추천 증가
-    public boolean insertLikes(String postIdx, String memberIdx){
-        boolean result = false;
+    public JSONObject insertLikes(String postIdx, String memberIdx){
+        int result = -1;
+        JSONObject obj = new JSONObject();
         try {
             sqlSession = MyBatisFactory.getSqlSession();
             mapperLikes = this.sqlSession.getMapper(LikesDAO.class);
@@ -63,32 +67,42 @@ public class PostService {
             Integer queryResult = mapperLikes.insertLikes(likesVO);
 
             if(queryResult == null || queryResult != 1){    // 오류
-                result = false;
+                result = -1;
             }else{  // 좋아요 등록
-                result = true;
+                result = 0;
             }
 
-            // 게시물 추천 수 증가
-            Integer increaseResult = mapperLikes.increaseLikes(postIdxInt);
+            // 추천 등록 성공 시에만 실행
+            if(result == 0) {
+                // 게시물 추천 수 증가
+                Integer increaseResult = mapperLikes.increaseLikes(postIdxInt);
 
-            if(increaseResult == null || increaseResult != 1){    // 오류
-                result = false;
-            }else{
-                result = true;
-                sqlSession.commit();
+                if (increaseResult == null || increaseResult != 1) {    // 오류
+                    result = -1;
+                } else {
+                    result = 0;
+                    sqlSession.commit();
+                }
             }
+
+            // 게시물 추천수 조회
+            int cntLikes = countLikes(postIdxInt);
+
+            // json 객체 생성
+            obj = toJSONObject(result, cntLikes);
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("MemberService_exception");
         }finally {
             sqlSession.close();
-            return result;
+            return obj;
         }
     }
 
     // 추천 감소
-    public boolean deleteLikes(String postIdx, String memberIdx){
-        boolean result = false;
+    public JSONObject deleteLikes(String postIdx, String memberIdx){
+        int result = -1;
+        JSONObject obj = new JSONObject();
         try {
             this.sqlSession = MyBatisFactory.getSqlSession();
             mapperLikes = this.sqlSession.getMapper(LikesDAO.class);
@@ -102,27 +116,59 @@ public class PostService {
             Integer queryResult = mapperLikes.deleteLikes(likesVO);
 
             if(queryResult == null || queryResult != 1){    // 오류
-                result = false;
+                result = -1;
             }else{  // 추천 감소
-                result = true;
+                result = 1;
             }
 
-            // 게시물 추천 수 감소
-            Integer decreaseResult = mapperLikes.decreaseLikes(postIdxInt);
+            if (result == 1) {   // 추천 삭제 성공 시에만 진행
+                // 게시물 추천 수 감소
+                Integer decreaseResult = mapperLikes.decreaseLikes(postIdxInt);
 
-            if(decreaseResult == null || decreaseResult != 1){    // 오류
-                result = false;
-            }else{
-                result = true;
-                sqlSession.commit();
+                if (decreaseResult == null || decreaseResult != 1) {    // 오류
+                    result = -1;
+                } else {
+                    result = 1;
+                    sqlSession.commit();
+                }
             }
+            // 게시물 추천수 조회
+            int cntLikes = countLikes(postIdxInt);
+
+            // json 객체 생성
+            obj = toJSONObject(result, cntLikes);
 
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("MemberService_exception");
         }finally {
             sqlSession.close();
-            return result;
+            return obj;
         }
+    }
+
+    // 결과 json 객체 생성
+    public JSONObject toJSONObject(int result, int cntLikes){
+        JSONObject obj = new JSONObject();
+
+        try {
+            obj.put("result", result);
+            obj.put("cntLikes", cntLikes);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return obj;
+    }
+
+    // 게시물의 좋아요 수 조회
+    public int countLikes(int postIdx){
+        this.sqlSession = MyBatisFactory.getSqlSession();
+        mapperLikes = this.sqlSession.getMapper(LikesDAO.class);
+
+        int result = mapperLikes.countLikes(postIdx);
+
+        sqlSession.close();
+        return result;
     }
 }
