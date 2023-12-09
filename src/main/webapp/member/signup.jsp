@@ -22,7 +22,6 @@
    <!-- daum api -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>-->
     <link href="css/signup_bootstrap.css" rel="stylesheet">
     <script>
         // input 길이 제한
@@ -49,58 +48,12 @@
             }
         }
 
-        // id 중복 확인
-        function id_overlap_check(object) {
-            // 아이디
-            let inputMemberId =  $("#memberId").val();
-
-            // null 입력
-            if(!inputMemberId){
-                //alert("아이디를 입력해 주세요.");
-                object.addClass("is-invalid");
-                return;
-            }
-
-            // id 길이 미만 혹은 초과 시, 경고 문구 출력
-            if(object.val().length < object.minLength || object.val().length > object.maxLength){
-                object.addClass("is-invalid");
-                return;
-            }
-
-            $.ajax({
-                url : "${pageContext.request.contextPath}/member/idoverlapcheck.do", // 요청 주소
-                type : 'POST',
-                data : { // 요청 시, 넘겨줄 데이터
-                    memberId : inputMemberId
-                },
-                success : function(data) {
-                    // data : 응답 정보. url의 실행 결과가 넘어 온다. (주석 포함)
-                    // alert('data: ' + $.trim(data));
-
-                    if ($.trim(data) == "1") { // data의 앞 뒤 공백을 제거(trim)한 후 "1"인지 확인
-                        alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-                        //아이디가 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인
-                        $("#memberId").addClass("is-invalid")
-                        // $("#memberId").removeClass("has-success")
-                        $("#memberId").focus();
-                    } else {
-                        alert("사용 가능한 아이디입니다.");
-                        //아이디가 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인
-                        // $("#memberId").addClass("has-success")
-                        $("#memberId").removeClass("is-invalid")
-                        $("#memberId").focus();
-                    }
-                }
-            });
-        }
-
         // 비밀번호 일치 확인
         function passwordCheck(){
             let passwordMember = $("#passwordMember").val();
             let passwordMemberCheck = $("#passwordMemberCheck").val();
 
             if(passwordMember !== passwordMemberCheck){ // 불일치
-                // $("#passwordMemberCheck").addClass("is-invalid");
                 $("#passwordMemberCheck").removeClass("has-validation");
                 $("#passwordMemberCheck").addClass("is-invalid");
                 return false;
@@ -108,11 +61,10 @@
                 $("#passwordMemberCheck").addClass("has-validation");
                 $("#passwordMemberCheck").removeClass("is-invalid");
                 return true;
-                // $("#passwordMemberCheck").addClass("has-success")
             }
         }
 
-        // 닉네임 중복 확인
+        // id, 닉네임, 이메일 중복 확인
         function nickname_overlap_check(type){
             // 폼 입력값
             let inputValue = "";
@@ -122,7 +74,7 @@
             let object;
 
             let minLength = 0, maxLength = 0;
-            console.log(type);
+
             if(type == "0"){       // 아이디 중복 확인
                 object = $("#memberId");
                 inputValue += $("#memberId").val().toString();
@@ -142,7 +94,6 @@
 
             // null 입력
             if(!inputValue){
-                //alert("아이디를 입력해 주세요.");
                 object.addClass("is-invalid");
                 return false;
             }
@@ -153,7 +104,29 @@
                 return false;
             }
 
+            // 유효성 검사
+            const idPattern = /^[A-Za-z0-9][A-Za-z0-9]*$/;
+            const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+            let patternTestingResult = false;
 
+            if(type == 0) {     // 아이디
+                patternTestingResult = idPattern.test(inputValue);
+            }else if(type == 1) {   // 닉네임 유효성 검사는 진행하지 않는다.
+                patternTestingResult = true;
+            }else if(type == 2) {   // 이메일
+                patternTestingResult = emailPattern.test(inputValue);
+            }
+
+            // 유효하지 않은 입력값일 경우 오류 메세지를 출력한다.
+            if(patternTestingResult == false) {
+                object.addClass("is-invalid");
+                object.removeClass("is-valid");
+                object.removeClass("has-validation");
+                object.focus();
+                return false;
+            }
+
+            // 중복 확인
             $.ajax({
                 url : url, // 요청 주소
                 type : 'POST',
@@ -162,22 +135,15 @@
                     type : type.toString()
                 },
                 success : function(data) {
-                    // data : 응답 정보. url의 실행 결과가 넘어 온다. (주석 포함)
-                    // alert('data: ' + $.trim(data));
+                    // data : 응답 정보. url의 실행 결과가 넘어 온다.
 
                     if ($.trim(data) == "1") { // data의 앞 뒤 공백을 제거(trim)한 후 "1"인지 확인
-                        // alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-                        //아이디가 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인
                         object.addClass("is-invalid");
                         object.removeClass("is-valid");
                         object.removeClass("has-validation");
-                        // $("#memberId").removeClass("has-success")
                         object.focus();
                         return false;
                     } else {
-                        // alert("사용 가능한 아이디입니다.");
-                        //아이디가 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인
-                        // $("#memberId").addClass("has-success");
                         object.removeClass("is-invalid");
                         object.addClass("is-valid");
                         object.addClass("has-validation");
@@ -219,7 +185,6 @@
                 }
             }).open();
         }
-
     </script>
 </head>
 
@@ -307,7 +272,7 @@
                         <label for="memberZonecode">우편번호</label>
                         <input type="text" class="form-control" id="memberZonecode" name="memberZonecode" placeholder="" required readonly>
                         <div class="invalid-feedback">
-                            우편번호를 검색해 주세요.(readonly)
+                            우편번호를 검색해 주세요.
                         </div>
                     </div>
 
@@ -332,68 +297,14 @@
                     </div>
                 </div>
 
-                <!--
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="name">이름</label>
-                        <input type="text" class="form-control" id="name" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            이름을 입력해주세요.
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="nickname">별명</label>
-                        <input type="text" class="form-control" id="nickname" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            별명을 입력해주세요.
-                        </div>
-                    </div>
-                </div>
-                -->
-                <!-- 이메일 select
-                <div class="col-md-3">
-                    <label for="validationCustom04" class="form-label">State</label>
-                    <select class="form-select" id="validationCustom04" required>
-                        <option selected disabled value="">Choose...</option>
-                        <option value="">-선택-</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="daum.net">daum.net</option>
-                        <option value="nate.com">nate.com</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a valid state.
-                    </div>
-                </div>
-                -->
-                <!--
-                <div class="row">
-                    <div class="col-md-8 mb-3">
-                        <label for="root">가입 경로</label>
-                        <select class="custom-select d-block w-100" id="root">
-                            <option value=""></option>
-                            <option>검색</option>
-                            <option>카페</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            가입 경로를 선택해주세요.
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="code">추천인 코드</label>
-                        <input type="text" class="form-control" id="code" placeholder="" required>
-                        <div class="invalid-feedback">
-                            추천인 코드를 입력해주세요.
-                        </div>
-                    </div>
-                </div>
-                -->
+                <!-- 개인정보 동의 -->
                 <hr class="mb-4">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="agreement" required>
                     <label class="custom-control-label" for="agreement">개인정보 수집 및 이용에 동의합니다.</label>
                 </div>
 
+                <!-- 가입하기 버튼 -->
                 <div class="d-grid col-6 mx-auto">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
                 </div>
@@ -416,30 +327,25 @@
                     alert("모든 입력란을 채워 주세요.");
                     event.preventDefault();
                     event.stopPropagation();
-                    console.log("here 1");
                 }
 
                 if(!passwordCheck()){
-                    alert("비밀번호를 일치시켜 주세요.");
+                    alert("비밀번호가 일치하지 않습니다.");
                     event.preventDefault();
                     event.stopPropagation();
-                    console.log("here 2");
                 }
 
                 if(!checkErrorMsg()){
                     alert("중복확인을 해주세요.");
                     event.preventDefault();
                     event.stopPropagation();
-                    console.log("here 3");
                 }
 
                 form.classList.add('was-validated');
-                // form.classList.remove('was-validated');
             }, false);
         });
 
     }, false);
 </script>
-<script src="script/signup.js"></script>
 </body>
 </html>
