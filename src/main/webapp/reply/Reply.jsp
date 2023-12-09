@@ -43,7 +43,7 @@
                     var html = "";
                     // 댓글 갯수
                     let cCnt = 0;
-                    console.log(data);
+
                     let oCnt = Object.keys(data).length; // json 객체 개수 확인
                     if(oCnt <= 0) {  // 댓글이 0개인 경우 경우
                         html += "<div>";
@@ -128,17 +128,6 @@
                 }
             });
         }
-
-        // 댓글 삭제
-        // html += "<input type='hidden' id='postIdx_"+ data.reply[i].replyIdx +"' name='postIdx_" + data.reply[i].replyIdx + "' value='" + postIdx + "' />";
-        // 위의  인덱스 값을
-        // let replyContent = $("#replyContent").val().toString();   // 댓글 내용
-        // 이렇게 빼와서 댓글 idx를 컨트롤러에 넘겨줘서 댓글 삭제
-        // 삭제 후 location.reload(); 로 페이지 새로 고침
-
-        // 업데이트도 댓글 인덱스, 게시물 인덱스, 댓글 내용, 댓글 작성자 넘겨줘서 업데이트
-
-
     </script>
 </head>
 <body>
