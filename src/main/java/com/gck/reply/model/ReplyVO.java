@@ -27,4 +27,15 @@ public class ReplyVO {
         this.memberIdx = memberIdx;
         this.replyContent = replyContent;
     }
+
+    public ReplyVO(int memberIdx, int replyIdx, String replyContent, Date replyUpdateDate){
+        this.memberIdx = memberIdx;
+        this.replyIdx = replyIdx;
+        this.replyContent = replyContent;
+        this.replyUpdateDate = replyUpdateDate;
+    }
+
+    public ReplyVO(String replyContent) {
+        this.replyContent=replyContent;
+    }
 }

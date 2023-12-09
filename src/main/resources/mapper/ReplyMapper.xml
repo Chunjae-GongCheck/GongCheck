@@ -20,5 +20,12 @@
         VALUES (#{postIdx}, #{replyContent}, #{memberIdx}, 0, 0, 0)
     </insert>
 
+    <!-- 업데이트 -->
+    <update id="updateReplies" parameterType="com.gck.reply.model.ReplyVO">
+        UPDATE replies
+        SET reply_content = #{replyContent}, reply_update_date = #{replyUpdateDate}
+        WHERE reply_idx = #{replyIdx} AND member_idx = #{memberIdx}
+    </update>
+
     <!-- 삽입, 업데이트, 삭제 추가 예정) -->
 </mapper>

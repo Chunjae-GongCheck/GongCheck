@@ -54,13 +54,20 @@
                         // 작성된 댓글 갯수
                         cCnt = Object.keys(data.reply).length;
 
-                        for(i=0; i<cCnt; i++){
+                        for(i = 0; i < cCnt; i++){
                             html += "<div>";
                             html += "<input type='hidden' id='postIdx_"+ data.reply[i].replyIdx +"' name='postIdx_" + data.reply[i].replyIdx + "' value='" + postIdx + "' />";
                             html += "<div><table class='table'><h6><strong>"+data.reply[i].memberIdx+"</strong></h6>";
                             html += "<tr><td>" + data.reply[i].replyContent + "</td></tr>";
                             html += "<tr><td>" + data.reply[i].replyWriteDate + "</td></tr>";
+                            html += "<tr><td><button type='button' class='btn btn-primary' onclick='showUpdateForm(" + data.reply[i].replyIdx + ", \"" + data.reply[i].replyContent + "\");'>수정</button></td></tr>";
                             html += "</table></div>";
+                            html += "</div>";
+                            // 수정 폼(수정 버튼 클릭 시 화면 나옴)
+                            html += "<div id='updateForm" + data.reply[i].replyIdx + "' style='display: none;'>";
+                            html += "<textarea class='form-control' id='updateContent" + data.reply[i].replyIdx + "'>" + data.reply[i].replyContent + "</textarea>";
+                            html += "<button type='button' class='btn btn-success' onclick='updateComment(" + data.reply[i].replyIdx + ");'>수정 완료</button>";
+                            html += "<button type='reset'>Reset</button>";
                             html += "</div>";
                         }
                     }
@@ -128,6 +135,62 @@
                 }
             });
         }
+
+
+        // 댓글 수정
+        function updateComment(replyIdx) {
+            let memberIdx = "${sessionScope.memberIdx}";  // 로그인된 회원 idx
+
+            // 로그인 안 된 사용자가 댓글 수정 버튼을 눌렀을 때, 로그인 페이지로 이동
+            if (!memberIdx || memberIdx.length <= 0) {
+                alert("먼저 로그인을 해주세요.");
+                location.href = "${pageContext.request.contextPath}/member/loginform.do";
+                return;
+            }
+
+            let postIdx = $("#postIdx").val().toString();  // 게시물 idx
+            let replyContent = $("#updateContent" + replyIdx).val().toString();  // 수정된 댓글 내용
+
+            // 유효성 검사 : 댓글 내용이 없는 경우 alert
+            if (!replyContent || replyContent.length <= 0) {
+                alert("댓글 내용을 입력해 주세요.");
+                return;
+            }
+
+            // 댓글 수정 컨트롤러 요청명
+            let url = "${contextPath}/gck/ReplyEdit.do";
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {
+                    memberIdx: memberIdx,
+                    replyIdx: replyIdx,
+                    postIdx: postIdx,
+                    replyContent: replyContent
+                },
+                success: function (updateCheck) {
+                    if (updateCheck == 1) { // 댓글 수정 완료
+                        getCommentList(); // 댓글 다시 조회
+                    } else { // 오류
+                        alert("수정은 본인만 가능합니다");
+                    }
+                }
+            });
+
+            // 수정 폼 감추기
+            $("#updateForm" + replyIdx).hide();
+        }
+
+        // 수정 폼 보여주기
+        function showUpdateForm(replyIdx, replyContent) {
+            // 현재 댓글 내용을 수정 폼 textarea에 채워줌
+            $("#updateContent" + replyIdx).val(replyContent);
+
+            // 해당 댓글의 수정 폼을 보여줍니다.
+            $("#updateForm" + replyIdx).show();
+        }
     </script>
 </head>
 <body>
@@ -171,6 +234,7 @@
     <form id="commentListForm" name="commentListForm" method="post">
         <div id="commentList">
         </div>
+
     </form>
 </div>
 

@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 
@@ -101,22 +102,33 @@ public class ReplyService {
         return result;
     }
 
+    //1210
     // 댓글 update
-    public int updateReplies(ReplyVO replyVO) {
-        this.sqlSession = MyBatisFactory.getSqlSession();
-        mapper = this.sqlSession.getMapper(ReplyDAO.class);
-        Integer result = mapper.updateReplies(replyVO);
+    public int updateReplies(String memberIdxStr, String replyIdxStr, String replyContent, String replyUpdateDateStr) {
 
-        // update 오류
-        if (result == null || result != 1) {
+            this.sqlSession = MyBatisFactory.getSqlSession();
+            mapper = this.sqlSession.getMapper(ReplyDAO.class);
+
+            Integer memberIdx = Integer.parseInt(memberIdxStr);
+            Integer replyIdx = Integer.parseInt(replyIdxStr);
+            Date replyUpdateDate = Date.valueOf(replyUpdateDateStr);
+
+            ReplyVO replyVO = new ReplyVO(memberIdx, replyIdx, replyContent, replyUpdateDate);
+
+            // 댓글 업데이트
+            Integer result = mapper.updateReplies(replyVO);
+
+            // update 오류
+            if (result == null || result != 1) {
+                sqlSession.close();
+                return -1;
+            }
+
+            // update 성공
+            sqlSession.commit();
             sqlSession.close();
-            return -1;
-        }
+            return result;
 
-        // update 성공
-        sqlSession.commit();
-        sqlSession.close();
-        return result;
     }
 
     // 댓글 delete
@@ -137,6 +149,7 @@ public class ReplyService {
         sqlSession.close();
         return result;
     }
+
 }
 
 
