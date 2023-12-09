@@ -109,7 +109,7 @@
             const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
             let patternTestingResult = false;
 
-            if(type == 0) {     // 아이디
+            if(type == 0) {         // 아이디
                 patternTestingResult = idPattern.test(inputValue);
             }else if(type == 1) {   // 닉네임 유효성 검사는 진행하지 않는다.
                 patternTestingResult = true;
@@ -135,9 +135,7 @@
                     type : type.toString()
                 },
                 success : function(data) {
-                    // data : 응답 정보. url의 실행 결과가 넘어 온다.
-
-                    if ($.trim(data) == "1") { // data의 앞 뒤 공백을 제거(trim)한 후 "1"인지 확인
+                    if ($.trim(data) == "1") {
                         object.addClass("is-invalid");
                         object.removeClass("is-valid");
                         object.removeClass("has-validation");
