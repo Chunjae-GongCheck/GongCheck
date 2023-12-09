@@ -125,6 +125,10 @@
                     </div>
                 </div>
 
+                <input class="form-check-input" type="checkbox" value="remember-me" name="remember-me" id="remember-me" checked>
+                <label class="form-check-label" for="remember-me">
+                    아이디 기억하기
+                </label>
 
                 <div class="d-grid col-6 mx-auto">
                     <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
