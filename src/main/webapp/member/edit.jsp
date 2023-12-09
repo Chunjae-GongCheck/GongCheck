@@ -23,7 +23,6 @@
    <!-- daum api -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>-->
     <link href="css/signup_bootstrap.css" rel="stylesheet">
     <script>
         // input 길이 제한
@@ -104,18 +103,12 @@
                     // alert('data: ' + $.trim(data));
 
                     if ($.trim(data) == "1") { // data의 앞 뒤 공백을 제거(trim)한 후 "1"인지 확인
-                        // alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-                        //아이디가 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인
                         object.addClass("is-invalid");
                         object.removeClass("is-valid");
                         object.removeClass("has-validation");
-                        // $("#memberId").removeClass("has-success")
                         object.focus();
                         return false;
                     } else {
-                        // alert("사용 가능한 아이디입니다.");
-                        //아이디가 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인
-                        // $("#memberId").addClass("has-success");
                         object.removeClass("is-invalid");
                         object.addClass("is-valid");
                         object.addClass("has-validation");
@@ -235,62 +228,7 @@
                         상세주소를 입력해 주세요.
                     </div>
                 </div>
-                <!--
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="name">이름</label>
-                        <input type="text" class="form-control" id="name" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            이름을 입력해주세요.
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="nickname">별명</label>
-                        <input type="text" class="form-control" id="nickname" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            별명을 입력해주세요.
-                        </div>
-                    </div>
-                </div>
-                -->
-                <!-- 이메일 select
-                <div class="col-md-3">
-                    <label for="validationCustom04" class="form-label">State</label>
-                    <select class="form-select" id="validationCustom04" required>
-                        <option selected disabled value="">Choose...</option>
-                        <option value="">-선택-</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="daum.net">daum.net</option>
-                        <option value="nate.com">nate.com</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a valid state.
-                    </div>
-                </div>
-                -->
-                <!--
-                <div class="row">
-                    <div class="col-md-8 mb-3">
-                        <label for="root">가입 경로</label>
-                        <select class="custom-select d-block w-100" id="root">
-                            <option value=""></option>
-                            <option>검색</option>
-                            <option>카페</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            가입 경로를 선택해주세요.
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="code">추천인 코드</label>
-                        <input type="text" class="form-control" id="code" placeholder="" required>
-                        <div class="invalid-feedback">
-                            추천인 코드를 입력해주세요.
-                        </div>
-                    </div>
-                </div>
-                -->
+
                 <div class="d-grid col-6 mx-auto">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">수정하기</button>
                 </div>
@@ -310,7 +248,6 @@
         Array.prototype.filter.call(forms, (form) => {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                    // if(form.checkValidity() === false)
                     event.preventDefault();
                     event.stopPropagation();
                     console.log("here 1");
@@ -323,7 +260,6 @@
                 }
 
                 form.classList.add('was-validated');
-                // form.classList.remove('was-validated');
             }, false);
         });
 
