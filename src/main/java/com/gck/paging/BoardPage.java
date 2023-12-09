@@ -34,7 +34,7 @@ public class BoardPage {
                 pagingStr += "&nbsp;" + pageTemp + "&nbsp;";
             } else if (searchField != null) {
                 pagingStr += "&nbsp;<a href='" + reqUrl + "?pageNum=" + pageTemp
-                        + "&searchField" + "=" + searchField + "&searchWord" + "=" + searchWord + "'>" + pageTemp + "</a>&nbsp;";
+                        + "&searchField" + "=" + searchField + "&searchWord" + "=" + searchWord + "'>" + pageTemp  + "</a>&nbsp;";
             } else {
                 pagingStr += "&nbsp;<a href='" + reqUrl + "?pageNum=" + pageTemp
                         + "'>" + pageTemp + "</a>&nbsp;";

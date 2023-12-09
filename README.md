@@ -71,10 +71,12 @@
 ```
 ## 🔧 Development Environment 🔧
 ```
-Java 11
-MariaDB 3.2.0
-MyBatis 3.5.13
-IntelliJ
+언어 : Java(jdk 11), JSP
+서버 : Apache Tomcat 9.0, Amazon EC2
+프레임워크 : MyBatis (3.5.11)
+DBMS : MariaDB (3.2.0), Amazon RDS
+IDE : IntelliJ IDEA
+API, 라이브러리 : Daum Map API, JQuery, Lombok
 ```
 ## 🔔 Prerequisite 🔔
 ```

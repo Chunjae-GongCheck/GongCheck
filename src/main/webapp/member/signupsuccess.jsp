@@ -35,7 +35,7 @@
 </head>
 <body>
 <!-- Responsive navbar-->
-<jsp:include page="../navbarAfterLogin.jsp" flush="false"/>
+<jsp:include page="../navbar.jsp" flush="false"/>
 
 <!-- Header-->
 <header class="py-5">

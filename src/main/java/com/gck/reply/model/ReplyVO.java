@@ -20,6 +20,11 @@ public class ReplyVO {
     private int replyOrderid;       // 같은 그룹 정렬
 
     public ReplyVO() {
+    }
 
+    public ReplyVO(int postIdx, int memberIdx, String replyContent){
+        this.postIdx = postIdx;
+        this.memberIdx = memberIdx;
+        this.replyContent = replyContent;
     }
 }

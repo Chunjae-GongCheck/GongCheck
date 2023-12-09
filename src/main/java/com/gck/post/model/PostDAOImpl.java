@@ -29,12 +29,13 @@ public class PostDAOImpl implements PostDAO {
     public int insertPost(PostVO vo) {
         SqlSession sqlSession = MyBatisFactory.getSqlSession();
         PostDAO mapper = sqlSession.getMapper(PostDAO.class);
-        int result = mapper.insertPost(vo);
-        if (result == 1) {
+        Integer result = mapper.insertPost(vo);
+        if (result == null || result != 1) {
+            System.out.println("새로운 게시글 저장 실패");
+            result = -1;
+        } else {
             sqlSession.commit();
             System.out.println("새로운 게시글 저장 성공");
-        } else {
-            System.out.println("새로운 게시글 저장 실패");
         }
         sqlSession.close();
         return result;

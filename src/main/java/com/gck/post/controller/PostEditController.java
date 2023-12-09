@@ -37,15 +37,21 @@ import java.util.ArrayList;
         PostVO postVO = dao.selectView(postIdx);
 
         // 현재 로그인한 사용자의 정보 가져오기
-        int memberIdx = (Integer) req.getSession().getAttribute("memberIdx");
+        Object memberIdxObj = req.getSession().getAttribute("memberIdx");
+        if(memberIdxObj == null){   // 로그인 정보 없으면 수정 불가능
+            JSFunction.alertLocation(resp, "글 수정에 관한 권한이 없습니다.",
+                    req.getContextPath() + "/board/MainView.do");
+            return;
+        }
+        Integer memberIdx = (Integer) req.getSession().getAttribute("memberIdx");
 
         // 작성자의 정보 가져오기
         int postAuthorIdx = postVO.getMemberIdx();
 
         // 권한 확인: 현재 로그인한 사용자가 작성자가 아니면 수정 권한이 없음
-        if (memberIdx != postAuthorIdx) {
+        if (memberIdx != postAuthorIdx){
             JSFunction.alertLocation(resp, "글 수정에 관한 권한이 없습니다.",
-                    "/GongCheck_war_exploded/board/MainView.do");
+                    req.getContextPath() + "/board/MainView.do");
             return;
         }
         req.setAttribute("postVO", postVO);
@@ -75,15 +81,23 @@ import java.util.ArrayList;
         // 사용자의 입력 값을 얻어옴
         String postTitle = req.getParameter("postTitle");
         String postContent = req.getParameter("postContent");
-        String preOriginalFile = req.getParameter("preOriginalFile");
-        String preSavedFile = req.getParameter("preSavedFile");
+        String preOriginalFile = req.getParameter("postImagePath");
+        String preSavedFile = req.getParameter("postTImagePath");
+        String newFile = req.getParameter("postImagePath");
         String postIdx = req.getParameter("postIdx");
 
         // postIdx가 null이거나 비어있을 때의 처리
         if (postIdx == null || postIdx.isEmpty()) {
             // 예외 처리 또는 기본값 설정 등을 수행할 수 있습니다.
             // 여기에서는 기본값으로 -1을 설정하는 경우:
-            postIdx = "-1";
+            JSFunction.alertBack(resp, "오류입니다.");
+            return;
+        }
+
+        // 새 파일이 있는지 확인
+        boolean flag = true;
+        if(newFile == null || newFile.length() == 0){
+            flag = false;
         }
 
 
@@ -111,36 +125,40 @@ import java.util.ArrayList;
 
         int updatePost = postDAO.updatePost(postVO);
 
-        // 파일 업로드를 처리하는 부분
-        PostImageDAO postImageDAO = new PostImageDAOImpl();
+        // 새 파일이 등록된 경우
+        // 기존 파일 삭제 및 새 파일 등록
 
-        // 기존 파일 삭제
-        FileUtil.deleteFile(req, "/Uploads", preSavedFile);
+            // 파일 업로드를 처리하는 부분
+            PostImageDAO postImageDAO = new PostImageDAOImpl();
 
-        for (int i = 0; i < originalFilenameList.size(); i++) {
-            String originalFilename = originalFilenameList.get(i);
+            // 기존 파일 삭제
+            FileUtil.deleteFile(req, "/Uploads", preSavedFile);
 
-            if (originalFilename != null && !originalFilename.isEmpty()) {
-                String savedFilename = FileUtil.renameFile(saveDirectory, originalFilename);
+            for (int i = 0; i < originalFilenameList.size(); i++) {
+                String originalFilename = originalFilenameList.get(i);
 
-                PostImageVO postImageVO = new PostImageVO();
-                postImageVO.setPostIdx(postVO.getPostIdx());
-                postImageVO.setPostImagePath(originalFilename);
-                postImageVO.setPostTImagePath(savedFilename);
+                if (originalFilename != null && !originalFilename.isEmpty()) {
+                    String savedFilename = FileUtil.renameFile(saveDirectory, originalFilename);
 
-                // PostImageVO를 DB에 저장.
-                postImageDAO.updatePostImage(postImageVO);
-            } else {
-                // 이미지가 없는 경우, 기존 이미지 정보를 사용
-                PostImageVO postImageVO = new PostImageVO();
-                postImageVO.setPostIdx(postVO.getPostIdx());
-                postImageVO.setPostImagePath(preOriginalFile);
-                postImageVO.setPostTImagePath(preSavedFile);
+                    PostImageVO postImageVO = new PostImageVO();
+                    postImageVO.setPostIdx(postVO.getPostIdx());
+                    postImageVO.setPostImagePath(originalFilename);
+                    postImageVO.setPostTImagePath(savedFilename);
 
-                // PostImageVO를 DB에 저장.
-                postImageDAO.updatePostImage(postImageVO);
+                    // PostImageVO를 DB에 저장.
+                    postImageDAO.updatePostImage(postImageVO);
+                } else {
+                    // 이미지가 없는 경우, 기존 이미지 정보를 사용
+                    PostImageVO postImageVO = new PostImageVO();
+                    postImageVO.setPostIdx(postVO.getPostIdx());
+                    postImageVO.setPostImagePath(preOriginalFile);
+                    postImageVO.setPostTImagePath(preSavedFile);
+
+                    // PostImageVO를 DB에 저장.
+                    postImageDAO.updatePostImage(postImageVO);
+                }
             }
-        }
+
         System.out.println("Post 수정 성공!");
 
 

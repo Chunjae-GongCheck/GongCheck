@@ -9,12 +9,20 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>게시물 상세보기</title>
 
+
+
+    <!-- 좋아요 추가 -->
+
+
+
+
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 
     <style>
         * {
@@ -59,10 +67,7 @@
 <!-- Responsive navbar-->
 <jsp:include page="../navbar.jsp" flush="false"/>
 
-<!-- 세션에 저장되어 있는 로그인 정보 -->
-<input type="hidden" id="memberIdx" name="memberIdx" value="${sessionScope.memberIdx}" />
-
-<%-- 카드 형 이미지 --%>
+<%--        카드 형 이미지 --%>
 <div class="d-flex align-content-between flex-wrap" id="flex-container">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <div class="card mb-3" id="card_line">
@@ -83,9 +88,7 @@
                                 <path fill-rule="evenodd"
                                       d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                             </svg>
-                            <span class="countLikes" id="countLikes" name="countLikes" >
-                                &nbsp;${vo.postLikecount}
-                            </span>
+                    &nbsp;&nbsp;    ${vo.postLikecount}
                         </div>
                     </h5>
                     <h5 class="card-title">조회수 : ${vo.postVisitcount}</h5>
@@ -95,6 +98,7 @@
                 <h5 class="card-text">내용 : ${vo.postContent}</h5>
                 <div class="date">
                     <h5 class="card-text"><small class="text-body-secondary">작성 날짜 : ${vo.postWriteDate}</small></h5>
+                    <%-- <p class="card-text"><small class="text-body-secondary">수정 날짜 : ${vo.postUpdateDate}</small></p> --%>
                 </div>
             </div>
 
@@ -113,60 +117,54 @@
             </div>
         </div>
         <!-- 댓글 -->
-        <jsp:include page="../reply/Reply.jsp" >
-            <jsp:param name="postIdx" value="${ vo.postIdx }"/>
-        </jsp:include>
-        <!--  include file="/reply/ReplyWrite.jsp"  -->
+        <%@ include file="/reply/Reply.jsp" %>
+        <%@ include file="/reply/ReplyWrite.jsp" %>
     </div>
 </div>
 
 <!-- Footer-->
 <jsp:include page="../footer.jsp" flush="false"/>
 
-<!-- 좋아요 js -->
+
 <script>
     function updateLikes(){
-        let postIdx = "${ vo.postIdx }";
-        let memberIdx = "${ sessionScope.memberIdx }";
+        //let postIdx = { requestScope.postIdx };
+        // let postIdx = "1";
+        let postIdx = "1";
+        // let memberIdx = { sessionScope.memberIdx };
+        let memberIdx = sessionStorage.getItem("memberIdx");
+
+        let url = "${pageContext.request.contextPath}/post/updatelikes.do";
 
         // 로그인 안 된 사용자가 좋아요를 눌렀을 때, 로그인 페이지로 이동
-        if(!memberIdx || memberIdx.length <= 0){
+        if(!memberIdx){
             alert("먼저 로그인을 해주세요.");
             location.href = "${pageContext.request.contextPath}/member/loginform.do";
             return;
         }
 
-        // 좋아요 컨트롤러 요청명
-        let url = "${pageContext.request.contextPath}/post/updatelikes.do";
-
         $.ajax({
             type : "POST",
             url : url,
-            dataType: "json",
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            datatype:"text",
             data : {
                 postIdx : postIdx,
                 memberIdx : memberIdx
             },
             success : function(likeCheck) {
-                let result = likeCheck.result; // 좋아요 결과(-1: 오류 / 0: 좋아요 등록 / 1: 좋아요 취소)
-                let countLikes = likeCheck.cntLikes; // 게시물 좋아요 개수
-
-                if(result == -1){       // 좋아요 오류
-                    alert("다시 시도해 주세요.");
-                    location.reload(); // 새로고침
-                }else if(result == 0) {  // 좋아요 등록
+                if(likeCheck == 0){ // 좋아요 완료
                     alert("좋아요!");
-                }else {                 // 좋아요 취소
-                    alert("좋아요를 취소하였습니다.");
+                    location.reload();
                 }
-
-                // 좋아요 개수 부분 값만 변경한다.
-                $("#countLikes").text(" " + countLikes);
+                else if (likeCheck == 1){   // 좋아요 취소
+                    alert("좋아요를 취소하였습니다.");
+                    location.reload();
+                }else{  // 오류
+                    alert("다시 시도해 주세요.");
+                }
             },
             error : function(){
                 alert("다시 시도해 주세요.");
-                location.reload(); // 새로고침
             }
         });
     }

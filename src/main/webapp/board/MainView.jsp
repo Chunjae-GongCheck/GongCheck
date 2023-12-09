@@ -26,15 +26,26 @@
 
         .d-flex {
             margin: 0 auto;
+            margin-top: 10px;
             position: relative;
+            gap: 5px;
         }
 
         #post_img {
-            margin-top: 2vh;
-            margin-bottom: 10px;
+            margin-top: -1vh;
+            /*margin-bottom: 5px;*/
             width: 20rem;
             height: 20rem;
             object-fit: fill;
+        }
+
+        .nickName {
+            background-color: #f2f2f2;
+            color: black;
+            font-size: 17px;
+        }
+        #pagingNumber{
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -66,7 +77,7 @@
         <c:otherwise>
             <div class="d-flex align-content-between flex-wrap" id="gridsys">
                 <c:forEach items="${ boardLists }" var="row" varStatus="loop">
-                    <div class="thumb_post_img" id="thumb_post_img">
+                    <div class="thumb__post_img" id="thumb__post_img">
                         <%-- 게시물 번호 --%>
                             <%--              ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}--%>
 
@@ -75,7 +86,7 @@
                             <%--            <div class="d-flex justify-content-center"></div>--%>
                             <%--            <a type="button" class="image_Modal" data-bs-toggle="modal" data-bs-target="#imageModal"></a>--%>
 
-                        <a href="../posts/PostView.do?postIdx=${ row.postIdx }">
+                        <a href="../post/PostView.do?postIdx=${ row.postIdx }">
 
                                 <%-- imageList 컬렉션과 JSTL 의 앙상블 --%>
                             <c:forEach items="${ postImageVOList }" var="posts" varStatus="loop">
@@ -84,10 +95,12 @@
                                 <c:if test="${row.postIdx == posts.postIdx}" var="result">
 
                                     <%-- 절대경로+ 서버에 저장된 이미지 불러오기 / loop를 계속 수행하는 동안 부모 foreach 문과 나의 Idx 가 일치하는지 확인하고 맞으면 출력 아니면 점프 --%>
-
+                                    <div class="nickName" style="float: left">
+<%--                                        여기에 프사 넣으면 될듯? --%>
+                                        <p><strong>${posts.memberNickname}</strong></p>
                                     <img src="${pageContext.request.contextPath}/Uploads/${posts.postTImagePath}"
-                                         alt="posts${loop.index}" class="shadow p-3 mb-5 bg-body-tertiary rounded"
-                                         id="post_img"/>
+                                         alt="posts${loop.index}" id="post_img"/>
+                                    </div>
                                 </c:if>
                             </c:forEach>
                         </a>
@@ -99,8 +112,8 @@
 </div>
 
 <%-- 하단 메뉴(바로가기)--%>
-<div class="pagination justify-content-center">
-    <div class="d-flex">
+<div class="d-flex justify-content-center">
+    <div class="d-flex" id="pagingNumber">
         ${ map.pagingImg }
     </div>
 </div>

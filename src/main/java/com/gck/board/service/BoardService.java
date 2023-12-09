@@ -1,8 +1,10 @@
 package com.gck.board.service;
 
 import com.gck.board.model.BoardDAO;
+import com.gck.board.model.BoardMemberVO;
 import com.gck.board.model.BoardVO;
 import com.gck.post.model.PostDAO;
+import com.gck.post.model.PostMemberVO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.apache.ibatis.session.SqlSession;
@@ -44,14 +46,28 @@ public class BoardService {
     }
 
     public int selectCount (Map <String,Object> map) {
-        this.sqlSession =MyBatisFactory.getSqlSession();
+        this.sqlSession = MyBatisFactory.getSqlSession();
         mapper = this.sqlSession.getMapper(BoardDAO.class);
-
-
         int result = mapper.selectCount(map);
+
         sqlSession.close();
         return result;
     }
 
+
+    public String selectNickView(int postIdx) {
+        this.sqlSession = MyBatisFactory.getSqlSession();
+        BoardDAO mapper = this.sqlSession.getMapper(BoardDAO.class);
+        String result = mapper.selectNickView(postIdx);
+
+        if (result != null) {
+            System.out.println("조회된 게시물 : " + result);
+        } else {
+            System.out.println("게시물이 조회되지 않았습니다. postIdx: " + postIdx);
+        }
+
+        sqlSession.close();
+        return result;
+    }
 
 }

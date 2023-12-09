@@ -10,7 +10,7 @@ import java.sql.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardVO {
+public class BoardMemberVO {
     private int postIdx;                // 게시물 index
     private int boardIdx;               // 게시판 index
     private String postTitle;           // 제목
@@ -21,8 +21,6 @@ public class BoardVO {
     private Date postUpdateDate;        // 수정일시
     private int postVisitcount;         // 조회수
     private String boardDescription;    // 게시판 설명
-    // postImage의 정보도 필요해서 추가
+    // member 정보도 필요해서 추가
     private String memberNickname;
-
-
 }

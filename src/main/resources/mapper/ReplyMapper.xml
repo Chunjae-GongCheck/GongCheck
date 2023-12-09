@@ -3,18 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-    <mapper namespace="com.gck.reply.model.ReplyDAO">
-        <!-- 댓글 전체 목록 가져오기 -->
-        <select id="getRepliesByPost" parameterType="int" resultType="com.gck.reply.model.ReplyVO">
-            SELECT * FROM replies WHERE post_idx = #{postIdx}
-        </select>
+<mapper namespace="com.gck.reply.model.ReplyDAO">
+    <!-- 댓글 목록 -->
+    <select id="getReplies" parameterType="int" resultType="com.gck.reply.model.ReplyDTO">
+        SELECT r.reply_idx, m.member_nickname, r.reply_content, r.reply_write_date
+        from members as m
+                 join replies as r
+                      on m.member_idx = r.member_idx
+        where r.post_idx = #{postIdx}
+        order by r.reply_idx desc
+    </select>
 
-        <!-- 삽입 -->
-        <insert id="createReplies"  parameterType="com.gck.reply.model.ReplyVO">
-            INSERT INTO replies (post_id, reply_content, member_idx, parent_no, dept_no, orderid)
-            VALUES (#{postIdx}, #{replyContent}, #{memberIdx}, 0, 0, 0)
+    <!-- 삽입 -->
+    <insert id="createReplies"  parameterType="com.gck.reply.model.ReplyVO">
+        INSERT INTO replies (post_idx, reply_content, member_idx, reply_parent_no, reply_depth_no, reply_orderid)
+        VALUES (#{postIdx}, #{replyContent}, #{memberIdx}, 0, 0, 0)
+    </insert>
 
-        </insert>
-
-        <!-- 삽입, 업데이트, 삭제 추가 예정) -->
-    </mapper>
+    <!-- 삽입, 업데이트, 삭제 추가 예정) -->
+</mapper>
