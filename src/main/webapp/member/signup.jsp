@@ -253,7 +253,7 @@
                     <div class="col-md-8 mb-3">
                         <label for="memberEmail">이메일</label>
                         <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" required
-                       minlength="2" maxlength="30" onInput="maxLengthCheck(this.id)" onKeyUp="inputDataCheck(this.id)">
+                       minlength="2" maxlength="49" onInput="maxLengthCheck(this.id)" onKeyUp="inputDataCheck(this.id)">
                         <div class="invalid-feedback">
                             이메일을 다시 입력해 주세요.
                         </div>
