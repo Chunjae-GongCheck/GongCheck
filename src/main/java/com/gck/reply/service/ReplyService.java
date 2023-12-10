@@ -35,6 +35,7 @@ public class ReplyService {
                 sObject.put("replyContent", replyDTOArrayList.get(i).getReplyContent());
                 sObject.put("replyWriteDate", replyDTOArrayList.get(i).getReplyWriteDate());
                 sObject.put("replyIdx", replyDTOArrayList.get(i).getReplyIdx());
+                sObject.put("replyUpdateDate", replyDTOArrayList.get(i).getReplyUpdateDate());
 
                 jArray.put(sObject);
             }

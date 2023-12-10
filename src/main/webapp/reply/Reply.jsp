@@ -61,8 +61,13 @@
                             html += "<tbody class='table-group-divider'><tr>";
                             html += "<th scope='row'>내용</th>";
                             html += "<td>" + data.reply[i].replyContent + "</td></tr>";
-                            html += "<tr><th scope='row'>작성일시</th>";
+                            html += "<th scope='row'>작성일시</th>";
                             html += "<td>" + data.reply[i].replyWriteDate + "</td></tr>";
+                            // 수정일이 있는 경우 표시
+                            if (data.reply[i].replyUpdateDate) {
+                                html += "<tr><th scope='row'>수정일시</th>";
+                                html += "<td>" + data.reply[i].replyUpdateDate + "</td></tr>";
+                            }
                             html += "</tbody></table></div>";
                             html += "<button type='button' class='btn btn-primary btn-sm' onclick='showUpdateForm(" + data.reply[i].replyIdx + ", \"" + data.reply[i].replyContent + "\");'>수정</button>";
                             html += "<button type='button' class='btn btn-secondary btn-sm' onclick='deleteComment(" + data.reply[i].replyIdx + ", \"" + data.reply[i].replyContent + "\");'>삭제</button>";

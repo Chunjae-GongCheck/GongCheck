@@ -6,7 +6,7 @@
 <mapper namespace="com.gck.reply.model.ReplyDAO">
     <!-- 댓글 목록 -->
     <select id="getReplies" parameterType="int" resultType="com.gck.reply.model.ReplyDTO">
-        SELECT r.reply_idx, m.member_nickname, r.reply_content, r.reply_write_date
+        SELECT r.reply_idx, m.member_nickname, r.reply_content, r.reply_write_date, r.reply_update_date
         from members as m
                  join replies as r
                       on m.member_idx = r.member_idx
