@@ -6,7 +6,7 @@
 <mapper namespace="com.gck.reply.model.ReplyDAO">
     <!-- 댓글 목록 -->
     <select id="getReplies" parameterType="int" resultType="com.gck.reply.model.ReplyDTO">
-        SELECT r.reply_idx, m.member_nickname, r.reply_content, r.reply_write_date
+        SELECT r.reply_idx, m.member_nickname, r.reply_content, r.reply_write_date, r.reply_update_date
         from members as m
                  join replies as r
                       on m.member_idx = r.member_idx
@@ -14,11 +14,22 @@
         order by r.reply_idx desc
     </select>
 
-    <!-- 삽입 -->
+    <!-- 댓글 작성 -->
     <insert id="createReplies"  parameterType="com.gck.reply.model.ReplyVO">
         INSERT INTO replies (post_idx, reply_content, member_idx, reply_parent_no, reply_depth_no, reply_orderid)
         VALUES (#{postIdx}, #{replyContent}, #{memberIdx}, 0, 0, 0)
     </insert>
 
-    <!-- 삽입, 업데이트, 삭제 추가 예정) -->
+    <!-- 댓글 업데이트 -->
+    <update id="updateReplies" parameterType="com.gck.reply.model.ReplyVO">
+        UPDATE replies
+        SET reply_content = #{replyContent}, reply_update_date = #{replyUpdateDate}
+        WHERE reply_idx = #{replyIdx} AND member_idx = #{memberIdx}
+    </update>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteReplies" parameterType="com.gck.reply.model.ReplyVO">
+        DELETE FROM replies
+        WHERE reply_idx = #{replyIdx} AND member_idx = #{memberIdx}
+    </delete>
 </mapper>

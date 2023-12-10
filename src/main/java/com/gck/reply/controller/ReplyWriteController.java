@@ -28,6 +28,7 @@ public class ReplyWriteController extends HttpServlet {
         String memberIdx = req.getParameter("memberIdx");
         String replyContent = req.getParameter("replyContent");
 
+
         // 댓글 등록
         int result = getReplyService().createReplies(postIdx, memberIdx, replyContent);
 

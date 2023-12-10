@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 
@@ -34,6 +35,7 @@ public class ReplyService {
                 sObject.put("replyContent", replyDTOArrayList.get(i).getReplyContent());
                 sObject.put("replyWriteDate", replyDTOArrayList.get(i).getReplyWriteDate());
                 sObject.put("replyIdx", replyDTOArrayList.get(i).getReplyIdx());
+                sObject.put("replyUpdateDate", replyDTOArrayList.get(i).getReplyUpdateDate());
 
                 jArray.put(sObject);
             }
@@ -101,42 +103,56 @@ public class ReplyService {
         return result;
     }
 
+    //1210
     // 댓글 update
-    public int updateReplies(ReplyVO replyVO) {
-        this.sqlSession = MyBatisFactory.getSqlSession();
-        mapper = this.sqlSession.getMapper(ReplyDAO.class);
-        Integer result = mapper.updateReplies(replyVO);
+    public int updateReplies(String memberIdxStr, String replyIdxStr, String replyContent, String replyUpdateDateStr) {
 
-        // update 오류
-        if (result == null || result != 1) {
+            this.sqlSession = MyBatisFactory.getSqlSession();
+            mapper = this.sqlSession.getMapper(ReplyDAO.class);
+
+            Integer memberIdx = Integer.parseInt(memberIdxStr);
+            Integer replyIdx = Integer.parseInt(replyIdxStr);
+            Date replyUpdateDate = Date.valueOf(replyUpdateDateStr);
+
+            ReplyVO replyVO = new ReplyVO(memberIdx, replyIdx, replyContent, replyUpdateDate);
+
+            // 댓글 업데이트
+            Integer result = mapper.updateReplies(replyVO);
+
+            // update 오류
+            if (result == null || result != 1) {
+                sqlSession.close();
+                return -1;
+            }
+
+            // update 성공
+            sqlSession.commit();
             sqlSession.close();
-            return -1;
-        }
+            return result;
 
-        // update 성공
-        sqlSession.commit();
-        sqlSession.close();
-        return result;
     }
 
     // 댓글 delete
-    public int deleteReplies(ReplyVO replyVO) {
+    public int deleteReplies(int memberIdx, int replyIdx) {
         this.sqlSession = MyBatisFactory.getSqlSession();
         mapper = this.sqlSession.getMapper(ReplyDAO.class);
 
+        ReplyVO replyVO = new ReplyVO(memberIdx, replyIdx);
+
         Integer result = mapper.deleteReplies(replyVO);
 
-        // update 오류
+        // 삭제 오류
         if (result == null || result != 1) {
             sqlSession.close();
             return -1;
         }
 
-        // update 성공
+        // 삭제 성공
         sqlSession.commit();
         sqlSession.close();
         return result;
     }
+
 }
 
 
