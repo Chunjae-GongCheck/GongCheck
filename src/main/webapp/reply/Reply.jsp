@@ -57,7 +57,7 @@
                         for(i = 0; i < cCnt; i++){
                             html += "<div>";
                             html += "<input type='hidden' id='postIdx_"+ data.reply[i].replyIdx +"' name='postIdx_" + data.reply[i].replyIdx + "' value='" + postIdx + "' />";
-                            html += "<div><table class='table'><thead><tr><h6><strong>"+data.reply[i].memberIdx+"</strong></h6></tr></thead>";
+                            html += "<div style='margin-top: 15px;'><table class='table'><thead><tr><h6><strong>"+data.reply[i].memberIdx+"</strong></h6></tr></thead>";
                             html += "<tbody class='table-group-divider'><tr>";
                             html += "<th scope='row'>내용</th>";
                             html += "<td>" + data.reply[i].replyContent + "</td></tr>";
@@ -71,8 +71,6 @@
                             html += "</tbody></table></div>";
                             html += "<button type='button' class='btn btn-primary btn-sm' onclick='showUpdateForm(" + data.reply[i].replyIdx + ", \"" + data.reply[i].replyContent + "\");'>수정</button>";
                             html += "<button type='button' class='btn btn-secondary btn-sm' onclick='deleteComment(" + data.reply[i].replyIdx + ", \"" + data.reply[i].replyContent + "\");'>삭제</button>";
-                            html += "</div>";
-                            html += "<div>";
                             html += "</div>";
                             // 수정 폼(수정 버튼 클릭 시 화면 나옴)
                             html += "<div id='updateForm" + data.reply[i].replyIdx + "' style='display: none;'>";
