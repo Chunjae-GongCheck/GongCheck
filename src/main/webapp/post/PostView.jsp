@@ -10,6 +10,7 @@
     <title>게시물 상세보기</title>
 
     <!-- Bootstrap CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
@@ -57,7 +58,10 @@
 </head>
 <body>
 <!-- Responsive navbar-->
-<jsp:include page="../navbar.jsp" flush="false"/>
+<jsp:include page="/navbar.jsp">
+    <jsp:param name="memberIdx" value="${ sessionScope.memberIdx }"/>
+    <jsp:param name="memberNickname" value="${ sessionScope.memberNickname }"/>
+</jsp:include>
 
 <!-- 세션에 저장되어 있는 로그인 정보 -->
 <input type="hidden" id="memberIdx" name="memberIdx" value="${sessionScope.memberIdx}" />
