@@ -332,15 +332,6 @@ Tomcat 8090 포트 연결
 
 </details>
 
-<details><summary>댓글</summary>
-    
-![reply](#)
-
-
-</details>
-
-
-
 
 </div>
 
