@@ -121,7 +121,6 @@
         <jsp:include page="../reply/Reply.jsp" >
             <jsp:param name="postIdx" value="${ vo.postIdx }"/>
         </jsp:include>
-        <!--  include file="/reply/ReplyWrite.jsp"  -->
     </div>
 </div>
 

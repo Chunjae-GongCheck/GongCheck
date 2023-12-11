@@ -46,7 +46,7 @@ public class EditPersonalInfoController extends HttpServlet {
 
         // 세션에 로그인 정보가 없을 경우 메인 화면으로 redirect
         if(memberIdx == null){
-            url += "/index.jsp";  // [@@@@@@@@@@] 메인 페이지로 수정해야 함. 메인 페이지로 가는 컨트롤러(board/main.do)로 연결해야 한다.
+            url += "/index.jsp";
             resp.sendRedirect(url);
             return;
         }
@@ -56,7 +56,7 @@ public class EditPersonalInfoController extends HttpServlet {
 
         // 실패
         if(memberVo == null){
-            // 메인 화면으로 이동 [@@@@@@@@@@]
+            // 메인 화면으로 이동
             url += "/index.jsp";
 
             // alert 출력
@@ -94,7 +94,7 @@ public class EditPersonalInfoController extends HttpServlet {
 
         // 세션에 로그인 정보가 없을 경우 메인 화면으로 redirect
         if(memberIdx == null){
-            url += "/index.jsp";  // [@@@@@@@@@@] 메인 페이지로 수정해야 함. 메인 페이지로 가는 컨트롤러(board/main.do)로 연결해야 한다.
+            url += "/index.jsp";
             resp.sendRedirect(url);
             return;
         }
