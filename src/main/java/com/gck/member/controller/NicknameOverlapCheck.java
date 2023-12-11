@@ -29,8 +29,6 @@ public class NicknameOverlapCheck extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String inputValue = req.getParameter("inputValue");
         String type = req.getParameter("type");
-        System.out.println("inputValue : " + inputValue);
-        System.out.println("type : " + type);
 
         boolean exists = true;
 
@@ -45,7 +43,6 @@ public class NicknameOverlapCheck extends HttpServlet {
             exists = getMemberService().searchEmail(inputValue);
         }else{ }  // 오류
 
-        System.out.println(exists);
         String result = "";
 
         if(exists){ // id 중복 O
@@ -56,6 +53,5 @@ public class NicknameOverlapCheck extends HttpServlet {
 
         // 응답
         resp.getWriter().print(result);
-        // out.print(result);
     }
 }

@@ -1,4 +1,5 @@
 -- DML
+-- 샘플 데이터입니다.
 use gongcheck;
 
 
