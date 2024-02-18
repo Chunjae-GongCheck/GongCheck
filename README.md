@@ -346,8 +346,9 @@ Tomcat 8090 포트 연결
 ## 📹 시연 영상 📹
 
 <details><summary>회원가입 및 로그인</summary>
-   
-![Join_Login](https://github.com/Chunjae-GongCheck/GongCheck/assets/145525099/b5ca3530-e44b-4846-bb70-26d81dfb8a99)
+
+https://github.com/Chunjae-GongCheck/GongCheck/assets/74610908/8bebfc7d-c33f-4c5d-93b2-125751e63f2e
+
 </details>
     
 <details><summary>게시판</summary>
@@ -356,6 +357,11 @@ Tomcat 8090 포트 연결
 
 </details>
 
+<details><summary>게시글 좋아요</summary>
+    
+https://github.com/Chunjae-GongCheck/GongCheck/assets/74610908/0ae2de01-beee-4564-a119-93ff3dbc5889
+
+</details>
 
 </div>
 
